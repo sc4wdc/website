@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { formatDate } from '../../utils/date';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+  return events.map(event => ({
+    params: { slug: event.slug },
+    props: { event },
+  }));
+}
+
+const { event } = Astro.props;
+const { Content } = await event.render();
+
+const isPastEvent = event.data.date < new Date();
+---
+
+<BaseLayout title={event.data.title} description={event.data.description}>
+  <section class="section">
+    <div class="container">
+      <article class="event-detail">
+        <div class="event-header">
+          {isPastEvent && (
+            <div class="past-event-badge">Past Event</div>
+          )}
+          <h1>{event.data.title}</h1>
+          <div class="event-meta">
+            <div class="meta-item">
+              <strong>📅 Date:</strong> {formatDate(event.data.date)}
+            </div>
+            {event.data.time && (
+              <div class="meta-item">
+                <strong>🕐 Time:</strong> {event.data.time}
+              </div>
+            )}
+            {event.data.location && (
+              <div class="meta-item">
+                <strong>📍 Location:</strong> {event.data.location}
+              </div>
+            )}
+            {event.data.registrationRequired && (
+              <div class="meta-item registration-required">
+                <strong>⚠️ Registration Required</strong>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div class="event-content prose">
+          <Content />
+        </div>
+
+        {event.data.registrationUrl && (
+          <div class="event-actions">
+            <a href={event.data.registrationUrl} target="_blank" rel="noopener noreferrer" class="btn">
+              Register for this Event
+            </a>
+          </div>
+        )}
+
+        <div class="back-link">
+          <a href="/website/events">← Back to All Events</a>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .event-detail {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .event-header {
+    margin-bottom: var(--space-xl);
+    position: relative;
+  }
+
+  .past-event-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-gray);
+    color: var(--color-white);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+  }
+
+  .event-header h1 {
+    margin-bottom: var(--space-lg);
+  }
+
+  .event-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+    background-color: var(--color-light-gray);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--color-accent);
+  }
+
+  .meta-item {
+    font-size: 1.05rem;
+  }
+
+  .registration-required {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .event-content {
+    background-color: var(--color-white);
+    padding: var(--space-xl);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: var(--space-xl);
+  }
+
+  .prose :global(h2) {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 2px solid var(--color-light-gray);
+  }
+
+  .prose :global(h2:first-of-type) {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .prose :global(h3) {
+    margin-top: var(--space-lg);
+    color: var(--color-secondary);
+  }
+
+  .prose :global(ul) {
+    list-style: none;
+    margin-left: 0;
+  }
+
+  .prose :global(li) {
+    padding-left: var(--space-lg);
+    position: relative;
+  }
+
+  .prose :global(li::before) {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+  }
+
+  .prose :global(ol) {
+    margin-left: var(--space-lg);
+  }
+
+  .prose :global(ol li::before) {
+    content: none;
+  }
+
+  .prose :global(strong) {
+    color: var(--color-primary);
+  }
+
+  .event-actions {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .back-link {
+    text-align: center;
+    padding-top: var(--space-xl);
+    border-top: 2px solid var(--color-light-gray);
+  }
+
+  .back-link a {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .back-link a:hover {
+    color: var(--color-accent);
+  }
+</style>
+

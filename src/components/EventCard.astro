@@ -1,0 +1,93 @@
+---
+import { parseLocalDate } from '../utils/date';
+
+interface Props {
+  title: string;
+  date: Date;
+  location?: string;
+  href?: string;
+}
+
+const { title, date, location, href } = Astro.props;
+const localDate = parseLocalDate(date);
+---
+
+<div class="event-card">
+  <div class="event-date">
+    <span class="date-day">{localDate.getDate()}</span>
+    <span class="date-month">{localDate.toLocaleDateString('en-US', { month: 'short', timeZone: 'America/Los_Angeles' })}</span>
+  </div>
+  <div class="event-details">
+    {href ? (
+      <h3><a href={href}>{title}</a></h3>
+    ) : (
+      <h3>{title}</h3>
+    )}
+    {location && <p class="event-location">📍 {location}</p>}
+  </div>
+</div>
+
+<style>
+  .event-card {
+    display: flex;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+  }
+
+  .event-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .event-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    padding: var(--space-sm);
+    border-radius: var(--border-radius);
+    min-width: 70px;
+    flex-shrink: 0;
+  }
+
+  .date-day {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .date-month {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .event-details {
+    flex: 1;
+  }
+
+  .event-details h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .event-details h3 a {
+    color: var(--color-primary);
+  }
+
+  .event-details h3 a:hover {
+    color: var(--color-accent);
+  }
+
+  .event-location {
+    color: var(--color-gray);
+    font-size: 0.95rem;
+  }
+</style>
+

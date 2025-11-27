@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrailCard from '../components/TrailCard.astro';
+import { getCollection } from 'astro:content';
+
+const allTrails = await getCollection('trails');
+const trails = allTrails.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title="Trail Guides & Reports" description="Trail reports, guides, and trip reviews from Santa Cruz 4WDC members">
+  <section class="section">
+    <div class="container">
+      <h1>Trail Guides & Reports</h1>
+      <p class="intro">
+        Check out our trail reports and guides written by club members. Learn about trail conditions,
+        difficulty levels, and what to expect before you head out.
+      </p>
+
+      <!-- Trail Reports Grid -->
+      {trails.length > 0 ? (
+        <div class="trails-grid">
+          {trails.map(trail => (
+            <TrailCard
+              title={trail.data.title}
+              difficulty={trail.data.difficulty}
+              location={trail.data.location}
+              description={trail.data.description}
+              href={`/website/trails/${trail.slug}`}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="card no-trails">
+          <h2>No Trail Reports Yet</h2>
+          <p>Check back soon for trail reports from our members!</p>
+        </div>
+      )}
+
+      <!-- Call to Action for Members -->
+      <div class="card contribute-section">
+        <h2>Want to Contribute?</h2>
+        <p>
+          Club members are encouraged to write trail reports after trips!
+          Share your experiences, photos, and tips to help fellow members plan their adventures.
+        </p>
+        <p>
+          <strong>To add your trail report:</strong> Contact any board member or post in our Facebook group.
+          We'll help you get it published on the website.
+        </p>
+      </div>
+
+      <!-- Trail Difficulty Guide -->
+      <div class="card difficulty-guide">
+        <h2>Trail Difficulty Guide</h2>
+        <div class="difficulty-list">
+          <div class="difficulty-item">
+            <span class="difficulty-badge difficulty-easy">Easy</span>
+            <p>Suitable for stock 4x4 vehicles. Maintained roads with minimal obstacles.</p>
+          </div>
+          <div class="difficulty-item">
+            <span class="difficulty-badge difficulty-moderate">Moderate</span>
+            <p>Some modifications recommended. Uneven terrain, rocks, and moderate obstacles.</p>
+          </div>
+          <div class="difficulty-item">
+            <span class="difficulty-badge difficulty-difficult">Difficult</span>
+            <p>Modified vehicle required. Challenging obstacles, steep grades, and technical sections.</p>
+          </div>
+          <div class="difficulty-item">
+            <span class="difficulty-badge difficulty-extreme">Extreme</span>
+            <p>Highly modified vehicle essential. Very challenging obstacles requiring advanced skills.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    text-align: center;
+    font-size: 1.125rem;
+    max-width: 700px;
+    margin: 0 auto var(--space-2xl);
+    color: var(--color-gray);
+  }
+
+  .trails-grid {
+    display: grid;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+  }
+
+  @media (min-width: 640px) {
+    .trails-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .trails-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .no-trails {
+    text-align: center;
+    max-width: 600px;
+    margin: var(--space-xl) auto;
+    padding: var(--space-2xl);
+  }
+
+  .contribute-section {
+    max-width: 800px;
+    margin: 0 auto var(--space-xl);
+    text-align: center;
+    background-color: var(--color-light-gray);
+  }
+
+  .difficulty-guide {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .difficulty-guide h2 {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .difficulty-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .difficulty-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background-color: var(--color-off-white);
+    border-radius: var(--border-radius);
+  }
+
+  @media (max-width: 640px) {
+    .difficulty-item {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  .difficulty-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .difficulty-easy {
+    background-color: #4caf50;
+    color: white;
+  }
+
+  .difficulty-moderate {
+    background-color: var(--color-sand);
+    color: var(--color-dark);
+  }
+
+  .difficulty-difficult {
+    background-color: var(--color-accent);
+    color: white;
+  }
+
+  .difficulty-extreme {
+    background-color: #d32f2f;
+    color: white;
+  }
+
+  .difficulty-item p {
+    margin: 0;
+    flex: 1;
+  }
+</style>
+

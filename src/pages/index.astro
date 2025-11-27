@@ -1,0 +1,330 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EventCard from '../components/EventCard.astro';
+import { getCollection } from 'astro:content';
+import clubInfo from '../data/club-info.json';
+import { parseLocalDate, getTodayLocal } from '../utils/date';
+
+// Get recent events (using local date for comparison)
+const allEvents = await getCollection('events');
+const today = getTodayLocal();
+const upcomingEvents = allEvents
+  .filter(event => parseLocalDate(event.data.date) >= today)
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
+  .slice(0, 3);
+
+// Get recent trail reports
+const allTrails = await getCollection('trails');
+const recentTrails = allTrails
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+---
+
+<BaseLayout title="Home" description="Santa Cruz 4 Wheel Drive Club - Keeping Public Lands Open">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>{clubInfo.clubName}</h1>
+        <p class="hero-tagline">{clubInfo.tagline}</p>
+        <p class="hero-description">
+          We are a 501(c)(3) non-profit organization dedicated to keeping public lands open
+          and supporting our local community through responsible off-road recreation.
+        </p>
+        <div class="hero-actions">
+          <a href="/website/membership" class="btn">Join Us</a>
+          <a href="/website/about" class="btn btn-secondary">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Monthly Meeting Info -->
+  <section class="section meeting-info">
+    <div class="container">
+      <div class="card meeting-card">
+        <h2>📅 Monthly Meetings</h2>
+        <div class="meeting-details">
+          <div class="meeting-item">
+            <strong>When:</strong> {clubInfo.meeting.schedule} at {clubInfo.meeting.time}
+          </div>
+          <div class="meeting-item">
+            <strong>Where:</strong> {clubInfo.meeting.location.name}, {clubInfo.meeting.location.address},
+            {clubInfo.meeting.location.city}, {clubInfo.meeting.location.state}
+          </div>
+          <div class="meeting-item">
+            <em>{clubInfo.meeting.earlyArrival}</em>
+          </div>
+        </div>
+        <a href="/website/contact" class="btn" style="margin-top: 1rem;">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Events -->
+  {upcomingEvents.length > 0 && (
+    <section class="section events-preview">
+      <div class="container">
+        <h2>Upcoming Events</h2>
+        <div class="events-grid">
+          {upcomingEvents.map(event => (
+            <EventCard
+              title={event.data.title}
+              date={event.data.date}
+              location={event.data.location}
+              href={`/website/events/${event.slug}`}
+            />
+          ))}
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="/website/events" class="btn">View All Events</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Recent Trail Reports -->
+  {recentTrails.length > 0 && (
+    <section class="section trails-preview">
+      <div class="container">
+        <h2>Recent Trail Reports</h2>
+        <div class="trails-grid">
+          {recentTrails.map(trail => (
+            <div class="trail-preview-card card">
+              <h3>
+                <a href={`/website/trails/${trail.slug}`}>{trail.data.title}</a>
+              </h3>
+              <div class="trail-meta">
+                <span class={`difficulty-badge difficulty-${trail.data.difficulty.toLowerCase()}`}>
+                  {trail.data.difficulty}
+                </span>
+                <span>📍 {trail.data.location}</span>
+              </div>
+              <p>{trail.data.description}</p>
+              <a href={`/website/trails/${trail.slug}`} class="read-more">Read More →</a>
+            </div>
+          ))}
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="/website/trails" class="btn">View All Trail Reports</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Call to Action -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Join the Adventure?</h2>
+        <p>
+          Whether you're an experienced off-roader or just getting started,
+          we welcome you to our community. Come to a meeting, join a trail ride,
+          and help us keep public lands open for everyone!
+        </p>
+        <div class="cta-actions">
+          <a href="/website/membership" class="btn">Become a Member</a>
+          <a href={clubInfo.social.facebook} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            Follow Us on Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    color: var(--color-white);
+    padding: var(--space-2xl) 0;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    color: var(--color-white);
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-tagline {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    color: var(--color-sand);
+    font-style: italic;
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-xl);
+    opacity: 0.95;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .meeting-info {
+    background-color: var(--color-light-gray);
+  }
+
+  .meeting-card {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .meeting-card h2 {
+    text-align: center;
+  }
+
+  .meeting-details {
+    margin: var(--space-lg) 0;
+  }
+
+  .meeting-item {
+    margin-bottom: var(--space-sm);
+    font-size: 1.1rem;
+  }
+
+  .events-grid {
+    display: grid;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  @media (min-width: 768px) {
+    .events-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+  }
+
+  .trails-preview {
+    background-color: var(--color-light-gray);
+  }
+
+  .trails-grid {
+    display: grid;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  @media (min-width: 768px) {
+    .trails-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+  }
+
+  .trail-preview-card h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .trail-preview-card h3 a {
+    color: var(--color-primary);
+  }
+
+  .trail-meta {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+    margin-bottom: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .difficulty-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .difficulty-easy {
+    background-color: #4caf50;
+    color: white;
+  }
+
+  .difficulty-moderate {
+    background-color: var(--color-sand);
+    color: var(--color-dark);
+  }
+
+  .difficulty-difficult {
+    background-color: var(--color-accent);
+    color: white;
+  }
+
+  .difficulty-extreme {
+    background-color: #d32f2f;
+    color: white;
+  }
+
+  .read-more {
+    color: var(--color-accent);
+    font-weight: 600;
+    display: inline-block;
+    margin-top: var(--space-sm);
+  }
+
+  .cta-section {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+    color: var(--color-white);
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-section h2 {
+    color: var(--color-white);
+  }
+
+  .cta-section p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-xl);
+    opacity: 0.95;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-section .btn {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border-color: var(--color-white);
+  }
+
+  .cta-section .btn:hover {
+    background-color: var(--color-off-white);
+    border-color: var(--color-off-white);
+    color: var(--color-primary);
+  }
+
+  .cta-section .btn-secondary {
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+  }
+
+  .cta-section .btn-secondary:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+  }
+</style>
+

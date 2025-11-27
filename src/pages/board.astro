@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import clubInfo from '../data/club-info.json';
+
+const sortedBoard = clubInfo.board.sort((a, b) => a.order - b.order);
+---
+
+<BaseLayout title="Board of Directors" description="Meet the leadership team of Santa Cruz 4 Wheel Drive Club">
+  <section class="section">
+    <div class="container">
+      <h1>Board of Directors</h1>
+      <p class="intro">
+        Our club is led by a dedicated team of volunteers who are passionate about
+        off-roading, trail preservation, and community service.
+      </p>
+
+      <div class="board-grid">
+        {sortedBoard.map(member => (
+          <div class="board-member card">
+            <div class="member-photo-placeholder">
+              {member.photo ? (
+                <img
+                  src={member.photo}
+                  alt={`${member.name}, ${member.position}`}
+                  class="member-photo"
+                />
+              ) : (
+                <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                  <circle cx="60" cy="60" r="60" fill="var(--color-light-gray)"/>
+                  <circle cx="60" cy="45" r="20" fill="var(--color-gray)"/>
+                  <path d="M20 100 C20 75, 40 65, 60 65 C80 65, 100 75, 100 100" fill="var(--color-gray)"/>
+                </svg>
+              )}
+            </div>
+            <h2>{member.name}</h2>
+            <p class="position">{member.position}</p>
+            <div class="contact-info">
+              <a href={`mailto:${member.email}`} class="contact-link">
+                📧 {member.email}
+              </a>
+              {member.phone && (
+                <a href={`tel:${member.phone.replace(/[^0-9]/g, '')}`} class="contact-link">
+                  📱 {member.phone}
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="board-info card">
+        <h2>About Our Board</h2>
+        <p>
+          The Board of Directors oversees club operations, organizes events, manages finances,
+          and ensures we stay true to our mission of keeping public lands open. Board members
+          are elected by club members and serve on a voluntary basis.
+        </p>
+        <h3>Interested in Getting Involved?</h3>
+        <p>
+          Club leadership positions are open to active members who want to make a difference.
+          Board elections are held biennial. If you're interested in a leadership role,
+          we encourage you to attend meetings and get involved with club activities!
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    text-align: center;
+    font-size: 1.125rem;
+    max-width: 700px;
+    margin: 0 auto var(--space-xl);
+    color: var(--color-gray);
+  }
+
+  .board-grid {
+    display: grid;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+  }
+
+  @media (min-width: 640px) {
+    .board-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .board-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .board-member {
+    text-align: center;
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .member-photo-placeholder {
+    margin: 0 auto var(--space-lg);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-light-gray);
+  }
+
+  .member-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .board-member h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .position {
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0 0 var(--space-md) 0;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-light-gray);
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs);
+    font-size: 0.95rem;
+    color: var(--color-primary);
+    transition: color 0.2s ease;
+    word-break: break-word;
+  }
+
+  .contact-link:hover {
+    color: var(--color-accent);
+  }
+
+  .board-info {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .board-info h2 {
+    text-align: center;
+  }
+
+  .board-info h3 {
+    margin-top: var(--space-lg);
+    color: var(--color-secondary);
+  }
+</style>
+
