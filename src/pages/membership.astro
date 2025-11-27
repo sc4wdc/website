@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getEntry } from 'astro:content';
 
 const membershipPage = await getEntry('pages', 'membership');
+if (!membershipPage) throw new Error('Membership page not found');
 const { Content } = await membershipPage.render();
 ---
 
