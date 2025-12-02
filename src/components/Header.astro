@@ -4,13 +4,13 @@ import clubInfo from '../data/club-info.json';
 const currentPath = Astro.url.pathname;
 
 const navItems = [
-  { href: '/website/', label: 'Home' },
-  { href: '/website/about', label: 'About' },
-  { href: '/website/board', label: 'Board' },
-  { href: '/website/events', label: 'Events' },
-  { href: '/website/trails', label: 'Trails' },
-  { href: '/website/membership', label: 'Membership' },
-  { href: '/website/contact', label: 'Contact' }
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/board', label: 'Board' },
+  { href: '/events', label: 'Events' },
+  { href: '/trails', label: 'Trails' },
+  { href: '/membership', label: 'Membership' },
+  { href: '/contact', label: 'Contact' }
 ];
 ---
 
@@ -18,7 +18,7 @@ const navItems = [
   <div class="container">
     <div class="header-content">
       <div class="logo">
-        <a href="/website/">
+        <a href="/">
           <!-- Placeholder for club logo -->
           <div class="logo-placeholder">
             <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +45,7 @@ const navItems = [
             <li>
               <a
                 href={item.href}
-                class:list={['nav-link', { active: currentPath === item.href || (item.href !== '/website/' && currentPath.startsWith(item.href)) }]}
+                class:list={['nav-link', { active: currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href)) }]}
               >
                 {item.label}
               </a>

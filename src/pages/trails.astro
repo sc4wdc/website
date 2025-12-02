@@ -25,7 +25,7 @@ const trails = allTrails.sort((a, b) => b.data.date.getTime() - a.data.date.getT
               difficulty={trail.data.difficulty}
               location={trail.data.location}
               description={trail.data.description}
-              href={`/website/trails/${trail.slug}`}
+              href={`/trails/${trail.slug}`}
             />
           ))}
         </div>

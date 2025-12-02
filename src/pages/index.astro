@@ -32,8 +32,8 @@ const recentTrails = allTrails
           and supporting our local community through responsible off-road recreation.
         </p>
         <div class="hero-actions">
-          <a href="/website/membership" class="btn">Join Us</a>
-          <a href="/website/about" class="btn btn-secondary">Learn More</a>
+          <a href="/membership" class="btn">Join Us</a>
+          <a href="/about" class="btn btn-secondary">Learn More</a>
         </div>
       </div>
     </div>
@@ -56,7 +56,7 @@ const recentTrails = allTrails
             <em>{clubInfo.meeting.earlyArrival}</em>
           </div>
         </div>
-        <a href="/website/contact" class="btn" style="margin-top: 1rem;">Get Directions</a>
+        <a href="/contact" class="btn" style="margin-top: 1rem;">Get Directions</a>
       </div>
     </div>
   </section>
@@ -72,12 +72,12 @@ const recentTrails = allTrails
               title={event.data.title}
               date={event.data.date}
               location={event.data.location}
-              href={`/website/events/${event.slug}`}
+              href={`/events/${event.slug}`}
             />
           ))}
         </div>
         <div style="text-align: center; margin-top: 2rem;">
-          <a href="/website/events" class="btn">View All Events</a>
+          <a href="/events" class="btn">View All Events</a>
         </div>
       </div>
     </section>
@@ -92,7 +92,7 @@ const recentTrails = allTrails
           {recentTrails.map(trail => (
             <div class="trail-preview-card card">
               <h3>
-                <a href={`/website/trails/${trail.slug}`}>{trail.data.title}</a>
+                <a href={`/trails/${trail.slug}`}>{trail.data.title}</a>
               </h3>
               <div class="trail-meta">
                 <span class={`difficulty-badge difficulty-${trail.data.difficulty.toLowerCase()}`}>
@@ -101,12 +101,12 @@ const recentTrails = allTrails
                 <span>📍 {trail.data.location}</span>
               </div>
               <p>{trail.data.description}</p>
-              <a href={`/website/trails/${trail.slug}`} class="read-more">Read More →</a>
+              <a href={`/trails/${trail.slug}`} class="read-more">Read More →</a>
             </div>
           ))}
         </div>
         <div style="text-align: center; margin-top: 2rem;">
-          <a href="/website/trails" class="btn">View All Trail Reports</a>
+          <a href="/trails" class="btn">View All Trail Reports</a>
         </div>
       </div>
     </section>
@@ -123,7 +123,7 @@ const recentTrails = allTrails
           and help us keep public lands open for everyone!
         </p>
         <div class="cta-actions">
-          <a href="/website/membership" class="btn">Become a Member</a>
+          <a href="/membership" class="btn">Become a Member</a>
           <a href={clubInfo.social.facebook} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
             Follow Us on Facebook
           </a>

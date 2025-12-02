@@ -36,7 +36,7 @@ const pastEvents = allEvents
           <p>{clubInfo.meeting.location.name}, {clubInfo.meeting.location.city}</p>
           <p class="note">{clubInfo.meeting.earlyArrival}</p>
         </div>
-        <a href="/website/contact" class="btn">Meeting Details & Directions</a>
+        <a href="/contact" class="btn">Meeting Details & Directions</a>
       </div>
 
       <!-- Google Calendar Section -->
@@ -100,7 +100,7 @@ const pastEvents = allEvents
               title={event.data.title}
               date={event.data.date}
               location={event.data.location}
-              href={`/website/events/${event.slug}`}
+              href={`/events/${event.slug}`}
             />
           ))}
           </div>
@@ -122,7 +122,7 @@ const pastEvents = allEvents
               title={event.data.title}
               date={event.data.date}
               location={event.data.location}
-              href={`/website/events/${event.slug}`}
+              href={`/events/${event.slug}`}
             />
           ))}
           </div>
