@@ -1,0 +1,255 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 - Trail Not Found" description="The page you're looking for doesn't exist.">
+  <section class="error-page">
+    <div class="container">
+      <div class="error-content">
+        <h1>404 - Trail Not Found</h1>
+
+        <!-- Off-road vehicle illustration -->
+        <div class="illustration">
+          <svg viewBox="0 0 220 130" fill="none" xmlns="http://www.w3.org/2000/svg" class="jeep-svg">
+            <!-- Ground/Trail with rocks -->
+            <path d="M0 110 Q55 105 110 110 T220 108 L220 130 L0 130 Z" fill="var(--color-earth)" opacity="0.4"/>
+            <ellipse cx="30" cy="118" rx="8" ry="4" fill="var(--color-secondary)" opacity="0.3"/>
+            <ellipse cx="180" cy="115" rx="6" ry="3" fill="var(--color-secondary)" opacity="0.3"/>
+            
+            <!-- Trail sign -->
+            <g class="trail-sign">
+              <rect x="175" y="50" width="5" height="55" fill="var(--color-secondary)"/>
+              <polygon points="180,50 210,60 180,70" fill="var(--color-accent)"/>
+              <text x="193" y="64" font-size="7" fill="white" text-anchor="middle" font-weight="bold">???</text>
+            </g>
+            
+            <!-- Jeep/4x4 Vehicle -->
+            <g class="jeep-body">
+              <!-- Undercarriage/chassis -->
+              <rect x="28" y="85" width="120" height="8" rx="2" fill="var(--color-dark)"/>
+              
+              <!-- Main body -->
+              <path d="M30 85 L30 60 Q30 55 35 55 L70 55 L75 45 Q77 42 82 42 L120 42 Q125 42 127 45 L132 55 L145 55 Q150 55 150 60 L150 85 Z" fill="var(--color-primary)"/>
+              
+              <!-- Hood -->
+              <rect x="22" y="62" width="30" height="23" rx="3" fill="var(--color-primary)"/>
+              
+              <!-- Hood lines -->
+              <line x1="27" y1="65" x2="47" y2="65" stroke="var(--color-primary-light)" stroke-width="1.5"/>
+              <line x1="27" y1="72" x2="47" y2="72" stroke="var(--color-primary-light)" stroke-width="1.5"/>
+              
+              <!-- Windshield -->
+              <path d="M52 55 L52 80 L90 80 L90 48 L80 48 Q77 48 75 52 L70 55 Z" fill="var(--color-dark)" opacity="0.8"/>
+              <path d="M55 57 L55 77 L87 77 L87 51 L79 51 L74 57 Z" fill="#5BA3C0" opacity="0.7"/>
+              
+              <!-- Roof rack -->
+              <rect x="72" y="38" width="50" height="4" rx="1" fill="var(--color-dark)"/>
+              <line x1="80" y1="38" x2="80" y2="42" stroke="var(--color-gray)" stroke-width="2"/>
+              <line x1="95" y1="38" x2="95" y2="42" stroke="var(--color-gray)" stroke-width="2"/>
+              <line x1="110" y1="38" x2="110" y2="42" stroke="var(--color-gray)" stroke-width="2"/>
+              
+              <!-- Rear window -->
+              <rect x="120" y="50" width="22" height="25" rx="2" fill="var(--color-dark)" opacity="0.8"/>
+              <rect x="123" y="53" width="16" height="19" rx="1" fill="#5BA3C0" opacity="0.5"/>
+              
+              <!-- Grill -->
+              <rect x="22" y="68" width="22" height="17" rx="2" fill="var(--color-dark)"/>
+              <rect x="25" y="70" width="4" height="13" rx="1" fill="var(--color-gray)"/>
+              <rect x="31" y="70" width="4" height="13" rx="1" fill="var(--color-gray)"/>
+              <rect x="37" y="70" width="4" height="13" rx="1" fill="var(--color-gray)"/>
+              
+              <!-- Headlights -->
+              <circle cx="26" cy="65" r="4" fill="var(--color-sand)"/>
+              <circle cx="26" cy="65" r="2.5" fill="#FFF8DC"/>
+              <circle cx="40" cy="65" r="4" fill="var(--color-sand)"/>
+              <circle cx="40" cy="65" r="2.5" fill="#FFF8DC"/>
+              
+              <!-- Turn signals -->
+              <rect x="22" y="86" width="6" height="3" rx="1" fill="var(--color-accent)"/>
+              <rect x="40" y="86" width="6" height="3" rx="1" fill="var(--color-accent)"/>
+              
+              <!-- Front bumper -->
+              <rect x="18" y="88" width="35" height="5" rx="2" fill="var(--color-gray)"/>
+              
+              <!-- Side panel detail -->
+              <line x1="92" y1="58" x2="92" y2="82" stroke="var(--color-primary-light)" stroke-width="1"/>
+              
+              <!-- Door -->
+              <rect x="94" y="52" width="28" height="33" rx="2" fill="var(--color-primary-light)" stroke="var(--color-dark)" stroke-width="0.5"/>
+              <rect x="114" y="66" width="5" height="3" rx="1" fill="var(--color-dark)"/>
+              
+              <!-- Fender flares -->
+              <path d="M28 90 Q28 78 45 78 Q62 78 62 90" fill="none" stroke="var(--color-dark)" stroke-width="3"/>
+              <path d="M108 90 Q108 78 125 78 Q142 78 142 90" fill="none" stroke="var(--color-dark)" stroke-width="3"/>
+              
+              <!-- Rear bumper -->
+              <rect x="140" y="88" width="15" height="5" rx="2" fill="var(--color-gray)"/>
+              
+              <!-- Tail lights -->
+              <rect x="148" y="70" width="4" height="10" rx="1" fill="#CC3333"/>
+              <rect x="148" y="82" width="4" height="5" rx="1" fill="var(--color-sand)"/>
+              
+              <!-- Spare tire on back -->
+              <circle cx="160" cy="72" r="15" fill="var(--color-dark)"/>
+              <circle cx="160" cy="72" r="11" fill="var(--color-gray)"/>
+              <circle cx="160" cy="72" r="7" fill="var(--color-dark)"/>
+              <circle cx="160" cy="72" r="3" fill="var(--color-gray)"/>
+            </g>
+            
+            <!-- Wheels with better detail -->
+            <g class="wheels">
+              <!-- Front wheel -->
+              <circle cx="45" cy="100" r="16" fill="var(--color-dark)"/>
+              <circle cx="45" cy="100" r="12" fill="var(--color-gray)"/>
+              <circle cx="45" cy="100" r="8" fill="var(--color-dark)"/>
+              <circle cx="45" cy="100" r="3" fill="var(--color-gray)"/>
+              <!-- Wheel spokes -->
+              <line x1="45" y1="88" x2="45" y2="94" stroke="var(--color-gray)" stroke-width="2"/>
+              <line x1="45" y1="106" x2="45" y2="112" stroke="var(--color-gray)" stroke-width="2"/>
+              <line x1="33" y1="100" x2="39" y2="100" stroke="var(--color-gray)" stroke-width="2"/>
+              <line x1="51" y1="100" x2="57" y2="100" stroke="var(--color-gray)" stroke-width="2"/>
+              
+              <!-- Rear wheel -->
+              <circle cx="125" cy="100" r="16" fill="var(--color-dark)"/>
+              <circle cx="125" cy="100" r="12" fill="var(--color-gray)"/>
+              <circle cx="125" cy="100" r="8" fill="var(--color-dark)"/>
+              <circle cx="125" cy="100" r="3" fill="var(--color-gray)"/>
+              <!-- Wheel spokes -->
+              <line x1="125" y1="88" x2="125" y2="94" stroke="var(--color-gray)" stroke-width="2"/>
+              <line x1="125" y1="106" x2="125" y2="112" stroke="var(--color-gray)" stroke-width="2"/>
+              <line x1="113" y1="100" x2="119" y2="100" stroke="var(--color-gray)" stroke-width="2"/>
+              <line x1="131" y1="100" x2="137" y2="100" stroke="var(--color-gray)" stroke-width="2"/>
+            </g>
+            
+            <!-- Question marks floating (lost effect) -->
+            <text x="75" y="28" font-size="16" fill="var(--color-accent)" class="question-mark q1" font-weight="bold">?</text>
+            <text x="95" y="18" font-size="12" fill="var(--color-secondary)" class="question-mark q2" font-weight="bold">?</text>
+            <text x="58" y="22" font-size="14" fill="var(--color-earth)" class="question-mark q3" font-weight="bold">?</text>
+          </svg>
+        </div>
+
+        <p class="error-message">
+          Looks like you've wandered off the beaten path!
+          The trail you're looking for doesn't exist or has been moved.
+        </p>
+
+        <p class="suggestion">
+          Don't worry — even the best off-roaders get lost sometimes.
+          Let's get you back on track.
+        </p>
+
+        <div class="error-actions">
+          <a href="/" class="btn">Back to Home</a>
+          <a href="/events" class="btn btn-secondary">View Events</a>
+          <a href="/contact" class="btn btn-outline">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .error-page {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-2xl) 0;
+    background: linear-gradient(180deg, var(--color-off-white) 0%, var(--color-light-gray) 100%);
+  }
+
+  .error-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .illustration {
+    margin-bottom: var(--space-xl);
+  }
+
+  .jeep-svg {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+  }
+
+  /* Floating question mark animations */
+  .question-mark {
+    animation: float 3s ease-in-out infinite;
+    font-weight: bold;
+  }
+
+  .q1 {
+    animation-delay: 0s;
+  }
+
+  .q2 {
+    animation-delay: 0.5s;
+  }
+
+  .q3 {
+    animation-delay: 1s;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-8px);
+      opacity: 0.7;
+    }
+  }
+
+  .error-content h1 {
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+  }
+
+  .error-message {
+    font-size: 1.2rem;
+    color: var(--color-dark);
+    margin-bottom: var(--space-sm);
+    line-height: 1.6;
+  }
+
+  .suggestion {
+    color: var(--color-gray);
+    font-style: italic;
+    margin-bottom: var(--space-xl);
+  }
+
+  .error-actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  @media (max-width: 480px) {
+    .error-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .error-actions .btn {
+      width: 100%;
+      max-width: 250px;
+    }
+  }
+</style>
+
