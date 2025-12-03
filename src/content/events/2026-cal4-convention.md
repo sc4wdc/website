@@ -1,7 +1,7 @@
 ---
 title: Cal 4 Convention
 date: 2026-02-13
-location: Black Oak Casino
+location: Table Mountain Casino
 time: 9:30 AM
 description: Cal4Wheel Event
 registrationRequired: true
