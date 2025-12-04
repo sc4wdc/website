@@ -1,5 +1,5 @@
 ---
-title: [CANCELLED] Meeting
+title: (CANCELLED) Meeting
 date: 2025-12-18
 location: Round Table Pizza, 1975 Main St Watsonville, CA
 time: 6:30 PM
