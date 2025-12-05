@@ -7,7 +7,7 @@ description: Easy Saturday Run
 registrationRequired: true
 ---
 
-## Prewwit Ridge
+## Prewitt Ridge
 
 ## Requirements
 

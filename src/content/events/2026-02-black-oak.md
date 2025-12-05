@@ -1,11 +1,15 @@
 ---
-title: Snow Run 2026 (date TBD)
+title: Snow Run 2026 (dates TBD)
 date: 2026-02-01
 location: Black Oak Casino
 time: 9:30 AM
 description: Annual snow adventure in the Sierra Nevada foothills
 registrationRequired: false
 ---
+
+## Trail Leader
+
+Jason Stevens
 
 ## Dates
 

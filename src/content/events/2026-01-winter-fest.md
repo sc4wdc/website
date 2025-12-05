@@ -3,7 +3,7 @@ title: Winter Fun Fest 2026
 date: 2026-01-16
 location: Grass Valley, CA
 time: 9:30 AM
-description: Cal4Wheel Event
+description: Cal4Wheel's annual snow wheeling event in the Sierra Nevada
 registrationRequired: true
 ---
 
@@ -18,7 +18,9 @@ Grass Valley, CA
 
 ## About
 
-Winter Fun will offer three different historical and narrated sport utility vehicle (SUV) trips and ten separate 4X4 runs in the high Sierra for experienced drivers. The Frostbite Extreme trip on Saturday is always a favorite for those seeking an experience in deep snow.
+Winter Fun Fest is Cal4Wheel's premier winter event, bringing together 4x4 enthusiasts for a weekend of snow wheeling in the Sierra Nevada.
+
+The event offers three different historical and narrated sport utility vehicle (SUV) trips and ten separate 4x4 runs in the high Sierra for experienced drivers. The Frostbite Extreme trip on Saturday is always a favorite for those seeking an experience in deep snow.
 
 We fully expect that we will have 600 participants joining us this year, so we highly recommend that people register as early as possible. In addition to the various trips in the snow, we will provide great meals beginning with Friday night dinner through breakfast on Sunday (lunches are on your own). In our large facility at the fairgrounds, we will feature indoor entertainment and recreation for children and adults.
 

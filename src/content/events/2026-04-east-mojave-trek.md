@@ -1,9 +1,9 @@
 ---
-title: East Mojave Trek
+title: East Mojave Trek 2026
 date: 2026-04-23
 location: Goffs, CA
-time: 9:30 AM
-description: Cal4Wheel Event
+time: TBD
+description: Four days of desert adventure, education, and exploration at historic Goffs Schoolhouse
 registrationRequired: true
 ---
 
@@ -11,14 +11,19 @@ registrationRequired: true
 
 April 23-26, 2026
 
+Registration opens January 2026.
+
 ## Place
 
-Goffs Schoolhouse, CA
-Near Mojave Desert.
+Goffs Schoolhouse
+Mojave Desert Heritage and Cultural Association
+Goffs, California
 
 ## About
 
-Join us for the Annual East Mojave Trek event hosted at the historic site of Goffs Schoolhouse. Come explore over 1.5 million acres of fascinating, historic, rugged desert backcountry, rich with early indigenous petroglyphs and hundreds of miles of trails and tracks reflecting the incredible achievements of our mining and ranching pioneers. Four days of adventure, education, and exploration of the East Mojave await you.
+Join us for the 2nd Annual East Mojave Trek: *Education - Experience - Exploration*
+
+Hosted at the historic Goffs Schoolhouse, this event offers four days exploring over 1.5 million acres of rugged desert backcountry, rich with early indigenous petroglyphs and hundreds of miles of trails reflecting the achievements of mining and ranching pioneers.
 
 ### This event includes:
 
