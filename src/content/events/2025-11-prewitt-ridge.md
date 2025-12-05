@@ -7,7 +7,7 @@ description: Easy Saturday Run
 registrationRequired: true
 ---
 
-## Spring BBQ & Meeting
+## Prewwit Ridge
 
 ## Requirements
 

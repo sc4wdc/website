@@ -2,8 +2,8 @@
 title: Mojave Road
 date: 2026-04-29
 location: Goffs, CA
-time: 9:30 AM
-description: Overland trip
+time: TBD
+description: Mojave Road Overland
 registrationRequired: false
 ---
 
