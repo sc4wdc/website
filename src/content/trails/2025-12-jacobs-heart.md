@@ -22,7 +22,7 @@ I conducted a quick headcount and confirmed a great turnout of 30 people, includ
 
 At 5:30 PM, we proceeded to the Jacob's Heart parking lot. We immediately began unloading the "haul," which consisted of an abundance of toys and bicycles.
 
-As is customary, we were greeted with open arms by the dedicated staff of Jacob's Heart. I would like to specifically highlight that every year, the staff truly looks forward to seeing all the 4x4 rigs dressed up in holiday cheer—it’s a special tradition that means a lot to them.
+As is customary, we were greeted with open arms by the dedicated staff of Jacob's Heart. I would like to specifically highlight that every year, the staff truly looks forward to seeing all the 4x4 rigs dressed up in holiday cheer - it’s a special tradition that means a lot to them.
 
 After the delivery, we were given a grand tour of the facility and a detailed description of the vital work they do on a day-to-day basis supporting children and families.
 

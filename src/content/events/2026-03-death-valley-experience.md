@@ -1,7 +1,7 @@
 ---
 title: Death Valley Experience 2026 (dates TBD)
-date: 2026-04-03
-location: Death Valley National Park
+date: 2026-03-18
+location: Death Valley National Park, Stovepipe Wells
 time: TBD
 description: Cal4Wheel's annual multi-day adventure in Death Valley
 registrationRequired: true
@@ -9,11 +9,11 @@ registrationRequired: true
 
 ## Dates
 
-To be confirmed. Based on prior years, it typically happens around end of March or first week of April.
+Please join Cal4Wheel for another amazing experience at Death Valley. it will be hold on March 18-21
 
 ## Place
 
-Death Valley National Park. Location TBD (past events have been based at Stovepipe Wells or Furnace Creek).
+The starting point is Stovepipe Wells. There are several runs, which encompass majority of Death Valley National Park.
 
 ## About
 
