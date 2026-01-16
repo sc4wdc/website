@@ -1,6 +1,6 @@
 ---
-title: High Sierra Poker Run 2026 (dates TBD)
-date: 2026-08-28
+title: High Sierra Poker Run 2026
+date: 2026-09-04
 location: Near Shaver Lake, CA
 time: TBD
 description: Cal4Wheel's premier Central District event with multiple trail options and poker run fun
@@ -9,8 +9,7 @@ registrationRequired: true
 
 ## Dates
 
-Late August / Early September 2026 (dates TBD)
-Based on prior years: typically Friday through Monday over Labor Day weekend.
+September 4-7, 2026
 
 ## Location
 

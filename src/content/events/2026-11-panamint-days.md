@@ -1,6 +1,6 @@
 ---
-title: Panamint Valley Days 2026 (dates TBD)
-date: 2026-11-06
+title: Panamint Valley Days 2026
+date: 2026-11-13
 location: Near Trona, CA
 time: TBD
 description: Cal4Wheel desert fundraiser with runs ranging from scenic to hardcore
@@ -9,8 +9,7 @@ registrationRequired: true
 
 ## Dates
 
-Early November 2026 (dates TBD)
-Based on prior years: typically a Friday-Sunday weekend in early November.
+November 13-15, 2026
 
 ## Location
 
