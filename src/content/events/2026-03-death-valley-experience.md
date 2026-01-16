@@ -1,5 +1,5 @@
 ---
-title: Death Valley Experience 2026 (dates TBD)
+title: Death Valley Experience 2026
 date: 2026-03-18
 location: Death Valley National Park, Stovepipe Wells
 time: TBD
