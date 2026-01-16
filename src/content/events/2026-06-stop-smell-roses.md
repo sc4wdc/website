@@ -1,5 +1,5 @@
 ---
-title: Stop and Smell the Roses (dates TBD)
+title: Stop and Smell the Roses
 date: 2026-06-22
 location: Sonora Pass
 time: TBD
