@@ -1,6 +1,6 @@
 ---
 title: Stop and Smell the Roses (dates TBD)
-date: 2026-06-26
+date: 2026-06-22
 location: Sonora Pass
 time: TBD
 description: Relaxed overland trip with trails, forest roads, fishing, and camping
@@ -13,11 +13,11 @@ Jason Stevens, Bobby Silva
 
 ## Dates
 
-End of June 2026 (exact dates TBD)
+June 22-29
 
 ## Meeting Location
 
-Sonora Pass
+Exact location To Be Confirmed. Area of Clark Fork, Niagara Rim Trail. Located aroud Sonora Pass.
 
 ## About
 
