@@ -1,33 +1,45 @@
 ---
-title: Snow Run 2026 (dates TBD)
-date: 2026-02-01
-location: Black Oak Casino
-time: 9:30 AM
-description: Annual snow adventure in the Sierra Nevada foothills
+title: Kingsburg 4WD Club Snow Run 2026
+date: 2026-03-07
+location: Hume Lake area, Highway 180
+time: TBD
+description: 47th annual Kingsburg four-wheel-drive club snow run—one-day event in the Hume Lake area
 registrationRequired: false
 ---
 
 ## Trail Leader
 
-Jason Stevens
+Jason Stevens (attending with Doug Rothstein)
 
 ## Dates
 
-To be confirmed, tentatively: February 01, 2026
+**Saturday, March 7, 2026** — One-day event
+
+Travel: Arrive Friday, March 6 • Return home Sunday, March 8
 
 ## Place
 
-Black Oak Casino Resort,
-19400 Tuolumne Rd N, Tuolumne, CA
+Near Hume Lake area, off Highway 180
 
-## About
+## Lodging
 
-Join us for our annual Snow Run in the Sierra Nevada foothills! We'll gather at Black Oak Casino Resort in Tuolumne, located on the scenic western slope of the Sierra Nevada, before heading out to find snow and enjoy a day of winter wheeling.
+**Sequoia RV Park** — Dunlap (outside Fresno)
 
-This laid-back event is all about camaraderie, scenic mountain views, and putting your 4x4 through some snowy terrain. Whether we find powder or just frosty trails, it's always a good time with club members.
+- Friday, March 6 and Saturday, March 7
+- **Phone:** 559-338-2350
+- When calling, mention **Jason Stevens** or **Doug Rothstein**
+- Note: Registered under their names, not Santa Cruz Four-Wheel-Drive Club
 
-Black Oak Casino offers convenient amenities including dining, lodging, and a chance to warm up after a day in the snow.
+## Registration
+
+No pre-registration required. Just show up and pay **$40**.
+
+For the flyer and full details, check the **Kingsburg Four-Wheel-Drive Club** Facebook page.
+
+## Traveling Together?
+
+If interested in caravaning on Friday, March 6, contact Jason or Doug.
 
 ## Questions?
 
-Reach out to Club members, during monthly meeting.
+Reach out to Jason Stevens or Doug Rothstein, or ask at our monthly club meeting.
