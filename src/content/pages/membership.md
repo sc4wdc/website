@@ -11,52 +11,47 @@ Become a member of the Santa Cruz 4 Wheel Drive Club and join a community dedica
 
 As a member of SC4WDC, you'll enjoy:
 
-- **Organized Trail Rides**: Access to monthly trail rides and special events
-- **Community**: Connect with like-minded off-road enthusiasts
-- **Knowledge Sharing**: Learn from experienced members about vehicle preparation, maintenance, and trail techniques
-- **Trail Access**: Support for keeping public lands open
-- **Social Events**: Monthly meetings with food, fellowship, and trip planning
-- **Discounts**: Potential discounts from local businesses and sponsors
-- **Newsletter**: Stay informed about upcoming events and trail conditions
+- **Organized Trail Rides**: Access to monthly trail rides and special events.
+- **Community**: Connect with like-minded off-road enthusiasts.
+- **Knowledge Sharing**: Learn from experienced members about vehicle preparation, maintenance, and trail techniques.
+- **Statewide Advocacy**: Through our affiliation with **Cal4Wheel**, your voice is heard in the fight to keep California trails open.
+- **Social Events**: Monthly meetings with food, fellowship, and trip planning.
+- **Discounts & Publications**: Access to Cal4Wheel's *In-Gear* magazine and potential discounts from local/statewide sponsors.
 
 ## How to Join
 
-Joining is easy! Here's how to become a member:
+We want to make sure our club is the perfect fit for you! To ensure we’re all on the **same wavelength** regarding safety, trail etiquette, and club culture, we invite prospective members to complete our introductory process:
 
-1. **Attend a Meeting**: Come to one of our monthly meetings (Third Thursday at 6:30 PM at Round Table Pizza in Watsonville)
-2. **Meet the Group**: Get to know our members and learn about the club
-3. **Complete Membership Form**: Fill out a simple membership application
-4. **Pay Dues**: Annual membership dues help support trail maintenance and club activities
+1.  **Attend 2 Club Meetings**: Come hang out at our monthly meetings in Watsonville. It’s the best way to meet the crew and hear about upcoming trips.
+2.  **Join us for 2 Club Runs**: Get your tires dirty! Participating in two runs allows you to experience our trail style and safety standards firsthand.
+3.  **Cal4Wheel Membership**: Because SC4WDC is a member club of the **California 4 Wheel Drive Association (Cal4Wheel)**, all our members must also maintain an active Cal4Wheel membership.
+4.  **Complete Application & Pay Dues**: Once you’ve hit your "2-and-2" milestone, you can submit your club application and pay dues for both SC4WDC and Cal4Wheel.
 
 ## Membership Requirements
 
-- Own or have regular access to a 4x4 vehicle
-- Commitment to responsible off-roading and Leave No Trace principles
-- Respect for public lands and fellow trail users
-- Willingness to participate in club activities and trail maintenance
+- Own or have regular access to a 4x4 vehicle.
+- **Completion of the introductory period (2 meetings and 2 club runs).**
+- **Active membership in Cal4Wheel (we can help you get signed up!).**
+- Commitment to responsible off-roading and **Leave No Trace** principles.
+- Respect for public lands and fellow trail users.
+- Willingness to participate in club activities and trail maintenance.
 
 ## Guest Policy
 
-Not ready to join? No problem! You're welcome to attend a meeting or two as a guest to see if our club is right for you. We also allow guests on some trail rides (check specific event requirements).
+Not ready to commit? No problem! You are always welcome to attend our meetings and guest-friendly trail rides. This "intro period" is designed to be fun and low-pressure—it’s all about making sure you feel at home in the club before you officially join.
 
 ## Monthly Meetings
 
-**When**: Third Thursday of every month  
-**Time**: 6:30 PM (come early to socialize!)  
+**When**: Third Thursday of every month
+**Time**: 6:30 PM (come early to socialize!)
 **Where**: Round Table Pizza, 1975 Main St, Watsonville, CA 95076
 
-Our meetings are casual and fun! We discuss:
-- Upcoming trail rides and events
-- Trail conditions and reports
-- Vehicle tips and modifications
-- Community service opportunities
-- Trip planning and logistics
+Our meetings are casual and fun! We discuss upcoming trail rides, vehicle modifications, and community service opportunities.
 
 ## Questions?
 
-Have questions about membership? Come to a meeting or contact us through our social media channels. We're always happy to welcome new members to our community!
+Have questions about membership, dues, or our next run? Come to a meeting or contact us through our social media channels. We’re always happy to help new members navigate the setup!
 
 ---
 
-*Note: This page will be updated with specific membership dues and additional details. Check back soon or attend a meeting for the most current information.*
-
+*Note: Total annual dues consist of both SC4WDC club dues and Cal4Wheel association dues. Ask a board member at our next meeting for the current combined total.*
