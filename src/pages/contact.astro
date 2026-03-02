@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import clubInfo from '../data/club-info.json';
+import { SITE, MEETING, SOCIAL } from '../consts';
 ---
 
 <BaseLayout title="Contact Us" description="Get in touch with Santa Cruz 4 Wheel Drive Club">
@@ -18,19 +18,19 @@ import clubInfo from '../data/club-info.json';
           <h2>📅 Monthly Meetings</h2>
           <div class="contact-details">
             <p><strong>When:</strong></p>
-            <p>{clubInfo.meeting.schedule}</p>
-            <p>{clubInfo.meeting.time}</p>
-            <p class="note">{clubInfo.meeting.earlyArrival}</p>
+            <p>{MEETING.schedule}</p>
+            <p>{MEETING.time}</p>
+            <p class="note">{MEETING.earlyArrival}</p>
 
             <p style="margin-top: 1.5rem;"><strong>Where:</strong></p>
-            <p>{clubInfo.meeting.location.name}</p>
+            <p>{MEETING.location.name}</p>
             <p>
-              {clubInfo.meeting.location.address}<br />
-              {clubInfo.meeting.location.city}, {clubInfo.meeting.location.state} {clubInfo.meeting.location.zip}
+              {MEETING.location.address}<br />
+              {MEETING.location.city}, {MEETING.location.state} {MEETING.location.zip}
             </p>
 
             <a
-              href={clubInfo.meeting.location.mapUrl}
+              href={MEETING.location.mapUrl}
               target="_blank"
               rel="noopener noreferrer"
               class="btn"
@@ -49,7 +49,7 @@ import clubInfo from '../data/club-info.json';
 
             <div class="social-buttons">
               <a
-                href={clubInfo.social.facebook}
+                href={SOCIAL.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="social-button facebook"
@@ -61,7 +61,7 @@ import clubInfo from '../data/club-info.json';
               </a>
 
               <a
-                href={clubInfo.social.instagram}
+                href={SOCIAL.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="social-button instagram"
@@ -97,8 +97,8 @@ import clubInfo from '../data/club-info.json';
           ></iframe>
         </div>
         <p class="map-caption">
-          {clubInfo.meeting.location.name}, {clubInfo.meeting.location.address},
-          {clubInfo.meeting.location.city}, {clubInfo.meeting.location.state} {clubInfo.meeting.location.zip}
+          {MEETING.location.name}, {MEETING.location.address},
+          {MEETING.location.city}, {MEETING.location.state} {MEETING.location.zip}
         </p>
       </div>
 
@@ -113,7 +113,7 @@ import clubInfo from '../data/club-info.json';
         </p>
         <p>
           No commitment required to attend a meeting - come check us out and see if
-          {clubInfo.clubName} is the right fit for you!
+          {SITE.name} is the right fit for you!
         </p>
       </div>
     </div>

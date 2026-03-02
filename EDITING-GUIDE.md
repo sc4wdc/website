@@ -11,7 +11,8 @@ This is a simplified guide for club members who want to edit the website content
    - **Membership page**: `src/content/pages/membership.md`
    - **Trail reports**: `src/content/trails/` (click on any file)
    - **Events**: `src/content/events/` (click on any file)
-   - **Club info**: `src/data/club-info.json`
+   - **Board members**: `src/content/pages/board.md`
+   - **Site config**: `src/consts.ts`
 1. Click the **pencil icon** (✏️) at the top right
 1. Make your changes
 1. Scroll to bottom, add a description of what you changed
@@ -85,34 +86,36 @@ Describe the event...
 1. Edit with your event details
 1. Click **"Commit new file"**
 
-### 4. Update Club Information
+### 4. Update Board Members
 
-To change meeting times, board members, or social media links:
+To change board member names, positions, or contact info:
 
-1. Go to src/data/club-info.json
+1. Go to `src/content/pages/board.md`
 1. Click the **pencil icon** (✏️)
-1. Carefully edit the information (keep the format exactly the same!)
+1. Edit the board members in the frontmatter section at the top of the file
 1. Click **"Commit changes"**
 
-**Example - Changing a board member's information**:
-```json
-{
-  "name": "New Person Name",
-  "position": "President",
-  "order": 1,
-  "email": "president@sc4wdc.org",
-  "phone": "(831) 555-0100",
-  "photo": "/sc4wdc/images/board/person-name.jpg"
-}
+**Example - Changing a board member's information** (in the frontmatter YAML):
+```yaml
+  - name: New Person Name
+    position: President
+    order: 1
+    email: president@sc4wdc.org
+    phone: "(831) 555-0100"
+    photo: /sc4wdc/images/board/person-name.jpg
 ```
 
 **Important**: Email addresses and phone numbers will be publicly visible on the website. Make sure board members agree to share their contact information.
 
-**Photo Field**: The `photo` field is optional. Leave it as `""` if no photo is available. To add photos, see the README.md file for detailed instructions (requires file upload access).
+**Photo Field**: The `photo` field is optional. Omit it or leave it blank if no photo is available. To add photos, see the README.md file for detailed instructions (requires file upload access).
 
-### 5. Click **"Commit changes"**
+### 5. Update Site-Wide Settings
 
-The calendar will automatically appear on the Events page! If you haven't set it up yet, the page shows instructions on how to get the embed URL.
+To change meeting times, social media links, or other site-wide info, edit `src/consts.ts`. This file requires basic TypeScript syntax -- keep the format exactly the same when making changes.
+
+### 6. Click **"Commit changes"**
+
+After editing any file, scroll to the bottom, add a description, and click "Commit changes". The calendar will automatically appear on the Events page! If you haven't set it up yet, the page shows instructions on how to get the embed URL.
 
 ## Markdown Basics
 

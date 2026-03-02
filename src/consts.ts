@@ -1,0 +1,37 @@
+export const SITE = {
+  name: "Santa Cruz 4 Wheel Drive Club",
+  tagline: "Keeping Public Lands Open",
+} as const;
+
+export const MEETING = {
+  schedule: "Third Thursday of every month",
+  time: "6:30 PM",
+  earlyArrival: "Members and guests can come early",
+  location: {
+    name: "Round Table Pizza",
+    address: "1975 Main St",
+    city: "Watsonville",
+    state: "CA",
+    zip: "95076",
+    mapUrl:
+      "https://www.google.com/maps?q=Round+Table+Pizza+1975+Main+St+Watsonville+CA+95076",
+  },
+} as const;
+
+export const SOCIAL = {
+  facebook: "https://www.facebook.com/groups/sc4wdc",
+  instagram: "https://www.instagram.com/santacruz4wd",
+} as const;
+
+export const NONPROFIT = {
+  status: "501(c)(3) Non-Profit Organization",
+  mission:
+    "We raise money to keep public lands open and help local non-profit organizations.",
+} as const;
+
+export const CALENDAR = {
+  embedUrl:
+    "https://calendar.google.com/calendar/embed?src=santacruz4wd%40gmail.com&ctz=America%2FLos_Angeles",
+  publicUrl:
+    "https://calendar.google.com/calendar/embed?src=santacruz4wd%40gmail.com&ctz=America%2FLos_Angeles",
+} as const;

@@ -1,13 +1,14 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { SITE } from '../consts';
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = 'Santa Cruz 4 Wheel Drive Club - Keeping Public Lands Open' } = Astro.props;
+const { title, description = `${SITE.name} - ${SITE.tagline}` } = Astro.props;
 ---
 
 <!DOCTYPE html>

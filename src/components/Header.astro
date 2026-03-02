@@ -1,5 +1,5 @@
 ---
-import clubInfo from '../data/club-info.json';
+import { SITE } from '../consts';
 
 const currentPath = Astro.url.pathname;
 
@@ -27,8 +27,8 @@ const navItems = [
             </svg>
           </div>
           <div class="site-title">
-            <span class="club-name">{clubInfo.clubName}</span>
-            <span class="tagline">{clubInfo.tagline}</span>
+            <span class="club-name">{SITE.name}</span>
+            <span class="tagline">{SITE.tagline}</span>
           </div>
         </a>
       </div>

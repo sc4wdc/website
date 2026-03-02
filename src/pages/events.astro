@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EventCard from '../components/EventCard.astro';
 import { getCollection } from 'astro:content';
-import clubInfo from '../data/club-info.json';
+import { MEETING, CALENDAR, SOCIAL } from '../consts';
 import { parseLocalDate, getTodayLocal } from '../utils/date';
 
 const allEvents = await getCollection('events');
@@ -33,9 +33,9 @@ const pastEvents = allEvents
       <div class="card meeting-reminder">
         <h2>📅 Regular Monthly Meeting</h2>
         <div class="meeting-details">
-          <p><strong>{clubInfo.meeting.schedule}</strong> at <strong>{clubInfo.meeting.time}</strong></p>
-          <p>{clubInfo.meeting.location.name}, {clubInfo.meeting.location.city}</p>
-          <p class="note">{clubInfo.meeting.earlyArrival}</p>
+          <p><strong>{MEETING.schedule}</strong> at <strong>{MEETING.time}</strong></p>
+          <p>{MEETING.location.name}, {MEETING.location.city}</p>
+          <p class="note">{MEETING.earlyArrival}</p>
         </div>
         <a href="/contact" class="btn">Meeting Details & Directions</a>
       </div>
@@ -43,18 +43,18 @@ const pastEvents = allEvents
       <!-- Google Calendar Section -->
       <div class="calendar-section card">
         <h2>📆 Club Calendar</h2>
-        {clubInfo.calendar.embedUrl ? (
+        {CALENDAR.embedUrl ? (
           <div class="calendar-embed">
             <iframe
-              src={clubInfo.calendar.embedUrl}
+              src={CALENDAR.embedUrl}
               style="border: 0"
               width="100%"
               height="600"
               title="SC4WDC Events Calendar"
             ></iframe>
-            {clubInfo.calendar.publicUrl && (
+            {CALENDAR.publicUrl && (
               <div class="calendar-links">
-                <a href={clubInfo.calendar.publicUrl} target="_blank" rel="noopener noreferrer" class="btn">
+                <a href={CALENDAR.publicUrl} target="_blank" rel="noopener noreferrer" class="btn">
                   Open in Google Calendar
                 </a>
               </div>
@@ -73,7 +73,7 @@ const pastEvents = allEvents
               <li>Copy the <strong>Calendar ID</strong> (looks like: abc123@group.calendar.google.com)</li>
               <li>Copy the <strong>iframe embed code</strong></li>
               <li>Extract the <code>src</code> URL from the iframe (starts with https://calendar.google.com/calendar/embed)</li>
-              <li>Update <code>src/data/club-info.json</code> with:
+              <li>Update <code>src/consts.ts</code> with:
                 <ul>
                   <li><code>"embedUrl": "paste-the-src-url-here"</code></li>
                   <li><code>"publicUrl": "https://calendar.google.com/calendar/u/0?cid=YOUR_CALENDAR_ID"</code></li>
@@ -83,7 +83,7 @@ const pastEvents = allEvents
             </ol>
             <p>For now, check our Facebook group for the latest event information:</p>
             <div class="calendar-links">
-              <a href={clubInfo.social.facebook} target="_blank" rel="noopener noreferrer" class="btn">
+              <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" class="btn">
                 View Events on Facebook
               </a>
             </div>

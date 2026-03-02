@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EventCard from '../components/EventCard.astro';
 import { getCollection } from 'astro:content';
-import clubInfo from '../data/club-info.json';
+import { SITE, MEETING, SOCIAL } from '../consts';
 import { parseLocalDate, getTodayLocal } from '../utils/date';
 
 // Get recent events (using local date for comparison)
@@ -25,8 +25,8 @@ const recentTrails = allTrails
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <h1>{clubInfo.clubName}</h1>
-        <p class="hero-tagline">{clubInfo.tagline}</p>
+        <h1>{SITE.name}</h1>
+        <p class="hero-tagline">{SITE.tagline}</p>
         <p class="hero-description">
           We are a 501(c)(3) non-profit organization dedicated to keeping public lands open
           and supporting our local community through responsible off-road recreation.
@@ -46,14 +46,14 @@ const recentTrails = allTrails
         <h2>📅 Monthly Meetings</h2>
         <div class="meeting-details">
           <div class="meeting-item">
-            <strong>When:</strong> {clubInfo.meeting.schedule} at {clubInfo.meeting.time}
+            <strong>When:</strong> {MEETING.schedule} at {MEETING.time}
           </div>
           <div class="meeting-item">
-            <strong>Where:</strong> {clubInfo.meeting.location.name}, {clubInfo.meeting.location.address},
-            {clubInfo.meeting.location.city}, {clubInfo.meeting.location.state}
+            <strong>Where:</strong> {MEETING.location.name}, {MEETING.location.address},
+            {MEETING.location.city}, {MEETING.location.state}
           </div>
           <div class="meeting-item">
-            <em>{clubInfo.meeting.earlyArrival}</em>
+            <em>{MEETING.earlyArrival}</em>
           </div>
         </div>
         <a href="/contact" class="btn" style="margin-top: 1rem;">Get Directions</a>
@@ -124,7 +124,7 @@ const recentTrails = allTrails
         </p>
         <div class="cta-actions">
           <a href="/membership" class="btn">Become a Member</a>
-          <a href={clubInfo.social.facebook} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
             Follow Us on Facebook
           </a>
         </div>

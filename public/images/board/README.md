@@ -15,13 +15,13 @@ Place board member photos in this directory.
 
 1. Save your photo with the naming convention above
 2. Add the file to this `public/images/board/` directory
-3. Update the board member's entry in `src/data/club-info.json`:
-   ```json
-   {
-     "name": "Gary Rowe",
-     "position": "President",
-     "photo": "/sc4wdc/images/board/gary-rowe.jpg"
-   }
+3. Update the board member's entry in `src/content/pages/board.md` (in the frontmatter):
+   ```yaml
+     - name: Gary Rowe
+       position: President
+       order: 1
+       email: president@sc4wdc.com
+       photo: /sc4wdc/images/board/gary-rowe.jpg
    ```
 4. Commit and push your changes
 

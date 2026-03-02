@@ -21,7 +21,8 @@ You don't need any programming knowledge or special software to edit this websit
    - For pages: `src/content/pages/`
    - For trail reports: `src/content/trails/`
    - For events: `src/content/events/`
-   - For club info: `src/data/club-info.json`
+   - For board members: `src/content/pages/board.md`
+   - For site-wide settings: `src/consts.ts`
 3. **Click on the file** to view it
 4. **Click the pencil icon** (✏️) in the top-right to edit
 5. **Make your changes** using the simple text editor
@@ -33,31 +34,36 @@ You don't need any programming knowledge or special software to edit this websit
 
 ### Editing Different Types of Content
 
-#### Updating Club Information
+#### Updating Board Members
 
-**File**: `src/data/club-info.json`
+**File**: `src/content/pages/board.md`
 
-This file contains information used throughout the site:
-- Meeting times and location
-- Board member names, positions, and contact information
-- Social media links
-- Club tagline and mission
+Board member data is stored in the frontmatter of this markdown file. Edit the `board` array entries to update names, positions, and contact info.
 
-**Example**: To update a board member's information:
-```json
-{
-  "name": "Gary Rowe",
-  "position": "President",
-  "order": 1,
-  "email": "president@sc4wdc.com",
-  "phone": "(831) 555-0100",
-  "photo": "/sc4wdc/images/board/gary-rowe.jpg"
-}
+**Example**: To update a board member's information (YAML frontmatter):
+```yaml
+  - name: Gary Rowe
+    position: President
+    order: 1
+    email: president@sc4wdc.com
+    phone: "(831) 555-0100"
+    photo: /sc4wdc/images/board/gary-rowe.jpg
 ```
 
 **Note**: Email addresses and phone numbers are publicly visible on the website. Make sure board members are comfortable with their contact information being displayed.
 
-**Photo Field**: The `photo` field is optional. Leave it as an empty string `""` if no photo is available. See "Adding Board Member Photos" section below for details.
+**Photo Field**: The `photo` field is optional. Omit it if no photo is available. See "Adding Board Member Photos" section below for details.
+
+#### Updating Site-Wide Settings
+
+**File**: `src/consts.ts`
+
+This TypeScript file contains settings used across the site:
+- Club name and tagline (`SITE`)
+- Meeting times and location (`MEETING`)
+- Social media links (`SOCIAL`)
+- Nonprofit status and mission (`NONPROFIT`)
+- Google Calendar URLs (`CALENDAR`)
 
 #### Editing Pages (About, Membership)
 
@@ -181,16 +187,16 @@ Board member photos require direct file system access and cannot be added throug
    - Place the photo in `public/images/board/`
    - Commit the file to the repository
 
-3. **Update the data file**:
-   - Edit `src/data/club-info.json`
-   - Add the `photo` field with the path: `/sc4wdc/images/board/filename.jpg`
-   - Example:
-   ```json
-   {
-     "name": "Gary Rowe",
-     "position": "President",
-     "photo": "/sc4wdc/images/board/gary-rowe.jpg"
-   }
+3. **Update the board page**:
+   - Edit `src/content/pages/board.md`
+   - Add the `photo` field to the board member's entry with the path: `/sc4wdc/images/board/filename.jpg`
+   - Example (YAML frontmatter):
+   ```yaml
+     - name: Gary Rowe
+       position: President
+       order: 1
+       email: president@sc4wdc.com
+       photo: /sc4wdc/images/board/gary-rowe.jpg
    ```
 
 4. **Commit and deploy**: Push your changes to GitHub
@@ -239,8 +245,7 @@ sc4wdc/
 │   │   ├── pages/              # Static pages
 │   │   ├── trails/             # Trail reports
 │   │   └── config.ts           # Content collection schemas
-│   ├── data/
-│   │   └── club-info.json      # Shared club information
+│   ├── consts.ts               # Site-wide settings (club name, meeting, social, etc.)
 │   ├── layouts/
 │   │   └── BaseLayout.astro    # Main page layout
 │   ├── pages/                  # Page routes
@@ -255,8 +260,6 @@ sc4wdc/
 │   │   ├── index.astro         # Homepage
 │   │   ├── membership.astro
 │   │   └── trails.astro
-│   └── types/
-│       └── club-info.d.ts      # TypeScript definitions
 ├── astro.config.mjs            # Astro configuration
 ├── package.json                # Dependencies
 ├── tsconfig.json               # TypeScript configuration
@@ -324,15 +327,15 @@ Also update all internal links in the codebase from `/sc4wdc/` to `/new-repo-nam
 
 When you have the Google Calendar embed code:
 
-1. Open `src/data/club-info.json`
-2. Find the `calendar` section
-3. Add your Google Calendar information:
+1. Open `src/consts.ts`
+2. Find the `CALENDAR` constant
+3. Update with your Google Calendar information:
 
-```json
-"calendar": {
-  "embedUrl": "https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID",
-  "publicUrl": "https://calendar.google.com/calendar/u/0?cid=YOUR_CALENDAR_ID"
-}
+```typescript
+export const CALENDAR = {
+  embedUrl: "https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID",
+  publicUrl: "https://calendar.google.com/calendar/u/0?cid=YOUR_CALENDAR_ID",
+} as const;
 ```
 
 ### How to Get Your Google Calendar Embed Code
@@ -353,11 +356,11 @@ When you have the Google Calendar embed code:
 
 ### Example Configuration
 
-```json
-"calendar": {
-  "embedUrl": "https://calendar.google.com/calendar/embed?src=abc123%40group.calendar.google.com&ctz=America%2FLos_Angeles",
-  "publicUrl": "https://calendar.google.com/calendar/u/0?cid=abc123@group.calendar.google.com"
-}
+```typescript
+export const CALENDAR = {
+  embedUrl: "https://calendar.google.com/calendar/embed?src=abc123%40group.calendar.google.com&ctz=America%2FLos_Angeles",
+  publicUrl: "https://calendar.google.com/calendar/u/0?cid=abc123@group.calendar.google.com",
+} as const;
 ```
 
 The calendar will automatically display on the Events page! If the `embedUrl` is empty, helpful setup instructions will be shown instead.

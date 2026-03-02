@@ -42,11 +42,7 @@ Not ready to commit? No problem! You are always welcome to attend our meetings a
 
 ## Monthly Meetings
 
-**When**: Third Thursday of every month<br />
-**Time**: 6:30 PM (come early to socialize!)<br />
-**Where**: Round Table Pizza, 1975 Main St, Watsonville, CA 95076
-
-Our meetings are casual and fun! We discuss upcoming trail rides, vehicle modifications, and community service opportunities.
+Our meetings are casual and fun! We discuss upcoming trail rides, vehicle modifications, and community service opportunities. Check the [Contact page](/contact) for current meeting times and location.
 
 ## Questions?
 
