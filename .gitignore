@@ -18,6 +18,10 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# editor swap files
+*.swp
+*.swo
+
 # jetbrains setting folders
 .idea/
 .astro
