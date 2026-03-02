@@ -19,14 +19,6 @@ declare module '*/club-info.json' {
       facebook: string;
       instagram: string;
     };
-    board: Array<{
-      name: string;
-      position: string;
-      order: number;
-      email: string;
-      phone: string;
-      photo?: string;
-    }>;
     nonprofit: {
       status: string;
       mission: string;

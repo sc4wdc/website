@@ -35,6 +35,14 @@ const pagesCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
+    board: z.array(z.object({
+      name: z.string(),
+      position: z.string(),
+      order: z.number(),
+      email: z.string().email(),
+      phone: z.string().optional(),
+      photo: z.string().optional(),
+    })).optional(),
   }),
 });
 

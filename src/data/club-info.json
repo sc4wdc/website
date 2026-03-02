@@ -18,40 +18,6 @@
     "facebook": "https://www.facebook.com/groups/sc4wdc",
     "instagram": "https://www.instagram.com/santacruz4wd"
   },
-  "board": [
-    {
-      "name": "Gary Rowe",
-      "position": "President",
-      "order": 1,
-      "email": "garyrowe009@comcast.net",
-      "phone": "",
-      "photo": ""
-    },
-    {
-      "name": "Dariusz Smigiel",
-      "position": "Vice President",
-      "order": 2,
-      "email": "vicepresident@sc4wdc.com",
-      "phone": "",
-      "photo": ""
-    },
-    {
-      "name": "Jessica Giuffre",
-      "position": "Secretary",
-      "order": 3,
-      "email": "secretary@sc4wdc.com",
-      "phone": "",
-      "photo": ""
-    },
-    {
-      "name": "Nicki Imlay",
-      "position": "Treasurer",
-      "order": 4,
-      "email": "treasurer@sc4wdc.com",
-      "phone": "",
-      "photo": ""
-    }
-  ],
   "nonprofit": {
     "status": "501(c)(3) Non-Profit Organization",
     "mission": "We raise money to keep public lands open and help local non-profit organizations."

@@ -1,14 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import clubInfo from '../data/club-info.json';
+import { getEntry } from 'astro:content';
 
-const sortedBoard = clubInfo.board.sort((a, b) => a.order - b.order);
+const boardPage = await getEntry('pages', 'board');
+if (!boardPage) throw new Error('Board page not found');
+const { Content } = await boardPage.render();
+const sortedBoard = [...(boardPage.data.board ?? [])].sort((a, b) => a.order - b.order);
 ---
 
-<BaseLayout title="Board of Directors" description="Meet the leadership team of Santa Cruz 4 Wheel Drive Club">
+<BaseLayout title={boardPage.data.title} description={boardPage.data.description}>
   <section class="section">
     <div class="container">
-      <h1>Board of Directors</h1>
+      <h1>{boardPage.data.title}</h1>
       <p class="intro">
         Our club is led by a dedicated team of volunteers who are passionate about
         off-roading, trail preservation, and community service.
@@ -48,19 +51,8 @@ const sortedBoard = clubInfo.board.sort((a, b) => a.order - b.order);
         ))}
       </div>
 
-      <div class="board-info card">
-        <h2>About Our Board</h2>
-        <p>
-          The Board of Directors oversees club operations, organizes events, manages finances,
-          and ensures we stay true to our mission of keeping public lands open. Board members
-          are elected by club members and serve on a voluntary basis.
-        </p>
-        <h3>Interested in Getting Involved?</h3>
-        <p>
-          Club leadership positions are open to active members who want to make a difference.
-          Board elections are held biennial. If you're interested in a leadership role,
-          we encourage you to attend meetings and get involved with club activities!
-        </p>
+      <div class="board-info card prose">
+        <Content />
       </div>
     </div>
   </section>
