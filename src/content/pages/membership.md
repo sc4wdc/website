@@ -1,4 +1,5 @@
 ---
+pageType: generic
 title: Membership Information
 description: Join Santa Cruz 4WDC and become part of our community
 ---

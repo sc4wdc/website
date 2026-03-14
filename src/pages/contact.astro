@@ -2,79 +2,87 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FacebookIcon from '../components/icons/FacebookIcon.astro';
 import InstagramIcon from '../components/icons/InstagramIcon.astro';
-import { SITE, MEETING, SOCIAL } from '../consts';
-const { embedMapUrl } = MEETING.location;
+import { getEntry } from 'astro:content';
+import { getSiteSettings } from '../utils/site';
+
+const [contactPage, siteSettings] = await Promise.all([
+  getEntry('pages', 'contact'),
+  getSiteSettings(),
+]);
+
+if (!contactPage || contactPage.data.pageType !== 'contact') {
+  throw new Error('Contact page content not found');
+}
+
+const { meeting, social } = siteSettings;
+const { embedMapUrl } = meeting.location;
 ---
 
-<BaseLayout title="Contact Us" description="Get in touch with Santa Cruz 4 Wheel Drive Club">
+<BaseLayout title={contactPage.data.title} description={contactPage.data.description}>
   <section class="section">
     <div class="container">
-      <h1>Contact Us</h1>
-      <p class="intro">
-        We'd love to hear from you! The best way to connect with us is through our social media
-        channels or by attending one of our monthly meetings.
-      </p>
+      <h1>{contactPage.data.title}</h1>
+      <p class="intro">{contactPage.data.intro}</p>
 
       <div class="contact-grid">
         <!-- Meeting Information -->
         <div class="card contact-card">
-          <h2><span aria-hidden="true">📅 </span>Monthly Meetings</h2>
+          <h2><span aria-hidden="true">📅 </span>{contactPage.data.meetingSection.title}</h2>
           <div class="contact-details">
-            <p><strong>When:</strong></p>
-            <p>{MEETING.schedule}</p>
-            <p>{MEETING.time}</p>
-            <p class="note">{MEETING.earlyArrival}</p>
+            <p><strong>{contactPage.data.meetingSection.whenLabel}:</strong></p>
+            <p>{meeting.schedule}</p>
+            <p>{meeting.time}</p>
+            <p class="note">{meeting.earlyArrival}</p>
 
-            <p class="where-label"><strong>Where:</strong></p>
-            <p>{MEETING.location.name}</p>
+            <p class="where-label"><strong>{contactPage.data.meetingSection.whereLabel}:</strong></p>
+            <p>{meeting.location.name}</p>
             <p>
-              {MEETING.location.address}<br />
-              {MEETING.location.city}, {MEETING.location.state} {MEETING.location.zip}
+              {meeting.location.address}<br />
+              {meeting.location.city}, {meeting.location.state} {meeting.location.zip}
             </p>
 
             <a
-              href={MEETING.location.mapUrl}
+              href={meeting.location.mapUrl}
               target="_blank"
               rel="noopener noreferrer"
               class="btn"
               
             >
-              Get Directions <span class="sr-only">(opens in new tab)</span>
+              {contactPage.data.meetingSection.directionsLabel} <span class="sr-only">(opens in new tab)</span>
             </a>
           </div>
         </div>
 
         <!-- Social Media -->
         <div class="card contact-card">
-          <h2><span aria-hidden="true">💬 </span>Connect Online</h2>
+          <h2><span aria-hidden="true">💬 </span>{contactPage.data.onlineSection.title}</h2>
           <div class="contact-details">
-            <p>Stay up to date with club activities, events, and trail reports through our social media channels:</p>
+            <p>{contactPage.data.onlineSection.intro}</p>
 
             <div class="social-buttons">
               <a
-                href={SOCIAL.facebook}
+                href={social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="social-button facebook"
               >
                 <FacebookIcon />
-                <span>Join our Facebook Group <span class="sr-only">(opens in new tab)</span></span>
+                <span>{contactPage.data.onlineSection.facebookLabel} <span class="sr-only">(opens in new tab)</span></span>
               </a>
 
               <a
-                href={SOCIAL.instagram}
+                href={social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="social-button instagram"
               >
                 <InstagramIcon />
-                <span>Follow us on Instagram <span class="sr-only">(opens in new tab)</span></span>
+                <span>{contactPage.data.onlineSection.instagramLabel} <span class="sr-only">(opens in new tab)</span></span>
               </a>
             </div>
 
             <p class="social-note">
-              Our Facebook group is the most active place for discussions,
-              trip planning, and connecting with members between meetings.
+              {contactPage.data.onlineSection.note}
             </p>
           </div>
         </div>
@@ -82,7 +90,7 @@ const { embedMapUrl } = MEETING.location;
 
       <!-- Map Section -->
       <div class="map-section">
-        <h2>Meeting Location</h2>
+        <h2>{contactPage.data.mapSectionTitle}</h2>
         <div class="map-container">
           <iframe
             src={embedMapUrl}
@@ -94,24 +102,17 @@ const { embedMapUrl } = MEETING.location;
           ></iframe>
         </div>
         <p class="map-caption">
-          {MEETING.location.name}, {MEETING.location.address},
-          {MEETING.location.city}, {MEETING.location.state} {MEETING.location.zip}
+          {meeting.location.name}, {meeting.location.address},
+          {meeting.location.city}, {meeting.location.state} {meeting.location.zip}
         </p>
       </div>
 
       <!-- Additional Info -->
       <div class="card contact-info">
-        <h2>New Members Welcome!</h2>
-        <p>
-          First time? Don't be shy! Our meetings are informal and welcoming.
-          Come introduce yourself, ask questions, and learn about upcoming events.
-          We're always excited to meet new people who share our passion for off-roading
-          and public lands stewardship.
-        </p>
-        <p>
-          No commitment required to attend a meeting - come check us out and see if
-          {SITE.name} is the right fit for you!
-        </p>
+        <h2>{contactPage.data.welcomeSection.title}</h2>
+        {contactPage.data.welcomeSection.paragraphs.map(paragraph => (
+          <p>{paragraph}</p>
+        ))}
       </div>
     </div>
   </section>

@@ -1,38 +1,41 @@
 ---
-import { SITE, NONPROFIT, MEETING, SOCIAL } from '../consts';
 import FacebookIcon from './icons/FacebookIcon.astro';
 import InstagramIcon from './icons/InstagramIcon.astro';
+import { getSiteSettings } from '../utils/site';
+
 const currentYear = new Date().getFullYear();
+const siteSettings = await getSiteSettings();
+const { meeting, organization, site, social } = siteSettings;
 ---
 
 <footer class="site-footer">
   <div class="container">
     <div class="footer-content">
       <div class="footer-section">
-        <p class="footer-heading">{SITE.name}</p>
-        <p>{NONPROFIT.status}</p>
-        <p class="mission">{NONPROFIT.mission}</p>
+        <p class="footer-heading">{site.name}</p>
+        <p>{organization.status}</p>
+        <p class="mission">{organization.mission}</p>
       </div>
 
       <div class="footer-section">
         <p class="footer-heading">Monthly Meetings</p>
-        <p><strong>{MEETING.schedule}</strong></p>
-        <p>{MEETING.time}</p>
-        <p>{MEETING.location.name}</p>
+        <p><strong>{meeting.schedule}</strong></p>
+        <p>{meeting.time}</p>
+        <p>{meeting.location.name}</p>
         <p>
-          {MEETING.location.address}<br />
-          {MEETING.location.city}, {MEETING.location.state} {MEETING.location.zip}
+          {meeting.location.address}<br />
+          {meeting.location.city}, {meeting.location.state} {meeting.location.zip}
         </p>
       </div>
 
       <div class="footer-section">
         <p class="footer-heading">Connect With Us</p>
         <div class="social-links">
-          <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" class="social-link">
+          <a href={social.facebook} target="_blank" rel="noopener noreferrer" class="social-link">
             <FacebookIcon />
             Facebook <span class="sr-only">(opens in new tab)</span>
           </a>
-          <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" class="social-link">
+          <a href={social.instagram} target="_blank" rel="noopener noreferrer" class="social-link">
             <InstagramIcon />
             Instagram <span class="sr-only">(opens in new tab)</span>
           </a>
@@ -41,7 +44,7 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; {currentYear} {SITE.name}. All rights reserved.</p>
+      <p>&copy; {currentYear} {site.name}. All rights reserved.</p>
     </div>
   </div>
 </footer>

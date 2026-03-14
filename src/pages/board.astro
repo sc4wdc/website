@@ -1,24 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getEntry } from 'astro:content';
+import { getBoardMembers } from '../utils/site';
 
-const boardPage = await getEntry('pages', 'board');
-if (!boardPage) throw new Error('Board page not found');
+const [boardPage, boardMembers] = await Promise.all([
+  getEntry('pages', 'board'),
+  getBoardMembers(),
+]);
+
+if (!boardPage || boardPage.data.pageType !== 'board') {
+  throw new Error('Board page not found');
+}
+
 const { Content } = await boardPage.render();
-const sortedBoard = [...(boardPage.data.board ?? [])].sort((a, b) => a.order - b.order);
 ---
 
 <BaseLayout title={boardPage.data.title} description={boardPage.data.description}>
   <section class="section">
     <div class="container">
       <h1>{boardPage.data.title}</h1>
-      <p class="intro">
-        Our club is led by a dedicated team of volunteers who are passionate about
-        off-roading, trail preservation, and community service.
-      </p>
+      <p class="intro">{boardPage.data.intro}</p>
 
       <div class="board-grid">
-        {sortedBoard.map(member => (
+        {boardMembers.map(member => (
           <div class="board-member card">
             <div class="member-photo-placeholder">
               {member.photo ? (

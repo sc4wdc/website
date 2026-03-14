@@ -1,4 +1,5 @@
 ---
+pageType: generic
 title: About Santa Cruz 4 Wheel Drive Club
 description: Learn about our mission to keep public lands open and support our local community
 ---

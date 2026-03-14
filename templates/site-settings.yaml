@@ -1,0 +1,29 @@
+kind: settings
+site:
+  name: Santa Cruz 4 Wheel Drive Club
+  shortName: SC4WDC
+  tagline: Keeping Public Lands Open
+organization:
+  status: 501(c)(3) Non-Profit Organization
+  mission: Brief mission statement shown in the footer.
+meeting:
+  schedule: Third Thursday of every month
+  time: 6:30 PM
+  earlyArrival: Members and guests can come early
+  location:
+    name: Meeting Venue Name
+    address: Street Address
+    city: City
+    state: CA
+    zip: "95076"
+    mapUrl: https://www.google.com/maps?q=Your+Meeting+Location
+    embedMapUrl: https://www.google.com/maps/embed?pb=YOUR_EMBED_CODE
+social:
+  facebook: https://www.facebook.com/groups/your-group
+  instagram: https://www.instagram.com/your-account
+calendar:
+  embedUrl: https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID
+  publicUrl: https://calendar.google.com/calendar/u/0?cid=YOUR_CALENDAR_ID
+branding:
+  titleSuffix: SC4WDC
+  faviconPath: /favicon.svg

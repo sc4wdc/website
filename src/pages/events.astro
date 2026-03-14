@@ -1,11 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EventCard from '../components/EventCard.astro';
-import { getCollection } from 'astro:content';
-import { MEETING, CALENDAR } from '../consts';
+import { getCollection, getEntry } from 'astro:content';
 import { parseLocalDate, getTodayLocal } from '../utils/date';
+import { getSiteSettings } from '../utils/site';
 
-const allEvents = await getCollection('events');
+const [allEvents, eventsPage, siteSettings] = await Promise.all([
+  getCollection('events'),
+  getEntry('pages', 'events'),
+  getSiteSettings(),
+]);
+
+if (!eventsPage || eventsPage.data.pageType !== 'events') {
+  throw new Error('Events page content not found');
+}
 
 // Get current date in local timezone for comparison
 const today = getTodayLocal();
@@ -17,41 +25,39 @@ const upcomingEvents = allEvents
 const pastEvents = allEvents
   .filter(event => parseLocalDate(event.data.date) < today)
   .sort((a, b) => parseLocalDate(b.data.date).getTime() - parseLocalDate(a.data.date).getTime());
+
+const { calendar, meeting } = siteSettings;
 ---
 
-<BaseLayout title="Events & Calendar" description="Upcoming events, meetings, and trail rides with Santa Cruz 4WDC">
+<BaseLayout title={eventsPage.data.title} description={eventsPage.data.description}>
   <section class="section">
     <div class="container">
-      <h1>Events & Calendar</h1>
-      <p class="intro">
-        Join us for trail rides, meetings, community service projects, and social events.
-        Check back regularly for updates and new events!
-        Please note that all events are subject to change or cancellation.
-      </p>
+      <h1>{eventsPage.data.title}</h1>
+      <p class="intro">{eventsPage.data.intro}</p>
 
       <!-- Monthly Meeting Reminder -->
       <div class="card meeting-reminder">
-        <h2><span aria-hidden="true">📅 </span>Regular Monthly Meeting</h2>
+        <h2><span aria-hidden="true">📅 </span>{eventsPage.data.meetingSection.title}</h2>
         <div class="meeting-details">
-          <p><strong>{MEETING.schedule}</strong> at <strong>{MEETING.time}</strong></p>
-          <p>{MEETING.location.name}, {MEETING.location.city}</p>
-          <p class="note">{MEETING.earlyArrival}</p>
+          <p><strong>{meeting.schedule}</strong> at <strong>{meeting.time}</strong></p>
+          <p>{meeting.location.name}, {meeting.location.city}</p>
+          <p class="note">{meeting.earlyArrival}</p>
         </div>
-        <a href="/contact" class="btn btn-inverse">Meeting Details & Directions</a>
+        <a href="/contact" class="btn btn-inverse">{eventsPage.data.meetingSection.ctaLabel}</a>
       </div>
 
       <!-- Google Calendar Section -->
       <div class="calendar-section card">
-        <h2><span aria-hidden="true">📆 </span>Club Calendar</h2>
+        <h2><span aria-hidden="true">📆 </span>{eventsPage.data.calendarSection.title}</h2>
         <div class="calendar-embed">
           <iframe
-            src={CALENDAR.embedUrl}
+            src={calendar.embedUrl}
             width="100%"
             title="SC4WDC Events Calendar"
           ></iframe>
           <div class="calendar-links">
-            <a href={CALENDAR.publicUrl} target="_blank" rel="noopener noreferrer" class="btn">
-              Open in Google Calendar <span class="sr-only">(opens in new tab)</span>
+            <a href={calendar.publicUrl} target="_blank" rel="noopener noreferrer" class="btn">
+              {eventsPage.data.calendarSection.linkLabel} <span class="sr-only">(opens in new tab)</span>
             </a>
           </div>
         </div>
@@ -60,7 +66,7 @@ const pastEvents = allEvents
       <!-- Upcoming Events -->
       {upcomingEvents.length > 0 ? (
         <div class="events-section">
-          <h2>Upcoming Events</h2>
+          <h2>{eventsPage.data.upcomingEventsTitle}</h2>
           <div class="events-grid">
           {upcomingEvents.map(event => (
             <EventCard
@@ -74,15 +80,15 @@ const pastEvents = allEvents
         </div>
       ) : (
         <div class="card no-events">
-          <h2>No Upcoming Events</h2>
-          <p>Check back soon or join our Facebook group to stay updated on new events!</p>
+          <h2>{eventsPage.data.noUpcomingEvents.title}</h2>
+          <p>{eventsPage.data.noUpcomingEvents.description}</p>
         </div>
       )}
 
       <!-- Past Events -->
       {pastEvents.length > 0 && (
         <div class="past-events-section">
-          <h2>Past Events</h2>
+          <h2>{eventsPage.data.pastEventsTitle}</h2>
           <div class="events-grid">
           {pastEvents.slice(0, 6).map(event => (
             <EventCard

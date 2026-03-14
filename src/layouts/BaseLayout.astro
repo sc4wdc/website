@@ -1,7 +1,10 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE } from '../consts';
+import { getSiteSettings } from '../utils/site';
+
+const siteSettings = await getSiteSettings();
+const { branding, site } = siteSettings;
 
 interface Props {
   title: string;
@@ -9,9 +12,11 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description = `${SITE.name} - ${SITE.tagline}`, ogImage } = Astro.props;
+const { title, description = `${site.name} - ${site.tagline}`, ogImage } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
-const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : new URL('/favicon.svg', Astro.site).href;
+const ogImageUrl = ogImage
+  ? new URL(ogImage, Astro.site).href
+  : new URL(branding.faviconPath, Astro.site).href;
 ---
 
 <!DOCTYPE html>
@@ -21,21 +26,21 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : new URL('/favic
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} | SC4WDC</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | {branding.titleSuffix}</title>
+    <link rel="icon" type="image/svg+xml" href={branding.faviconPath} />
     <link rel="canonical" href={canonicalUrl.href} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl.href} />
-    <meta property="og:title" content={`${title} | SC4WDC`} />
+    <meta property="og:title" content={`${title} | ${branding.titleSuffix}`} />
     <meta property="og:description" content={description} />
-    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:site_name" content={site.name} />
     <meta property="og:image" content={ogImageUrl} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content={`${title} | SC4WDC`} />
+    <meta name="twitter:title" content={`${title} | ${branding.titleSuffix}`} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
   </head>

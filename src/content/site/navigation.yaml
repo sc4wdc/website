@@ -1,0 +1,16 @@
+kind: navigation
+items:
+  - href: /
+    label: Home
+  - href: /about
+    label: About
+  - href: /board
+    label: Board
+  - href: /events
+    label: Events
+  - href: /trails
+    label: Trails
+  - href: /membership
+    label: Membership
+  - href: /contact
+    label: Contact

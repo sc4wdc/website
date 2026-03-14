@@ -1,140 +1,131 @@
 # Quick Editing Guide for SC4WDC Website
 
-This is a simplified guide for club members who want to edit the website content.
+This guide is for club members and other non-developers.
 
-## How to Edit Using GitHub (No Software Needed!)
+## Golden Rule
 
-### 1. Edit Existing Content
+Only edit:
 
-1. Navigate to the file you want to edit:
-   - **About page**: `src/content/pages/about.md`
-   - **Membership page**: `src/content/pages/membership.md`
-   - **Trail reports**: `src/content/trails/` (click on any file)
-   - **Events**: `src/content/events/` (click on any file)
-   - **Board members**: `src/content/pages/board.md`
-   - **Site config**: `src/consts.ts`
-1. Click the **pencil icon** (✏️) at the top right
-1. Make your changes
-1. Scroll to bottom, add a description of what you changed
-1. Click **"Commit changes"**
-1. Wait 2-3 minutes - your changes will be live!
+- `src/content/**`
+- `public/images/**`
 
-### 2. Add a New Trail Report
+You can also copy starting files from:
 
-1. Go to `src/content/trails/` in the repository
-1. Click **"Add file"** → **"Create new file"**
-1. Name your file: `trail-name.md` (example: `rubicon-spring-2024.md`)
-1. Copy and paste this template:
+- `templates/**`
 
-```markdown
----
-title: Your Trail Name
-date: 2024-03-15
-location: Trail Location
-difficulty: Moderate
-distance: 15 miles
-duration: 6 hours
-description: One sentence describing the trail
-author: Your Name
----
+Do not edit:
 
-## Trail Overview
+- `src/pages/**`
+- `src/components/**`
+- `src/layouts/**`
+- `src/utils/**`
+- `src/content/config.ts`
+- `astro.config.mjs`
 
-Describe your experience...
+## What Each File Controls
 
-## Highlights
+| What you want to change | File or folder |
+| --- | --- |
+| Club name, tagline, meeting time, map link, calendar, social links | `src/content/site/settings.yaml` |
+| Header menu labels and order | `src/content/site/navigation.yaml` |
+| Board member contact info | `src/content/board/members.yaml` |
+| Home page text | `src/content/pages/home.md` |
+| Contact page text | `src/content/pages/contact.md` |
+| Events page text | `src/content/pages/events.md` |
+| Trails page text | `src/content/pages/trails.md` |
+| Board page intro/body text | `src/content/pages/board.md` |
+| About page | `src/content/pages/about.md` |
+| Membership page | `src/content/pages/membership.md` |
+| Event entries | `src/content/events/` |
+| Trail reports | `src/content/trails/` |
+| Images | `public/images/` |
 
-- Point 1
-- Point 2
+## Edit an Existing File in GitHub
 
-## Tips
+1. Open the repository on GitHub.
+2. Browse to the file you want to change.
+3. Click the pencil icon.
+4. Make your edits.
+5. Add a short summary of the change.
+6. Click "Commit changes".
+7. Wait a few minutes for the site to rebuild.
 
-Share your recommendations...
-```
+## Add a New Event
 
-1. Edit the template with your information
-1. Click **"Commit new file"** at the bottom
+1. Open `templates/event.md`.
+2. Copy the full file contents.
+3. Create a new file under `src/content/events/`.
+4. Use a lowercase, hyphenated filename such as `summer-bbq-2026.md`.
+5. Paste the template and replace the placeholder values.
+6. Commit the new file.
 
-**Difficulty Options**: Easy, Moderate, Difficult, Extreme
+## Add a New Trail Report
 
-### 3. Add a New Event
+1. Open `templates/trail.md`.
+2. Copy the full file contents.
+3. Create a new file under `src/content/trails/`.
+4. Use a lowercase, hyphenated filename such as `rubicon-spring-2026.md`.
+5. Paste the template and replace the placeholder values.
+6. Commit the new file.
 
-1. Click **"Add file"** → **"Create new file"**
-1. Name your file: `event-name.md` (example: `summer-bbq-2024.md`)
-1. Copy and paste this template:
+## Update Board Members
 
-```markdown
----
-title: Event Name
-date: 2024-06-15
-location: Event Location
-time: 6:30 PM
-description: Brief description
-registrationRequired: false
----
+Edit `src/content/board/members.yaml`.
 
-## Event Details
+Example entry:
 
-Describe the event...
-
-## What to Bring
-
-- Item 1
-- Item 2
-```
-
-1. Edit with your event details
-1. Click **"Commit new file"**
-
-### 4. Update Board Members
-
-To change board member names, positions, or contact info:
-
-1. Go to `src/content/pages/board.md`
-1. Click the **pencil icon** (✏️)
-1. Edit the board members in the frontmatter section at the top of the file
-1. Click **"Commit changes"**
-
-**Example - Changing a board member's information** (in the frontmatter YAML):
 ```yaml
-  - name: New Person Name
+members:
+  - name: Board Member Name
     position: President
     order: 1
-    email: president@sc4wdc.org
+    email: boardmember@example.com
     phone: "(831) 555-0100"
-    photo: /images/board/person-name.jpg
+    photo: /images/board/board-member-name.jpg
 ```
 
-**Important**: Email addresses and phone numbers will be publicly visible on the website. Make sure board members agree to share their contact information.
+Notes:
 
-**Photo Field**: The `photo` field is optional. Omit it or leave it blank if no photo is available. To add photos, see the README.md file for detailed instructions (requires file upload access).
+- `order` controls display order
+- `phone` is optional
+- `photo` is optional
+- Email addresses and phone numbers are public on the website
 
-### 5. Update Site-Wide Settings
+## Update Meeting, Map, Calendar, or Social Links
 
-To change meeting times, social media links, or other site-wide info, edit `src/consts.ts`. This file requires basic TypeScript syntax -- keep the format exactly the same when making changes.
+Edit `src/content/site/settings.yaml`.
 
-### 6. Click **"Commit changes"**
+This is the file to change when:
 
-After editing any file, scroll to the bottom, add a description, and click "Commit changes". The calendar will automatically appear on the Events page! If you haven't set it up yet, the page shows instructions on how to get the embed URL.
+- the meeting time changes
+- the meeting location changes
+- the Google Maps URL changes
+- the map embed URL changes
+- the Facebook or Instagram URL changes
+- the Google Calendar URL changes
 
-## Markdown Basics
+If you are not sure about formatting, compare against `templates/site-settings.yaml`.
 
-When editing `.md` files, use these formatting tips:
+## Reorder the Header Menu
 
-| To Get This | Type This |
-|-------------|-----------|
-| **Bold text** | `**Bold text**` |
-| *Italic text* | `*Italic text*` |
-| Heading | `## Heading` |
-| Bullet list | `- Item` |
-| Numbered list | `1. Item` |
-| Link | `[text](https://url.com)` |
+Edit `src/content/site/navigation.yaml`.
+
+Move items up or down in the list to change the order.
+
+## Add Images
+
+Place images under `public/images/`, for example:
+
+- `public/images/board/`
+- `public/images/events/`
+- `public/images/trails/`
+
+Then reference the image path in content, such as `/images/board/person-name.jpg`.
 
 ## Need Help?
 
-- **Ask at a meeting**: Bring questions to monthly meetings
-- **Facebook group**: Post in our group
-- **Contact board**: Reach out to any board member
+- Ask a board member
+- Ask in the Facebook group
+- Bring the question to a monthly meeting
 
-Remember: You can't break anything! GitHub keeps a history of all changes, so mistakes can always be undone.
-
+GitHub keeps a history of every change, so mistakes can be fixed.

@@ -1,0 +1,17 @@
+members:
+  - name: Gary Rowe
+    position: President
+    order: 1
+    email: garyrowe009@comcast.net
+  - name: Dariusz Smigiel
+    position: Vice President
+    order: 2
+    email: vicepresident@sc4wdc.com
+  - name: Jessica Giuffre
+    position: Secretary
+    order: 3
+    email: secretary@sc4wdc.com
+  - name: Nicki Imlay
+    position: Treasurer
+    order: 4
+    email: treasurer@sc4wdc.com

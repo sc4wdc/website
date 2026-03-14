@@ -1,23 +1,8 @@
 ---
+pageType: board
 title: Board of Directors
 description: Meet the leadership team of Santa Cruz 4 Wheel Drive Club
-board:
-  - name: Gary Rowe
-    position: President
-    order: 1
-    email: garyrowe009@comcast.net
-  - name: Dariusz Smigiel
-    position: Vice President
-    order: 2
-    email: vicepresident@sc4wdc.com
-  - name: Jessica Giuffre
-    position: Secretary
-    order: 3
-    email: secretary@sc4wdc.com
-  - name: Nicki Imlay
-    position: Treasurer
-    order: 4
-    email: treasurer@sc4wdc.com
+intro: Our club is led by a dedicated team of volunteers who are passionate about off-roading, trail preservation, and community service.
 ---
 
 ## About Our Board

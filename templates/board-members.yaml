@@ -1,0 +1,7 @@
+members:
+  - name: Board Member Name
+    position: President
+    order: 1
+    email: boardmember@example.com
+    # phone: "(831) 555-0100"
+    # photo: /images/board/board-member-name.jpg

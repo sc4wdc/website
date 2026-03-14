@@ -1,20 +1,25 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TrailCard from '../components/TrailCard.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 
-const allTrails = await getCollection('trails');
+const [allTrails, trailsPage] = await Promise.all([
+  getCollection('trails'),
+  getEntry('pages', 'trails'),
+]);
+
+if (!trailsPage || trailsPage.data.pageType !== 'trails') {
+  throw new Error('Trails page content not found');
+}
+
 const trails = allTrails.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<BaseLayout title="Trail Guides & Reports" description="Trail reports, guides, and trip reviews from Santa Cruz 4WDC members">
+<BaseLayout title={trailsPage.data.title} description={trailsPage.data.description}>
   <section class="section">
     <div class="container">
-      <h1>Trail Guides & Reports</h1>
-      <p class="intro">
-        Check out our trail reports and guides written by club members. Learn about trail conditions,
-        difficulty levels, and what to expect before you head out.
-      </p>
+      <h1>{trailsPage.data.title}</h1>
+      <p class="intro">{trailsPage.data.intro}</p>
 
       <!-- Trail Reports Grid -->
       {trails.length > 0 ? (
@@ -31,44 +36,29 @@ const trails = allTrails.sort((a, b) => b.data.date.getTime() - a.data.date.getT
         </div>
       ) : (
         <div class="card no-trails">
-          <h2>No Trail Reports Yet</h2>
-          <p>Check back soon for trail reports from our members!</p>
+          <h2>{trailsPage.data.noTrails.title}</h2>
+          <p>{trailsPage.data.noTrails.description}</p>
         </div>
       )}
 
       <!-- Call to Action for Members -->
       <div class="card contribute-section">
-        <h2>Want to Contribute?</h2>
-        <p>
-          Club members are encouraged to write trail reports after trips!
-          Share your experiences, photos, and tips to help fellow members plan their adventures.
-        </p>
-        <p>
-          <strong>To add your trail report:</strong> Contact any board member or post in our Facebook group.
-          We'll help you get it published on the website.
-        </p>
+        <h2>{trailsPage.data.contributeSection.title}</h2>
+        {trailsPage.data.contributeSection.paragraphs.map(paragraph => (
+          <p>{paragraph}</p>
+        ))}
       </div>
 
       <!-- Trail Difficulty Guide -->
       <div class="card difficulty-guide">
-        <h2>Trail Difficulty Guide</h2>
+        <h2>{trailsPage.data.difficultyGuide.title}</h2>
         <div class="difficulty-list">
-          <div class="difficulty-item">
-            <span class="difficulty-badge difficulty-easy">Easy</span>
-            <p>Suitable for stock 4x4 vehicles. Maintained roads with minimal obstacles.</p>
-          </div>
-          <div class="difficulty-item">
-            <span class="difficulty-badge difficulty-moderate">Moderate</span>
-            <p>Some modifications recommended. Uneven terrain, rocks, and moderate obstacles.</p>
-          </div>
-          <div class="difficulty-item">
-            <span class="difficulty-badge difficulty-difficult">Difficult</span>
-            <p>Modified vehicle required. Challenging obstacles, steep grades, and technical sections.</p>
-          </div>
-          <div class="difficulty-item">
-            <span class="difficulty-badge difficulty-extreme">Extreme</span>
-            <p>Highly modified vehicle essential. Very challenging obstacles requiring advanced skills.</p>
-          </div>
+          {trailsPage.data.difficultyGuide.levels.map(level => (
+            <div class="difficulty-item">
+              <span class={`difficulty-badge difficulty-${level.level.toLowerCase()}`}>{level.level}</span>
+              <p>{level.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

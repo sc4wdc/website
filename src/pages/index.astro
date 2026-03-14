@@ -2,39 +2,49 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EventCard from '../components/EventCard.astro';
 import TrailCard from '../components/TrailCard.astro';
-import { getCollection } from 'astro:content';
-import { SITE, MEETING, SOCIAL } from '../consts';
+import { getCollection, getEntry } from 'astro:content';
 import { parseLocalDate, getTodayLocal } from '../utils/date';
+import { getSiteSettings } from '../utils/site';
 
-// Get recent events (using local date for comparison)
-const allEvents = await getCollection('events');
+const [allEvents, allTrails, homePage, siteSettings] = await Promise.all([
+  getCollection('events'),
+  getCollection('trails'),
+  getEntry('pages', 'home'),
+  getSiteSettings(),
+]);
+
+if (!homePage || homePage.data.pageType !== 'home') {
+  throw new Error('Home page content not found');
+}
+
 const today = getTodayLocal();
 const upcomingEvents = allEvents
   .filter(event => parseLocalDate(event.data.date) >= today)
   .sort((a, b) => parseLocalDate(a.data.date).getTime() - parseLocalDate(b.data.date).getTime())
   .slice(0, 3);
 
-// Get recent trail reports
-const allTrails = await getCollection('trails');
 const recentTrails = allTrails
   .sort((a, b) => parseLocalDate(b.data.date).getTime() - parseLocalDate(a.data.date).getTime())
   .slice(0, 3);
+
+const { meeting, site } = siteSettings;
+
+function isExternalLink(href: string): boolean {
+  return /^https?:\/\//.test(href);
+}
 ---
 
-<BaseLayout title="Home" description="Santa Cruz 4 Wheel Drive Club - Keeping Public Lands Open">
+<BaseLayout title={homePage.data.title} description={homePage.data.description}>
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <h1>{SITE.name}</h1>
-        <p class="hero-tagline">{SITE.tagline}</p>
-        <p class="hero-description">
-          We are a 501(c)(3) non-profit organization dedicated to keeping public lands open
-          and supporting our local community through responsible off-road recreation.
-        </p>
+        <h1>{site.name}</h1>
+        <p class="hero-tagline">{site.tagline}</p>
+        <p class="hero-description">{homePage.data.hero.description}</p>
         <div class="hero-actions">
-          <a href="/membership" class="btn">Join Us</a>
-          <a href="/about" class="btn btn-secondary">Learn More About Us</a>
+          <a href={homePage.data.hero.primaryCta.href} class="btn">{homePage.data.hero.primaryCta.label}</a>
+          <a href={homePage.data.hero.secondaryCta.href} class="btn btn-secondary">{homePage.data.hero.secondaryCta.label}</a>
         </div>
       </div>
     </div>
@@ -44,20 +54,20 @@ const recentTrails = allTrails
   <section class="section meeting-info">
     <div class="container">
       <div class="card meeting-card">
-        <h2><span aria-hidden="true">📅 </span>Monthly Meetings</h2>
+        <h2><span aria-hidden="true">📅 </span>{homePage.data.meetings.title}</h2>
         <div class="meeting-details">
           <div class="meeting-item">
-            <strong>When:</strong> {MEETING.schedule} at {MEETING.time}
+            <strong>{homePage.data.meetings.whenLabel}:</strong> {meeting.schedule} at {meeting.time}
           </div>
           <div class="meeting-item">
-            <strong>Where:</strong> {MEETING.location.name}, {MEETING.location.address},
-            {MEETING.location.city}, {MEETING.location.state}
+            <strong>{homePage.data.meetings.whereLabel}:</strong> {meeting.location.name}, {meeting.location.address},
+            {meeting.location.city}, {meeting.location.state}
           </div>
           <div class="meeting-item">
-            <em>{MEETING.earlyArrival}</em>
+            <em>{meeting.earlyArrival}</em>
           </div>
         </div>
-        <a href="/contact" class="btn meeting-cta">Get Directions</a>
+        <a href="/contact" class="btn meeting-cta">{homePage.data.meetings.directionsLabel}</a>
       </div>
     </div>
   </section>
@@ -66,7 +76,7 @@ const recentTrails = allTrails
   {upcomingEvents.length > 0 && (
     <section class="section events-preview">
       <div class="container">
-        <h2>Upcoming Events</h2>
+        <h2>{homePage.data.upcomingEvents.title}</h2>
         <div class="events-grid">
           {upcomingEvents.map(event => (
             <EventCard
@@ -78,7 +88,7 @@ const recentTrails = allTrails
           ))}
         </div>
         <div class="section-cta">
-          <a href="/events" class="btn">View All Events</a>
+          <a href="/events" class="btn">{homePage.data.upcomingEvents.ctaLabel}</a>
         </div>
       </div>
     </section>
@@ -88,7 +98,7 @@ const recentTrails = allTrails
   {recentTrails.length > 0 && (
     <section class="section trails-preview">
       <div class="container">
-        <h2>Recent Trail Reports</h2>
+        <h2>{homePage.data.recentTrails.title}</h2>
         <div class="trails-grid">
           {recentTrails.map(trail => (
             <TrailCard
@@ -101,7 +111,7 @@ const recentTrails = allTrails
           ))}
         </div>
         <div class="section-cta">
-          <a href="/trails" class="btn">View All Trail Reports</a>
+          <a href="/trails" class="btn">{homePage.data.recentTrails.ctaLabel}</a>
         </div>
       </div>
     </section>
@@ -111,16 +121,20 @@ const recentTrails = allTrails
   <section class="section cta-section">
     <div class="container">
       <div class="cta-content">
-        <h2>Ready to Join the Adventure?</h2>
-        <p>
-          Whether you're an experienced off-roader or just getting started,
-          we welcome you to our community. Come to a meeting, join a trail ride,
-          and help us keep public lands open for everyone!
-        </p>
+        <h2>{homePage.data.cta.title}</h2>
+        <p>{homePage.data.cta.description}</p>
         <div class="cta-actions">
-          <a href="/membership" class="btn btn-inverse">Become a Member</a>
-          <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-            Follow Us on Facebook <span class="sr-only">(opens in new tab)</span>
+          <a href={homePage.data.cta.primaryCta.href} class="btn btn-inverse">{homePage.data.cta.primaryCta.label}</a>
+          <a
+            href={homePage.data.cta.secondaryCta.href}
+            target={isExternalLink(homePage.data.cta.secondaryCta.href) ? '_blank' : undefined}
+            rel={isExternalLink(homePage.data.cta.secondaryCta.href) ? 'noopener noreferrer' : undefined}
+            class="btn btn-secondary"
+          >
+            {homePage.data.cta.secondaryCta.label}
+            {isExternalLink(homePage.data.cta.secondaryCta.href) && (
+              <span class="sr-only">(opens in new tab)</span>
+            )}
           </a>
         </div>
       </div>

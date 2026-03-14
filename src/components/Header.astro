@@ -1,17 +1,11 @@
 ---
-import { SITE } from '../consts';
+import { getSiteNavigation, getSiteSettings } from '../utils/site';
 
 const currentPath = Astro.url.pathname;
-
-const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/board', label: 'Board' },
-  { href: '/events', label: 'Events' },
-  { href: '/trails', label: 'Trails' },
-  { href: '/membership', label: 'Membership' },
-  { href: '/contact', label: 'Contact' }
-];
+const [navItems, siteSettings] = await Promise.all([
+  getSiteNavigation(),
+  getSiteSettings(),
+]);
 
 function isActive(itemHref: string): boolean {
   if (itemHref === '/') return currentPath === '/';
@@ -32,8 +26,8 @@ function isActive(itemHref: string): boolean {
             </svg>
           </div>
           <div class="site-title">
-            <span class="club-name">{SITE.name}</span>
-            <span class="tagline">{SITE.tagline}</span>
+            <span class="club-name">{siteSettings.site.name}</span>
+            <span class="tagline">{siteSettings.site.tagline}</span>
           </div>
         </a>
       </div>
