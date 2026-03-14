@@ -100,20 +100,20 @@ const trails = allTrails.sort((a, b) => b.data.date.getTime() - a.data.date.getT
 
   .no-trails {
     text-align: center;
-    max-width: 600px;
+    max-width: var(--content-narrow);
     margin: var(--space-xl) auto;
     padding: var(--space-2xl);
   }
 
   .contribute-section {
-    max-width: 800px;
+    max-width: var(--content-medium);
     margin: 0 auto var(--space-xl);
     text-align: center;
     background-color: var(--color-light-gray);
   }
 
   .difficulty-guide {
-    max-width: 800px;
+    max-width: var(--content-medium);
     margin: 0 auto;
   }
 
@@ -145,7 +145,7 @@ const trails = allTrails.sort((a, b) => b.data.date.getTime() - a.data.date.getT
   }
 
   .difficulty-badge {
-    padding: 0.5rem 1rem;
+    padding: var(--space-xs) var(--space-sm);
     flex-shrink: 0;
   }
 

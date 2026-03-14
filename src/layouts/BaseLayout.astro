@@ -53,10 +53,15 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : new URL('/favic
   /* Skip Link */
   .skip-link {
     position: absolute;
-    left: -9999px;
-    top: 0;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
     z-index: 9999;
-    padding: 0.75rem 1.5rem;
     background: var(--color-primary);
     color: var(--color-white);
     font-weight: 600;
@@ -64,7 +69,35 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : new URL('/favic
   }
 
   .skip-link:focus {
+    position: fixed;
+    top: 0;
     left: 0;
+    width: auto;
+    height: auto;
+    padding: 0.75rem 1.5rem;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
+  /* Global focus indicator */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  /* Visually hidden utility for screen readers */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   /* CSS Reset & Base Styles */
@@ -101,6 +134,33 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : new URL('/favic
     --space-lg: 2rem;
     --space-xl: 3rem;
     --space-2xl: 4rem;
+
+    /* Typography Scale */
+    --text-xs: 0.75rem;
+    --text-sm: 0.85rem;
+    --text-base: 1rem;
+    --text-md: 1.05rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 2rem;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+
+    /* Content Widths */
+    --content-narrow: 600px;
+    --content-medium: 800px;
+    --content-wide: 900px;
+
+    /* Difficulty Badge Colors */
+    --color-difficulty-easy: #2e7d32;
+    --color-difficulty-moderate: var(--color-sand);
+    --color-difficulty-difficult: #a0522d;
+    --color-difficulty-extreme: #d32f2f;
+
+    /* Brand Colors */
+    --color-facebook: #1565c0;
 
     /* Layout */
     --max-width: 1200px;
@@ -156,7 +216,7 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : new URL('/favic
   a {
     color: var(--color-primary);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color var(--transition-fast);
   }
 
   a:hover {
@@ -172,7 +232,7 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : new URL('/favic
     border-radius: var(--border-radius);
     font-weight: 600;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all var(--transition-base);
     border: 2px solid var(--color-primary);
   }
 
@@ -219,7 +279,7 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : new URL('/favic
     border-radius: var(--border-radius);
     padding: var(--space-lg);
     box-shadow: var(--shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
   }
 
   .card:hover {
@@ -248,30 +308,30 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : new URL('/favic
   .difficulty-badge {
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
     font-weight: 600;
     text-transform: uppercase;
     white-space: nowrap;
   }
 
   .difficulty-easy {
-    background-color: #4caf50;
-    color: white;
+    background-color: var(--color-difficulty-easy);
+    color: var(--color-white);
   }
 
   .difficulty-moderate {
-    background-color: var(--color-sand);
+    background-color: var(--color-difficulty-moderate);
     color: var(--color-dark);
   }
 
   .difficulty-difficult {
-    background-color: var(--color-accent);
-    color: white;
+    background-color: var(--color-difficulty-difficult);
+    color: var(--color-white);
   }
 
   .difficulty-extreme {
-    background-color: #d32f2f;
-    color: white;
+    background-color: var(--color-difficulty-extreme);
+    color: var(--color-white);
   }
 
   /* Prose (markdown content) */
@@ -295,7 +355,7 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : new URL('/favic
   .prose h4 {
     margin-top: var(--space-md);
     color: var(--color-accent);
-    font-size: 1.1rem;
+    font-size: var(--text-md);
   }
 
   .prose ul {
@@ -352,10 +412,39 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : new URL('/favic
     margin: var(--space-xl) 0;
   }
 
+  /* Back Link (shared across detail pages) */
+  .back-link {
+    text-align: center;
+    padding-top: var(--space-xl);
+    border-top: 2px solid var(--color-light-gray);
+  }
+
+  .back-link a {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .back-link a:hover {
+    color: var(--color-accent);
+  }
+
+  /* Inverted button (for dark/gradient backgrounds) */
+  .btn-inverse {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border-color: var(--color-white);
+  }
+
+  .btn-inverse:hover {
+    background-color: var(--color-off-white);
+    border-color: var(--color-off-white);
+    color: var(--color-primary);
+  }
+
   /* Page intro text */
   .intro {
     text-align: center;
-    font-size: 1.125rem;
+    font-size: var(--text-lg);
     max-width: 700px;
     margin: 0 auto var(--space-xl);
     color: var(--color-gray);

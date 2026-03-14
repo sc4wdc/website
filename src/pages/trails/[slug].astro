@@ -30,28 +30,28 @@ const { Content } = await trail.render();
             </div>
             <div class="meta-card">
               <strong>Location</strong>
-              <span>📍 {trail.data.location}</span>
+              <span><span aria-hidden="true">📍 </span>{trail.data.location}</span>
             </div>
             <div class="meta-card">
               <strong>Date</strong>
-              <span>📅 {formatDate(trail.data.date)}</span>
+              <span><span aria-hidden="true">📅 </span>{formatDate(trail.data.date)}</span>
             </div>
             {trail.data.distance && (
               <div class="meta-card">
                 <strong>Distance</strong>
-                <span>📏 {trail.data.distance}</span>
+                <span><span aria-hidden="true">📏 </span>{trail.data.distance}</span>
               </div>
             )}
             {trail.data.duration && (
               <div class="meta-card">
                 <strong>Duration</strong>
-                <span>⏱️ {trail.data.duration}</span>
+                <span><span aria-hidden="true">⏱️ </span>{trail.data.duration}</span>
               </div>
             )}
             {trail.data.author && (
               <div class="meta-card">
                 <strong>Author</strong>
-                <span>✍️ {trail.data.author}</span>
+                <span><span aria-hidden="true">✍️ </span>{trail.data.author}</span>
               </div>
             )}
           </div>
@@ -71,7 +71,7 @@ const { Content } = await trail.render();
 
 <style>
   .trail-detail {
-    max-width: 900px;
+    max-width: var(--content-wide);
     margin: 0 auto;
   }
 
@@ -99,19 +99,19 @@ const { Content } = await trail.render();
   }
 
   .meta-card strong {
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     text-transform: uppercase;
     color: var(--color-gray);
     letter-spacing: 0.5px;
   }
 
   .meta-card span {
-    font-size: 1.05rem;
+    font-size: var(--text-md);
     color: var(--color-dark);
   }
 
   .difficulty-badge {
-    padding: 0.5rem 1rem;
+    padding: var(--space-xs) var(--space-sm);
     display: inline-block;
   }
 
@@ -123,19 +123,5 @@ const { Content } = await trail.render();
     margin-bottom: var(--space-xl);
   }
 
-  .back-link {
-    text-align: center;
-    padding-top: var(--space-xl);
-    border-top: 2px solid var(--color-light-gray);
-  }
-
-  .back-link a {
-    color: var(--color-primary);
-    font-weight: 600;
-  }
-
-  .back-link a:hover {
-    color: var(--color-accent);
-  }
 </style>
 

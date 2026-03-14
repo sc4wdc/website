@@ -9,13 +9,13 @@ const currentYear = new Date().getFullYear();
   <div class="container">
     <div class="footer-content">
       <div class="footer-section">
-        <h3>{SITE.name}</h3>
+        <p class="footer-heading">{SITE.name}</p>
         <p>{NONPROFIT.status}</p>
         <p class="mission">{NONPROFIT.mission}</p>
       </div>
 
       <div class="footer-section">
-        <h3>Monthly Meetings</h3>
+        <p class="footer-heading">Monthly Meetings</p>
         <p><strong>{MEETING.schedule}</strong></p>
         <p>{MEETING.time}</p>
         <p>{MEETING.location.name}</p>
@@ -26,15 +26,15 @@ const currentYear = new Date().getFullYear();
       </div>
 
       <div class="footer-section">
-        <h3>Connect With Us</h3>
+        <p class="footer-heading">Connect With Us</p>
         <div class="social-links">
           <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" class="social-link">
             <FacebookIcon />
-            Facebook
+            Facebook <span class="sr-only">(opens in new tab)</span>
           </a>
           <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" class="social-link">
             <InstagramIcon />
-            Instagram
+            Instagram <span class="sr-only">(opens in new tab)</span>
           </a>
         </div>
       </div>
@@ -67,14 +67,17 @@ const currentYear = new Date().getFullYear();
     }
   }
 
-  .footer-section h3 {
+  .footer-heading {
     color: var(--color-sand);
-    font-size: 1.25rem;
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    line-height: 1.2;
     margin-bottom: var(--space-sm);
   }
 
   .footer-section p {
-    font-size: 0.95rem;
+    font-size: var(--text-base);
     margin-bottom: var(--space-xs);
     line-height: 1.6;
   }
@@ -96,7 +99,7 @@ const currentYear = new Date().getFullYear();
     gap: var(--space-sm);
     color: var(--color-white);
     padding: var(--space-xs) 0;
-    transition: color 0.2s ease;
+    transition: color var(--transition-fast);
   }
 
   .social-link:hover {
@@ -114,7 +117,7 @@ const currentYear = new Date().getFullYear();
   }
 
   .footer-bottom p {
-    font-size: 0.9rem;
+    font-size: var(--text-base);
     opacity: 0.8;
   }
 </style>

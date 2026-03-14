@@ -28,21 +28,21 @@ const isPastEvent = parseLocalDate(event.data.date) < getTodayLocal();
           <h1>{event.data.title}</h1>
           <div class="event-meta">
             <div class="meta-item">
-              <strong>📅 Date:</strong> {formatDate(event.data.date)}
+              <strong><span aria-hidden="true">📅 </span>Date:</strong> {formatDate(event.data.date)}
             </div>
             {event.data.time && (
               <div class="meta-item">
-                <strong>🕐 Time:</strong> {event.data.time}
+                <strong><span aria-hidden="true">🕐 </span>Time:</strong> {event.data.time}
               </div>
             )}
             {event.data.location && (
               <div class="meta-item">
-                <strong>📍 Location:</strong> {event.data.location}
+                <strong><span aria-hidden="true">📍 </span>Location:</strong> {event.data.location}
               </div>
             )}
             {(event.data.registrationRequired || event.data.registrationUrl) && (
               <div class="meta-item registration-required">
-                <strong>⚠️ Registration Required</strong>
+                <strong><span aria-hidden="true">⚠️ </span>Registration Required</strong>
               </div>
             )}
           </div>
@@ -55,7 +55,7 @@ const isPastEvent = parseLocalDate(event.data.date) < getTodayLocal();
         {event.data.registrationUrl ? (
           <div class="event-actions">
             <a href={event.data.registrationUrl} target="_blank" rel="noopener noreferrer" class="btn">
-              Register for this Event
+              Register for this Event <span class="sr-only">(opens in new tab)</span>
             </a>
           </div>
         ) : event.data.registrationRequired && (
@@ -74,7 +74,7 @@ const isPastEvent = parseLocalDate(event.data.date) < getTodayLocal();
 
 <style>
   .event-detail {
-    max-width: 800px;
+    max-width: var(--content-medium);
     margin: 0 auto;
   }
 
@@ -85,11 +85,11 @@ const isPastEvent = parseLocalDate(event.data.date) < getTodayLocal();
 
   .past-event-badge {
     display: inline-block;
-    padding: 0.5rem 1rem;
+    padding: var(--space-xs) var(--space-sm);
     background-color: var(--color-gray);
     color: var(--color-white);
     border-radius: var(--border-radius);
-    font-size: 0.9rem;
+    font-size: var(--text-base);
     font-weight: 600;
     margin-bottom: var(--space-md);
   }
@@ -109,7 +109,7 @@ const isPastEvent = parseLocalDate(event.data.date) < getTodayLocal();
   }
 
   .meta-item {
-    font-size: 1.05rem;
+    font-size: var(--text-md);
   }
 
   .registration-required {
@@ -135,19 +135,5 @@ const isPastEvent = parseLocalDate(event.data.date) < getTodayLocal();
     font-style: italic;
   }
 
-  .back-link {
-    text-align: center;
-    padding-top: var(--space-xl);
-    border-top: 2px solid var(--color-light-gray);
-  }
-
-  .back-link a {
-    color: var(--color-primary);
-    font-weight: 600;
-  }
-
-  .back-link a:hover {
-    color: var(--color-accent);
-  }
 </style>
 

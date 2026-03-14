@@ -18,14 +18,14 @@ const { embedMapUrl } = MEETING.location;
       <div class="contact-grid">
         <!-- Meeting Information -->
         <div class="card contact-card">
-          <h2>📅 Monthly Meetings</h2>
+          <h2><span aria-hidden="true">📅 </span>Monthly Meetings</h2>
           <div class="contact-details">
             <p><strong>When:</strong></p>
             <p>{MEETING.schedule}</p>
             <p>{MEETING.time}</p>
             <p class="note">{MEETING.earlyArrival}</p>
 
-            <p style="margin-top: 1.5rem;"><strong>Where:</strong></p>
+            <p class="where-label"><strong>Where:</strong></p>
             <p>{MEETING.location.name}</p>
             <p>
               {MEETING.location.address}<br />
@@ -37,16 +37,16 @@ const { embedMapUrl } = MEETING.location;
               target="_blank"
               rel="noopener noreferrer"
               class="btn"
-              style="margin-top: 1rem;"
+              
             >
-              Get Directions
+              Get Directions <span class="sr-only">(opens in new tab)</span>
             </a>
           </div>
         </div>
 
         <!-- Social Media -->
         <div class="card contact-card">
-          <h2>💬 Connect Online</h2>
+          <h2><span aria-hidden="true">💬 </span>Connect Online</h2>
           <div class="contact-details">
             <p>Stay up to date with club activities, events, and trail reports through our social media channels:</p>
 
@@ -58,7 +58,7 @@ const { embedMapUrl } = MEETING.location;
                 class="social-button facebook"
               >
                 <FacebookIcon />
-                <span>Join our Facebook Group</span>
+                <span>Join our Facebook Group <span class="sr-only">(opens in new tab)</span></span>
               </a>
 
               <a
@@ -68,11 +68,11 @@ const { embedMapUrl } = MEETING.location;
                 class="social-button instagram"
               >
                 <InstagramIcon />
-                <span>Follow us on Instagram</span>
+                <span>Follow us on Instagram <span class="sr-only">(opens in new tab)</span></span>
               </a>
             </div>
 
-            <p style="margin-top: 1.5rem;">
+            <p class="social-note">
               Our Facebook group is the most active place for discussions,
               trip planning, and connecting with members between meetings.
             </p>
@@ -88,7 +88,7 @@ const { embedMapUrl } = MEETING.location;
             src={embedMapUrl}
             width="100%"
             height="450"
-            style="border:0;"
+            
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
@@ -146,6 +146,18 @@ const { embedMapUrl } = MEETING.location;
     color: var(--color-gray);
   }
 
+  .where-label {
+    margin-top: var(--space-md);
+  }
+
+  .contact-details .btn {
+    margin-top: var(--space-sm);
+  }
+
+  .social-note {
+    margin-top: var(--space-md);
+  }
+
   .social-buttons {
     display: flex;
     flex-direction: column;
@@ -161,7 +173,7 @@ const { embedMapUrl } = MEETING.location;
     border-radius: var(--border-radius);
     color: var(--color-white);
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all var(--transition-base);
   }
 
   .social-button:hover {
@@ -171,15 +183,16 @@ const { embedMapUrl } = MEETING.location;
   }
 
   .social-button.facebook {
-    background-color: #1877f2;
+    background-color: var(--color-facebook);
   }
 
   .social-button.facebook:hover {
-    background-color: #145dbf;
+    background-color: var(--color-facebook);
+    filter: brightness(0.85);
   }
 
   .social-button.instagram {
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: linear-gradient(45deg, #c2185b 0%, #ad1457 50%, #8e24aa 100%);
   }
 
   .social-button svg {
@@ -202,14 +215,18 @@ const { embedMapUrl } = MEETING.location;
     margin-bottom: var(--space-md);
   }
 
+  .map-container iframe {
+    border: 0;
+  }
+
   .map-caption {
     text-align: center;
     color: var(--color-gray);
-    font-size: 0.95rem;
+    font-size: var(--text-base);
   }
 
   .contact-info {
-    max-width: 800px;
+    max-width: var(--content-medium);
     margin: 0 auto;
     text-align: center;
   }

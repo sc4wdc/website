@@ -22,7 +22,7 @@ const wrapperProps = href ? { href, class: 'trail-card-link' } : {};
         </span>
       )}
     </div>
-    {location && <p class="trail-location">📍 {location}</p>}
+    {location && <p class="trail-location"><span aria-hidden="true">📍 </span>{location}</p>}
     {description && <p class="trail-description">{description}</p>}
   </Tag>
 </div>
@@ -33,7 +33,7 @@ const wrapperProps = href ? { href, class: 'trail-card-link' } : {};
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all var(--transition-base);
     height: 100%;
   }
 
@@ -64,7 +64,7 @@ const wrapperProps = href ? { href, class: 'trail-card-link' } : {};
   .trail-header h3 {
     margin: 0;
     color: var(--color-primary);
-    font-size: 1.25rem;
+    font-size: var(--text-xl);
   }
 
   .trail-card-link:hover h3 {
@@ -73,7 +73,7 @@ const wrapperProps = href ? { href, class: 'trail-card-link' } : {};
 
   .trail-location {
     color: var(--color-gray);
-    font-size: 0.95rem;
+    font-size: var(--text-base);
     margin-bottom: var(--space-sm);
   }
 

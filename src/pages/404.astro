@@ -10,7 +10,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <!-- Off-road vehicle illustration -->
         <div class="illustration">
-          <svg viewBox="0 0 220 130" fill="none" xmlns="http://www.w3.org/2000/svg" class="jeep-svg">
+          <svg viewBox="0 0 220 130" fill="none" xmlns="http://www.w3.org/2000/svg" class="jeep-svg" aria-hidden="true" focusable="false">
             <!-- Ground/Trail with rocks -->
             <path d="M0 110 Q55 105 110 110 T220 108 L220 130 L0 130 Z" fill="var(--color-earth)" opacity="0.4"/>
             <ellipse cx="30" cy="118" rx="8" ry="4" fill="var(--color-secondary)" opacity="0.3"/>
@@ -160,7 +160,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .error-content {
     text-align: center;
-    max-width: 600px;
+    max-width: var(--content-narrow);
     margin: 0 auto;
   }
 
@@ -203,6 +203,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .question-mark {
+      animation: none;
+    }
+  }
+
   .error-content h1 {
     color: var(--color-primary);
     margin-bottom: var(--space-md);
@@ -210,7 +216,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .error-message {
-    font-size: 1.2rem;
+    font-size: var(--text-xl);
     color: var(--color-dark);
     margin-bottom: var(--space-sm);
     line-height: 1.6;

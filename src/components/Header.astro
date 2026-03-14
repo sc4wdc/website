@@ -26,7 +26,7 @@ function isActive(itemHref: string): boolean {
         <a href="/">
           <!-- Placeholder for club logo -->
           <div class="logo-placeholder">
-            <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
               <rect width="50" height="50" rx="8" fill="currentColor"/>
               <text x="25" y="32" font-size="24" font-weight="bold" text-anchor="middle" fill="white">4WD</text>
             </svg>
@@ -90,7 +90,7 @@ function isActive(itemHref: string): boolean {
   }
 
   .logo-placeholder {
-    color: var(--color-accent);
+    color: var(--color-sand);
     flex-shrink: 0;
   }
 
@@ -100,13 +100,13 @@ function isActive(itemHref: string): boolean {
   }
 
   .club-name {
-    font-size: 1.25rem;
+    font-size: var(--text-xl);
     font-weight: 700;
     line-height: 1.2;
   }
 
   .tagline {
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     opacity: 0.9;
     font-style: italic;
   }
@@ -128,7 +128,7 @@ function isActive(itemHref: string): boolean {
     width: 25px;
     height: 3px;
     background-color: var(--color-white);
-    transition: all 0.3s ease;
+    transition: all var(--transition-base);
   }
 
   .mobile-menu-toggle.active span:nth-child(1) {
@@ -163,7 +163,7 @@ function isActive(itemHref: string): boolean {
     color: var(--color-white);
     font-weight: 500;
     border-radius: var(--border-radius);
-    transition: all 0.2s ease;
+    transition: all var(--transition-fast);
   }
 
   .nav-link:hover {
@@ -172,17 +172,17 @@ function isActive(itemHref: string): boolean {
   }
 
   .nav-link.active {
-    background-color: var(--color-accent);
+    background-color: var(--color-secondary);
   }
 
   /* Mobile Styles */
   @media (max-width: 768px) {
     .club-name {
-      font-size: 1rem;
+      font-size: var(--text-base);
     }
 
     .tagline {
-      font-size: 0.75rem;
+      font-size: var(--text-xs);
     }
 
     .mobile-menu-toggle {
@@ -197,7 +197,7 @@ function isActive(itemHref: string): boolean {
       height: 100vh;
       background-color: var(--color-primary);
       padding: var(--space-2xl) var(--space-md);
-      transition: right 0.3s ease;
+      transition: right var(--transition-base);
       box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);
     }
 
@@ -212,7 +212,7 @@ function isActive(itemHref: string): boolean {
 
     .nav-link {
       padding: var(--space-md);
-      font-size: 1.1rem;
+      font-size: var(--text-md);
     }
   }
 </style>

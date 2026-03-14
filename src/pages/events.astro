@@ -31,29 +31,28 @@ const pastEvents = allEvents
 
       <!-- Monthly Meeting Reminder -->
       <div class="card meeting-reminder">
-        <h2>📅 Regular Monthly Meeting</h2>
+        <h2><span aria-hidden="true">📅 </span>Regular Monthly Meeting</h2>
         <div class="meeting-details">
           <p><strong>{MEETING.schedule}</strong> at <strong>{MEETING.time}</strong></p>
           <p>{MEETING.location.name}, {MEETING.location.city}</p>
           <p class="note">{MEETING.earlyArrival}</p>
         </div>
-        <a href="/contact" class="btn">Meeting Details & Directions</a>
+        <a href="/contact" class="btn btn-inverse">Meeting Details & Directions</a>
       </div>
 
       <!-- Google Calendar Section -->
       <div class="calendar-section card">
-        <h2>📆 Club Calendar</h2>
+        <h2><span aria-hidden="true">📆 </span>Club Calendar</h2>
         <div class="calendar-embed">
           <iframe
             src={CALENDAR.embedUrl}
-            style="border: 0"
             width="100%"
             height="600"
             title="SC4WDC Events Calendar"
           ></iframe>
           <div class="calendar-links">
             <a href={CALENDAR.publicUrl} target="_blank" rel="noopener noreferrer" class="btn">
-              Open in Google Calendar
+              Open in Google Calendar <span class="sr-only">(opens in new tab)</span>
             </a>
           </div>
         </div>
@@ -120,29 +119,19 @@ const pastEvents = allEvents
 
   .meeting-details p {
     margin-bottom: var(--space-xs);
-    font-size: 1.1rem;
+    font-size: var(--text-md);
   }
 
   .meeting-details .note {
     font-style: italic;
     opacity: 0.9;
-    font-size: 1rem;
+    font-size: var(--text-base);
     margin-top: var(--space-sm);
   }
 
-  .meeting-reminder .btn {
-    background-color: var(--color-white);
-    color: var(--color-primary);
-    border-color: var(--color-white);
-  }
-
-  .meeting-reminder .btn:hover {
-    background-color: var(--color-off-white);
-    border-color: var(--color-off-white);
-  }
 
   .calendar-section {
-    max-width: 900px;
+    max-width: var(--content-wide);
     margin: 0 auto var(--space-xl);
     text-align: center;
   }
@@ -152,6 +141,7 @@ const pastEvents = allEvents
   }
 
   .calendar-embed iframe {
+    border: 0;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
   }
@@ -175,11 +165,12 @@ const pastEvents = allEvents
   }
 
   .past-events-section :global(.event-card) {
-    opacity: 0.7;
+    border-left: 3px solid var(--color-light-gray);
+    background-color: var(--color-off-white);
   }
 
   .past-events-section :global(.event-card:hover) {
-    opacity: 1;
+    background-color: var(--color-white);
   }
 
   .events-grid {
@@ -195,7 +186,7 @@ const pastEvents = allEvents
 
   .no-events {
     text-align: center;
-    max-width: 600px;
+    max-width: var(--content-narrow);
     margin: var(--space-xl) auto;
     padding: var(--space-2xl);
   }
