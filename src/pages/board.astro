@@ -126,11 +126,11 @@ const sortedBoard = [...(boardPage.data.board ?? [])].sort((a, b) => a.order - b
     align-items: center;
     justify-content: center;
     gap: var(--space-xs);
-    padding: var(--space-xs);
+    padding: var(--space-sm) var(--space-xs);
     font-size: var(--text-base);
     color: var(--color-primary);
     transition: color var(--transition-fast);
-    word-break: break-word;
+    overflow-wrap: anywhere;
   }
 
   .contact-link:hover {

@@ -153,6 +153,11 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : new URL('/favic
     --content-medium: 800px;
     --content-wide: 900px;
 
+    /* Breakpoints */
+    --bp-sm: 640px;
+    --bp-md: 768px;
+    --bp-lg: 1024px;
+
     /* Difficulty Badge Colors */
     --color-difficulty-easy: #2e7d32;
     --color-difficulty-moderate: var(--color-sand);
@@ -306,7 +311,7 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : new URL('/favic
 
   /* Difficulty Badges */
   .difficulty-badge {
-    padding: 0.25rem 0.75rem;
+    padding: var(--space-xs) var(--space-sm);
     border-radius: 20px;
     font-size: var(--text-sm);
     font-weight: 600;
