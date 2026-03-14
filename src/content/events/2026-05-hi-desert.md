@@ -5,6 +5,7 @@ location: Slash X Ranch, Barstow
 time: TBD
 description: Cal4Wheel's Memorial Day weekend event with trails, games, and camping
 registrationRequired: true
+registrationUrl: https://cal4wheel.com/
 ---
 
 ## Dates

@@ -5,6 +5,7 @@ location: Hollister Hills SRVA
 time: TBD
 description: Cal4 Wheel Annual Event
 registrationRequired: true
+registrationUrl: https://cal4wheel.com/
 ---
 
 ## Dates

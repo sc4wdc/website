@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ContentPage from '../layouts/ContentPage.astro';
 import { getEntry } from 'astro:content';
 
 const aboutPage = await getEntry('pages', 'about');
@@ -7,63 +7,6 @@ if (!aboutPage) throw new Error('About page not found');
 const { Content } = await aboutPage.render();
 ---
 
-<BaseLayout title={aboutPage.data.title} description={aboutPage.data.description}>
-  <section class="section content-page">
-    <div class="container">
-      <article class="prose">
-        <Content />
-      </article>
-    </div>
-  </section>
-</BaseLayout>
-
-<style>
-  .content-page {
-    background-color: var(--color-white);
-  }
-
-  .prose {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .prose :global(h2) {
-    margin-top: var(--space-xl);
-    padding-top: var(--space-lg);
-    border-top: 2px solid var(--color-light-gray);
-  }
-
-  .prose :global(h2:first-of-type) {
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
-  }
-
-  .prose :global(h3) {
-    margin-top: var(--space-lg);
-    color: var(--color-secondary);
-  }
-
-  .prose :global(ul) {
-    list-style: none;
-    margin-left: 0;
-  }
-
-  .prose :global(li) {
-    padding-left: var(--space-lg);
-    position: relative;
-  }
-
-  .prose :global(li::before) {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--color-accent);
-    font-weight: bold;
-  }
-
-  .prose :global(strong) {
-    color: var(--color-primary);
-  }
-</style>
-
+<ContentPage title={aboutPage.data.title} description={aboutPage.data.description}>
+  <Content />
+</ContentPage>

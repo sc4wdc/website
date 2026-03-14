@@ -5,6 +5,7 @@ location: Death Valley National Park, Stovepipe Wells
 time: TBD
 description: Cal4Wheel's annual multi-day adventure in Death Valley
 registrationRequired: true
+registrationUrl: https://cal4wheel.com/
 ---
 
 ## Dates

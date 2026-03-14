@@ -2,7 +2,7 @@
 
 This is the official website for the Santa Cruz 4 Wheel Drive Club (SC4WDC), a 501(c)(3) non-profit organization dedicated to keeping public lands open and supporting our local community.
 
-🌐 **Live Site**: [https://sc4wdc.github.io/sc4wdc](https://sc4wdc.github.io/sc4wdc)
+🌐 **Live Site**: [https://sc4wdc.com](https://sc4wdc.com)
 
 ## About This Website
 
@@ -47,7 +47,7 @@ Board member data is stored in the frontmatter of this markdown file. Edit the `
     order: 1
     email: president@sc4wdc.com
     phone: "(831) 555-0100"
-    photo: /sc4wdc/images/board/gary-rowe.jpg
+    photo: /images/board/gary-rowe.jpg
 ```
 
 **Note**: Email addresses and phone numbers are publicly visible on the website. Make sure board members are comfortable with their contact information being displayed.
@@ -165,7 +165,7 @@ Contact information...
 Images need to be placed in the `public/` folder and referenced in your markdown:
 
 ```markdown
-![Image description](/sc4wdc/images/photo-name.jpg)
+![Image description](/images/photo-name.jpg)
 ```
 
 **Note**: You may need help from someone with Git installed to add images initially. Ask a board member for assistance.
@@ -189,14 +189,14 @@ Board member photos require direct file system access and cannot be added throug
 
 3. **Update the board page**:
    - Edit `src/content/pages/board.md`
-   - Add the `photo` field to the board member's entry with the path: `/sc4wdc/images/board/filename.jpg`
+   - Add the `photo` field to the board member's entry with the path: `/images/board/filename.jpg`
    - Example (YAML frontmatter):
    ```yaml
      - name: Gary Rowe
        position: President
        order: 1
        email: president@sc4wdc.com
-       photo: /sc4wdc/images/board/gary-rowe.jpg
+       photo: /images/board/gary-rowe.jpg
    ```
 
 4. **Commit and deploy**: Push your changes to GitHub
@@ -273,6 +273,8 @@ sc4wdc/
 | `npm install` | Install dependencies |
 | `npm run dev` | Start dev server at `localhost:4321` |
 | `npm run build` | Build production site to `./dist/` |
+| `npm test` | Run unit tests |
+| `npm run lint` | Run type checking |
 | `npm run preview` | Preview production build locally |
 | `npm run astro` | Run Astro CLI commands |
 
@@ -293,7 +295,7 @@ The site automatically deploys to GitHub Pages when changes are pushed to the `m
 1. Runs `npm run build` to generate static files
 2. Uploads the `dist/` folder
 3. Deploys to GitHub Pages
-4. Site is live at: https://sc4wdc.github.io/sc4wdc
+4. Site is live at: https://sc4wdc.com
 
 #### First-Time GitHub Pages Setup
 
@@ -309,19 +311,17 @@ After the first deployment, your site will be available at the URL shown on the 
 
 ### Configuration Notes
 
-#### Updating the Base URL
+#### Updating the Site URL
 
-If you change the repository name, update `astro.config.mjs`:
+If the domain changes, update `astro.config.mjs`:
 
 ```javascript
 export default defineConfig({
-  site: 'https://sc4wdc.github.io',
-  base: '/new-repo-name',  // Change this
+  site: 'https://sc4wdc.com',
+  base: '/',
   // ...
 });
 ```
-
-Also update all internal links in the codebase from `/sc4wdc/` to `/new-repo-name/`.
 
 ## Adding Google Calendar
 
@@ -363,7 +363,7 @@ export const CALENDAR = {
 } as const;
 ```
 
-The calendar will automatically display on the Events page! If the `embedUrl` is empty, helpful setup instructions will be shown instead.
+The calendar will automatically display on the Events page once both URLs are configured.
 
 ## Markdown Formatting Guide
 
@@ -398,7 +398,7 @@ The calendar will automatically display on the Events page! If the `embedUrl` is
 
 ### Images
 ```markdown
-![Image description](/sc4wdc/images/photo.jpg)
+![Image description](/images/photo.jpg)
 ```
 
 ### Blockquotes

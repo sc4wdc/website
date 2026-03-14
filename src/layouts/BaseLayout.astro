@@ -6,9 +6,12 @@ import { SITE } from '../consts';
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
 }
 
-const { title, description = `${SITE.name} - ${SITE.tagline}` } = Astro.props;
+const { title, description = `${SITE.name} - ${SITE.tagline}`, ogImage } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : new URL('/favicon.svg', Astro.site).href;
 ---
 
 <!DOCTYPE html>
@@ -17,12 +20,29 @@ const { title, description = `${SITE.name} - ${SITE.tagline}` } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
     <title>{title} | SC4WDC</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl.href} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl.href} />
+    <meta property="og:title" content={`${title} | SC4WDC`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:image" content={ogImageUrl} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={`${title} | SC4WDC`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <Header />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />
@@ -30,6 +50,23 @@ const { title, description = `${SITE.name} - ${SITE.tagline}` } = Astro.props;
 </html>
 
 <style is:global>
+  /* Skip Link */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 9999;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .skip-link:focus {
+    left: 0;
+  }
+
   /* CSS Reset & Base Styles */
   *, *::before, *::after {
     box-sizing: border-box;
@@ -205,6 +242,123 @@ const { title, description = `${SITE.name} - ${SITE.tagline}` } = Astro.props;
     max-width: 100%;
     height: auto;
     display: block;
+  }
+
+  /* Difficulty Badges */
+  .difficulty-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .difficulty-easy {
+    background-color: #4caf50;
+    color: white;
+  }
+
+  .difficulty-moderate {
+    background-color: var(--color-sand);
+    color: var(--color-dark);
+  }
+
+  .difficulty-difficult {
+    background-color: var(--color-accent);
+    color: white;
+  }
+
+  .difficulty-extreme {
+    background-color: #d32f2f;
+    color: white;
+  }
+
+  /* Prose (markdown content) */
+  .prose h2 {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 2px solid var(--color-light-gray);
+  }
+
+  .prose h2:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .prose h3 {
+    margin-top: var(--space-lg);
+    color: var(--color-secondary);
+  }
+
+  .prose h4 {
+    margin-top: var(--space-md);
+    color: var(--color-accent);
+    font-size: 1.1rem;
+  }
+
+  .prose ul {
+    list-style: none;
+    margin-left: 0;
+  }
+
+  .prose li {
+    padding-left: var(--space-lg);
+    position: relative;
+  }
+
+  .prose li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+  }
+
+  .prose ol {
+    margin-left: var(--space-lg);
+  }
+
+  .prose ol li::before {
+    content: none;
+  }
+
+  .prose a {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-underline-offset: 2px;
+  }
+
+  .prose a:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  .prose strong {
+    color: var(--color-primary);
+  }
+
+  .prose blockquote {
+    border-left: 4px solid var(--color-accent);
+    padding-left: var(--space-md);
+    margin: var(--space-lg) 0;
+    font-style: italic;
+    color: var(--color-gray);
+  }
+
+  .prose hr {
+    border: none;
+    border-top: 2px solid var(--color-light-gray);
+    margin: var(--space-xl) 0;
+  }
+
+  /* Page intro text */
+  .intro {
+    text-align: center;
+    font-size: 1.125rem;
+    max-width: 700px;
+    margin: 0 auto var(--space-xl);
+    color: var(--color-gray);
   }
 </style>
 

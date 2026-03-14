@@ -5,6 +5,7 @@ location: Grass Valley, CA
 time: 9:30 AM
 description: Cal4Wheel's annual snow wheeling event in the Sierra Nevada
 registrationRequired: true
+registrationUrl: https://cal4wheel.com/
 ---
 
 ## Dates

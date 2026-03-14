@@ -21,7 +21,7 @@ This is a simplified guide for club members who want to edit the website content
 
 ### 2. Add a New Trail Report
 
-1. Go to https://github.com/dsmigiel/sc4wdc/tree/main/src/content/trails
+1. Go to `src/content/trails/` in the repository
 1. Click **"Add file"** → **"Create new file"**
 1. Name your file: `trail-name.md` (example: `rubicon-spring-2024.md`)
 1. Copy and paste this template:
@@ -102,7 +102,7 @@ To change board member names, positions, or contact info:
     order: 1
     email: president@sc4wdc.org
     phone: "(831) 555-0100"
-    photo: /sc4wdc/images/board/person-name.jpg
+    photo: /images/board/person-name.jpg
 ```
 
 **Important**: Email addresses and phone numbers will be publicly visible on the website. Make sure board members agree to share their contact information.

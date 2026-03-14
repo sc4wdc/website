@@ -77,11 +77,7 @@ const trails = allTrails.sort((a, b) => b.data.date.getTime() - a.data.date.getT
 
 <style>
   .intro {
-    text-align: center;
-    font-size: 1.125rem;
-    max-width: 700px;
-    margin: 0 auto var(--space-2xl);
-    color: var(--color-gray);
+    margin-bottom: var(--space-2xl);
   }
 
   .trails-grid {
@@ -150,32 +146,7 @@ const trails = allTrails.sort((a, b) => b.data.date.getTime() - a.data.date.getT
 
   .difficulty-badge {
     padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    white-space: nowrap;
     flex-shrink: 0;
-  }
-
-  .difficulty-easy {
-    background-color: #4caf50;
-    color: white;
-  }
-
-  .difficulty-moderate {
-    background-color: var(--color-sand);
-    color: var(--color-dark);
-  }
-
-  .difficulty-difficult {
-    background-color: var(--color-accent);
-    color: white;
-  }
-
-  .difficulty-extreme {
-    background-color: #d32f2f;
-    color: white;
   }
 
   .difficulty-item p {

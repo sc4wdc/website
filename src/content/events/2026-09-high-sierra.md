@@ -5,6 +5,7 @@ location: Near Shaver Lake, CA
 time: TBD
 description: Cal4Wheel's premier Central District event with multiple trail options and poker run fun
 registrationRequired: true
+registrationUrl: https://cal4wheel.com/
 ---
 
 ## Dates

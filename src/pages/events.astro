@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EventCard from '../components/EventCard.astro';
 import { getCollection } from 'astro:content';
-import { MEETING, CALENDAR, SOCIAL } from '../consts';
+import { MEETING, CALENDAR } from '../consts';
 import { parseLocalDate, getTodayLocal } from '../utils/date';
 
 const allEvents = await getCollection('events');
@@ -12,11 +12,11 @@ const today = getTodayLocal();
 
 const upcomingEvents = allEvents
   .filter(event => parseLocalDate(event.data.date) >= today)
-  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+  .sort((a, b) => parseLocalDate(a.data.date).getTime() - parseLocalDate(b.data.date).getTime());
 
 const pastEvents = allEvents
   .filter(event => parseLocalDate(event.data.date) < today)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  .sort((a, b) => parseLocalDate(b.data.date).getTime() - parseLocalDate(a.data.date).getTime());
 ---
 
 <BaseLayout title="Events & Calendar" description="Upcoming events, meetings, and trail rides with Santa Cruz 4WDC">
@@ -43,52 +43,20 @@ const pastEvents = allEvents
       <!-- Google Calendar Section -->
       <div class="calendar-section card">
         <h2>📆 Club Calendar</h2>
-        {CALENDAR.embedUrl ? (
-          <div class="calendar-embed">
-            <iframe
-              src={CALENDAR.embedUrl}
-              style="border: 0"
-              width="100%"
-              height="600"
-              title="SC4WDC Events Calendar"
-            ></iframe>
-            {CALENDAR.publicUrl && (
-              <div class="calendar-links">
-                <a href={CALENDAR.publicUrl} target="_blank" rel="noopener noreferrer" class="btn">
-                  Open in Google Calendar
-                </a>
-              </div>
-            )}
+        <div class="calendar-embed">
+          <iframe
+            src={CALENDAR.embedUrl}
+            style="border: 0"
+            width="100%"
+            height="600"
+            title="SC4WDC Events Calendar"
+          ></iframe>
+          <div class="calendar-links">
+            <a href={CALENDAR.publicUrl} target="_blank" rel="noopener noreferrer" class="btn">
+              Open in Google Calendar
+            </a>
           </div>
-        ) : (
-          <div class="calendar-setup-instructions">
-            <p><strong>Google Calendar not yet configured.</strong></p>
-            <p>To add the club's Google Calendar to this page, follow these steps:</p>
-            <ol>
-              <li>Go to <a href="https://calendar.google.com" target="_blank" rel="noopener noreferrer">Google Calendar</a></li>
-              <li>Find your club calendar in the left sidebar</li>
-              <li>Click the three dots next to the calendar name → Settings and sharing</li>
-              <li>Scroll to "Access permissions" and check "Make available to public"</li>
-              <li>Scroll to "Integrate calendar" section</li>
-              <li>Copy the <strong>Calendar ID</strong> (looks like: abc123@group.calendar.google.com)</li>
-              <li>Copy the <strong>iframe embed code</strong></li>
-              <li>Extract the <code>src</code> URL from the iframe (starts with https://calendar.google.com/calendar/embed)</li>
-              <li>Update <code>src/consts.ts</code> with:
-                <ul>
-                  <li><code>"embedUrl": "paste-the-src-url-here"</code></li>
-                  <li><code>"publicUrl": "https://calendar.google.com/calendar/u/0?cid=YOUR_CALENDAR_ID"</code></li>
-                </ul>
-              </li>
-              <li>Commit and push your changes</li>
-            </ol>
-            <p>For now, check our Facebook group for the latest event information:</p>
-            <div class="calendar-links">
-              <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" class="btn">
-                View Events on Facebook
-              </a>
-            </div>
-          </div>
-        )}
+        </div>
       </div>
 
       <!-- Upcoming Events -->
@@ -134,14 +102,6 @@ const pastEvents = allEvents
 </BaseLayout>
 
 <style>
-  .intro {
-    text-align: center;
-    font-size: 1.125rem;
-    max-width: 700px;
-    margin: 0 auto var(--space-xl);
-    color: var(--color-gray);
-  }
-
   .meeting-reminder {
     max-width: 700px;
     margin: 0 auto var(--space-xl);
@@ -196,51 +156,6 @@ const pastEvents = allEvents
     box-shadow: var(--shadow);
   }
 
-  .calendar-setup-instructions {
-    text-align: left;
-    max-width: 700px;
-    margin: var(--space-lg) auto;
-    padding: var(--space-lg);
-    background-color: var(--color-light-gray);
-    border-radius: var(--border-radius);
-  }
-
-  .calendar-setup-instructions p {
-    margin-bottom: var(--space-md);
-  }
-
-  .calendar-setup-instructions ol {
-    margin-left: var(--space-lg);
-    margin-bottom: var(--space-md);
-  }
-
-  .calendar-setup-instructions li {
-    margin-bottom: var(--space-sm);
-    line-height: 1.6;
-  }
-
-  .calendar-setup-instructions ul {
-    margin-left: var(--space-lg);
-    margin-top: var(--space-xs);
-  }
-
-  .calendar-setup-instructions code {
-    background-color: var(--color-white);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.9em;
-  }
-
-  .calendar-setup-instructions a {
-    color: var(--color-primary);
-    text-decoration: underline;
-  }
-
-  .calendar-setup-instructions a:hover {
-    color: var(--color-accent);
-  }
-
   .calendar-links {
     margin-top: var(--space-lg);
     text-align: center;
@@ -255,12 +170,16 @@ const pastEvents = allEvents
     margin-bottom: var(--space-xl);
   }
 
-  .past-events-section {
-    opacity: 0.8;
-  }
-
   .past-events-section h2 {
     color: var(--color-gray);
+  }
+
+  .past-events-section :global(.event-card) {
+    opacity: 0.7;
+  }
+
+  .past-events-section :global(.event-card:hover) {
+    opacity: 1;
   }
 
   .events-grid {

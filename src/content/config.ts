@@ -25,7 +25,7 @@ const eventsCollection = defineCollection({
     time: z.string().optional(),
     description: z.string(),
     registrationRequired: z.boolean().default(false),
-    registrationUrl: z.string().optional(),
+    registrationUrl: z.string().url().optional(),
   }),
 });
 
@@ -41,7 +41,7 @@ const pagesCollection = defineCollection({
       order: z.number(),
       email: z.string().email(),
       phone: z.string().optional(),
-      photo: z.string().optional(),
+      photo: z.string().min(1).optional(),
     })).optional(),
   }),
 });

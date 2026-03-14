@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EventCard from '../components/EventCard.astro';
+import TrailCard from '../components/TrailCard.astro';
 import { getCollection } from 'astro:content';
 import { SITE, MEETING, SOCIAL } from '../consts';
 import { parseLocalDate, getTodayLocal } from '../utils/date';
@@ -10,13 +11,13 @@ const allEvents = await getCollection('events');
 const today = getTodayLocal();
 const upcomingEvents = allEvents
   .filter(event => parseLocalDate(event.data.date) >= today)
-  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
+  .sort((a, b) => parseLocalDate(a.data.date).getTime() - parseLocalDate(b.data.date).getTime())
   .slice(0, 3);
 
 // Get recent trail reports
 const allTrails = await getCollection('trails');
 const recentTrails = allTrails
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .sort((a, b) => parseLocalDate(b.data.date).getTime() - parseLocalDate(a.data.date).getTime())
   .slice(0, 3);
 ---
 
@@ -90,19 +91,13 @@ const recentTrails = allTrails
         <h2>Recent Trail Reports</h2>
         <div class="trails-grid">
           {recentTrails.map(trail => (
-            <div class="trail-preview-card card">
-              <h3>
-                <a href={`/trails/${trail.slug}`}>{trail.data.title}</a>
-              </h3>
-              <div class="trail-meta">
-                <span class={`difficulty-badge difficulty-${trail.data.difficulty.toLowerCase()}`}>
-                  {trail.data.difficulty}
-                </span>
-                <span>📍 {trail.data.location}</span>
-              </div>
-              <p>{trail.data.description}</p>
-              <a href={`/trails/${trail.slug}`} class="read-more">Read More →</a>
-            </div>
+            <TrailCard
+              title={trail.data.title}
+              difficulty={trail.data.difficulty}
+              location={trail.data.location}
+              description={trail.data.description}
+              href={`/trails/${trail.slug}`}
+            />
           ))}
         </div>
         <div style="text-align: center; margin-top: 2rem;">
@@ -222,57 +217,6 @@ const recentTrails = allTrails
     .trails-grid {
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
-  }
-
-  .trail-preview-card h3 {
-    margin-bottom: var(--space-sm);
-  }
-
-  .trail-preview-card h3 a {
-    color: var(--color-primary);
-  }
-
-  .trail-meta {
-    display: flex;
-    gap: var(--space-md);
-    align-items: center;
-    margin-bottom: var(--space-sm);
-    flex-wrap: wrap;
-  }
-
-  .difficulty-badge {
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-
-  .difficulty-easy {
-    background-color: #4caf50;
-    color: white;
-  }
-
-  .difficulty-moderate {
-    background-color: var(--color-sand);
-    color: var(--color-dark);
-  }
-
-  .difficulty-difficult {
-    background-color: var(--color-accent);
-    color: white;
-  }
-
-  .difficulty-extreme {
-    background-color: #d32f2f;
-    color: white;
-  }
-
-  .read-more {
-    color: var(--color-accent);
-    font-weight: 600;
-    display: inline-block;
-    margin-top: var(--space-sm);
   }
 
   .cta-section {

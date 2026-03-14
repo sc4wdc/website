@@ -4,7 +4,7 @@ date: 2025-11-08
 location: Mark and April's house
 time: 9:30 AM
 description: Easy Saturday Run
-registrationRequired: true
+registrationRequired: false
 ---
 
 ## Prewitt Ridge

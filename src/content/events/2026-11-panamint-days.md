@@ -5,6 +5,7 @@ location: Near Trona, CA
 time: TBD
 description: Cal4Wheel desert fundraiser with runs ranging from scenic to hardcore
 registrationRequired: true
+registrationUrl: https://cal4wheel.com/
 ---
 
 ## Dates

@@ -1,57 +1,45 @@
 /**
- * Parse a date from Astro content collection and convert to Pacific timezone.
- * YAML dates are parsed as UTC, so we extract the year/month/day components
- * and interpret them as Pacific timezone dates.
+ * Normalize a content-collection Date to UTC midnight for stable comparison.
+ * YAML dates are parsed as UTC midnight by Astro; this strips any residual
+ * hours/minutes/seconds so all comparisons use date-only granularity.
  */
-export function parseLocalDate(dateString: string | Date): Date {
-  if (dateString instanceof Date) {
-    // Extract UTC date components
-    const year = dateString.getUTCFullYear();
-    const month = dateString.getUTCMonth();
-    const day = dateString.getUTCDate();
-    
-    // Create a date string in YYYY-MM-DD format
-    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-    
-    // Parse as Pacific timezone by appending timezone offset
-    // Using PST offset (UTC-8), which covers most of the year
-    return new Date(`${dateStr}T00:00:00-08:00`);
-  }
-  // Fallback for string dates
-  return new Date(`${dateString}T00:00:00-08:00`);
+export function parseLocalDate(date: Date): Date {
+  return new Date(Date.UTC(
+    date.getUTCFullYear(),
+    date.getUTCMonth(),
+    date.getUTCDate()
+  ));
 }
 
 /**
- * Format a date for display in Pacific timezone
+ * Format a content collection date for display.
+ * Normalizes via parseLocalDate first so the UTC calendar day matches the
+ * frontmatter value, then formats in UTC to avoid timezone day-shift.
  */
 export function formatDate(date: Date): string {
-  const pacificDate = parseLocalDate(date);
-  return pacificDate.toLocaleDateString('en-US', {
+  const d = parseLocalDate(date);
+  return d.toLocaleDateString('en-US', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-    timeZone: 'America/Los_Angeles'
+    timeZone: 'UTC'
   });
 }
 
 /**
- * Get current date in Pacific timezone for comparison
+ * Get today's date as UTC midnight, based on the current Pacific-timezone calendar day.
+ * Uses Intl.DateTimeFormat.formatToParts for reliable locale-independent parsing.
  */
 export function getTodayLocal(): Date {
-  const now = new Date();
-  // Get the current date in Pacific timezone
-  const pacificDateStr = now.toLocaleDateString('en-US', {
+  const fmt = new Intl.DateTimeFormat('en-US', {
     timeZone: 'America/Los_Angeles',
     year: 'numeric',
     month: '2-digit',
     day: '2-digit'
   });
-  
-  // Parse MM/DD/YYYY format
-  const [month, day, year] = pacificDateStr.split('/');
-  const dateStr = `${year}-${month}-${day}`;
-  
-  return new Date(`${dateStr}T00:00:00-08:00`);
+  const parts = Object.fromEntries(
+    fmt.formatToParts(new Date()).map(p => [p.type, p.value])
+  );
+  return new Date(Date.UTC(+parts.year, +parts.month - 1, +parts.day));
 }
-

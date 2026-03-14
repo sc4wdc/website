@@ -21,7 +21,7 @@ Place board member photos in this directory.
        position: President
        order: 1
        email: president@sc4wdc.com
-       photo: /sc4wdc/images/board/gary-rowe.jpg
+       photo: /images/board/gary-rowe.jpg
    ```
 4. Commit and push your changes
 

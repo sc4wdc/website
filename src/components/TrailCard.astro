@@ -1,43 +1,30 @@
 ---
 interface Props {
   title: string;
-  difficulty?: string;
+  difficulty?: 'Easy' | 'Moderate' | 'Difficult' | 'Extreme';
   location?: string;
   description?: string;
   href?: string;
 }
 
 const { title, difficulty, location, description, href } = Astro.props;
+const Tag = href ? 'a' : 'div';
+const wrapperProps = href ? { href, class: 'trail-card-link' } : {};
 ---
 
 <div class="trail-card">
-  {href ? (
-    <a href={href} class="trail-card-link">
-      <div class="trail-header">
-        <h3>{title}</h3>
-        {difficulty && (
-          <span class={`difficulty-badge difficulty-${difficulty.toLowerCase()}`}>
-            {difficulty}
-          </span>
-        )}
-      </div>
-      {location && <p class="trail-location">📍 {location}</p>}
-      {description && <p class="trail-description">{description}</p>}
-    </a>
-  ) : (
-    <div>
-      <div class="trail-header">
-        <h3>{title}</h3>
-        {difficulty && (
-          <span class={`difficulty-badge difficulty-${difficulty.toLowerCase()}`}>
-            {difficulty}
-          </span>
-        )}
-      </div>
-      {location && <p class="trail-location">📍 {location}</p>}
-      {description && <p class="trail-description">{description}</p>}
+  <Tag {...wrapperProps}>
+    <div class="trail-header">
+      <h3>{title}</h3>
+      {difficulty && (
+        <span class={`difficulty-badge difficulty-${difficulty.toLowerCase()}`}>
+          {difficulty}
+        </span>
+      )}
     </div>
-  )}
+    {location && <p class="trail-location">📍 {location}</p>}
+    {description && <p class="trail-description">{description}</p>}
+  </Tag>
 </div>
 
 <style>
@@ -82,35 +69,6 @@ const { title, difficulty, location, description, href } = Astro.props;
 
   .trail-card-link:hover h3 {
     color: var(--color-accent);
-  }
-
-  .difficulty-badge {
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-  .difficulty-easy {
-    background-color: #4caf50;
-    color: white;
-  }
-
-  .difficulty-moderate {
-    background-color: var(--color-sand);
-    color: var(--color-dark);
-  }
-
-  .difficulty-difficult {
-    background-color: var(--color-accent);
-    color: white;
-  }
-
-  .difficulty-extreme {
-    background-color: #d32f2f;
-    color: white;
   }
 
   .trail-location {

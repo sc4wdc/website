@@ -4,7 +4,7 @@ date: 2026-06-19
 location: South Fork Group Campground
 time: TBD
 description: Poker run on the Rubicon Trail from Loon Lake to Wentworth Springs
-registrationRequired: true
+registrationRequired: false
 ---
 
 ## Dates

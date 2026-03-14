@@ -5,6 +5,7 @@ location: Meadow Lake, near Truckee, CA
 time: TBD
 description: Cal4Wheel's premier Sierra Nevada event with trails, food, and family fun
 registrationRequired: true
+registrationUrl: https://cal4wheel.com/
 ---
 
 ## Dates

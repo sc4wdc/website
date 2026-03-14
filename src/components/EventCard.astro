@@ -14,8 +14,8 @@ const localDate = parseLocalDate(date);
 
 <div class="event-card">
   <div class="event-date">
-    <span class="date-day">{localDate.getDate()}</span>
-    <span class="date-month">{localDate.toLocaleDateString('en-US', { month: 'short', timeZone: 'America/Los_Angeles' })}</span>
+    <span class="date-day">{localDate.toLocaleDateString('en-US', { day: 'numeric', timeZone: 'UTC' })}</span>
+    <span class="date-month">{localDate.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' })}</span>
   </div>
   <div class="event-details">
     {href ? (

@@ -5,6 +5,7 @@ location: Goffs, CA
 time: TBD
 description: Four days of desert adventure, education, and exploration at historic Goffs Schoolhouse
 registrationRequired: true
+registrationUrl: https://cal4wheel.com/
 ---
 
 ## Dates

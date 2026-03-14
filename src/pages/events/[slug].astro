@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { formatDate } from '../../utils/date';
+import { formatDate, parseLocalDate, getTodayLocal } from '../../utils/date';
 
 export async function getStaticPaths() {
   const events = await getCollection('events');
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 const { event } = Astro.props;
 const { Content } = await event.render();
 
-const isPastEvent = event.data.date < new Date();
+const isPastEvent = parseLocalDate(event.data.date) < getTodayLocal();
 ---
 
 <BaseLayout title={event.data.title} description={event.data.description}>
@@ -40,7 +40,7 @@ const isPastEvent = event.data.date < new Date();
                 <strong>📍 Location:</strong> {event.data.location}
               </div>
             )}
-            {event.data.registrationRequired && (
+            {(event.data.registrationRequired || event.data.registrationUrl) && (
               <div class="meta-item registration-required">
                 <strong>⚠️ Registration Required</strong>
               </div>
@@ -52,11 +52,15 @@ const isPastEvent = event.data.date < new Date();
           <Content />
         </div>
 
-        {event.data.registrationUrl && (
+        {event.data.registrationUrl ? (
           <div class="event-actions">
             <a href={event.data.registrationUrl} target="_blank" rel="noopener noreferrer" class="btn">
               Register for this Event
             </a>
+          </div>
+        ) : event.data.registrationRequired && (
+          <div class="event-actions">
+            <p class="registration-note">See event details above or contact the organizer for registration information.</p>
           </div>
         )}
 
@@ -121,56 +125,14 @@ const isPastEvent = event.data.date < new Date();
     margin-bottom: var(--space-xl);
   }
 
-  .prose :global(h2) {
-    margin-top: var(--space-xl);
-    padding-top: var(--space-lg);
-    border-top: 2px solid var(--color-light-gray);
-  }
-
-  .prose :global(h2:first-of-type) {
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
-  }
-
-  .prose :global(h3) {
-    margin-top: var(--space-lg);
-    color: var(--color-secondary);
-  }
-
-  .prose :global(ul) {
-    list-style: none;
-    margin-left: 0;
-  }
-
-  .prose :global(li) {
-    padding-left: var(--space-lg);
-    position: relative;
-  }
-
-  .prose :global(li::before) {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--color-accent);
-    font-weight: bold;
-  }
-
-  .prose :global(ol) {
-    margin-left: var(--space-lg);
-  }
-
-  .prose :global(ol li::before) {
-    content: none;
-  }
-
-  .prose :global(strong) {
-    color: var(--color-primary);
-  }
-
   .event-actions {
     text-align: center;
     margin-bottom: var(--space-xl);
+  }
+
+  .registration-note {
+    color: var(--color-gray);
+    font-style: italic;
   }
 
   .back-link {

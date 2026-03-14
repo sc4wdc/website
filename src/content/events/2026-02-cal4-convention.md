@@ -5,6 +5,7 @@ location: Table Mountain Casino & Resort, Friant, CA
 time: 9:00 AM
 description: Cal4Wheel's 67th anniversary convention with seminars, vendors, and awards banquet
 registrationRequired: true
+registrationUrl: https://cal4wheel.com/
 ---
 
 ## Dates
