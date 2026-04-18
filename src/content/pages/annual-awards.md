@@ -2,7 +2,7 @@
 pageType: annual-awards
 title: Annual Awards
 description: Recognizing outstanding members and trails each year
-intro: Every year our club honors the members and trails that made the biggest impact. Here are our award categories and past recipients.
+intro: Every year our club honors the members that made the biggest impact. Here are our award categories and past recipients.
 ---
 
 ## About the Awards
