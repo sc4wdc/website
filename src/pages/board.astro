@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getEntry } from 'astro:content';
+import { getEntry, render } from 'astro:content';
 import { getBoardMembers } from '../utils/site';
 
 const [boardPage, boardMembers] = await Promise.all([
@@ -12,7 +12,7 @@ if (!boardPage || boardPage.data.pageType !== 'board') {
   throw new Error('Board page not found');
 }
 
-const { Content } = await boardPage.render();
+const { Content } = await render(boardPage);
 ---
 
 <BaseLayout title={boardPage.data.title} description={boardPage.data.description}>

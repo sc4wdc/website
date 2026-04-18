@@ -1,18 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import { formatDate } from '../../utils/date';
 
 export async function getStaticPaths() {
   const trails = await getCollection('trails');
   return trails.map(trail => ({
-    params: { slug: trail.slug },
+    params: { slug: trail.id },
     props: { trail },
   }));
 }
 
 const { trail } = Astro.props;
-const { Content } = await trail.render();
+const { Content } = await render(trail);
 ---
 
 <BaseLayout title={trail.data.title} description={trail.data.description}>

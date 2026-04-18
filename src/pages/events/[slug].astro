@@ -1,18 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import { formatDate, parseLocalDate, getTodayLocal } from '../../utils/date';
 
 export async function getStaticPaths() {
   const events = await getCollection('events');
   return events.map(event => ({
-    params: { slug: event.slug },
+    params: { slug: event.id },
     props: { event },
   }));
 }
 
 const { event } = Astro.props;
-const { Content } = await event.render();
+const { Content } = await render(event);
 
 const isPastEvent = parseLocalDate(event.data.date) < getTodayLocal();
 ---

@@ -83,7 +83,7 @@ function isExternalLink(href: string): boolean {
               title={event.data.title}
               date={event.data.date}
               location={event.data.location}
-              href={`/events/${event.slug}`}
+              href={`/events/${event.id}`}
             />
           ))}
         </div>
@@ -106,7 +106,7 @@ function isExternalLink(href: string): boolean {
               difficulty={trail.data.difficulty}
               location={trail.data.location}
               description={trail.data.description}
-              href={`/trails/${trail.slug}`}
+              href={`/trails/${trail.id}`}
             />
           ))}
         </div>

@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AwardsYearGrid from '../../components/AwardsYearGrid.astro';
+import { getAwardsYears } from '../../utils/site';
+
+export async function getStaticPaths() {
+  const allYears = await getAwardsYears();
+  return allYears.map(entry => ({
+    params: { year: String(entry.data.year) },
+    props: { entry, allYears },
+  }));
+}
+
+const { entry, allYears } = Astro.props;
+const otherYears = allYears.filter(
+  (e: typeof entry) => e.data.year !== entry.data.year,
+);
+const title = `${entry.data.year} Annual Awards`;
+---
+
+<BaseLayout title={title}>
+  <section class="section">
+    <div class="container">
+      <h1>{title}</h1>
+
+      <AwardsYearGrid categories={entry.data.categories} />
+
+      {otherYears.length > 0 && (
+        <nav class="year-switcher" aria-label="Other award years">
+          <h2>Other Years</h2>
+          <ul class="year-list">
+            {otherYears.map((other: typeof entry) => (
+              <li>
+                <a href={`/annual-awards/${other.data.year}`}>
+                  {other.data.year}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+
+      <div class="back-link">
+        <a href="/annual-awards">&larr; All Annual Awards</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .year-switcher {
+    max-width: var(--content-medium);
+    margin: 0 auto var(--space-2xl);
+    text-align: center;
+  }
+
+  .year-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+
+  .year-list li {
+    margin: 0;
+  }
+
+  .year-list a {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: all var(--transition-fast);
+  }
+
+  .year-list a:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+</style>

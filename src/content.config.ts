@@ -1,4 +1,6 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'zod';
+import { glob } from 'astro/loaders';
 
 const difficultySchema = z.enum(['Easy', 'Moderate', 'Difficult', 'Extreme']);
 const ctaLinkSchema = z.object({
@@ -9,14 +11,25 @@ const boardMemberSchema = z.object({
   name: z.string(),
   position: z.string(),
   order: z.number(),
-  email: z.string().email(),
+  email: z.email(),
   phone: z.string().optional(),
   photo: z.string().min(1).optional(),
 });
 
-// Define schema for trail reports
+const awardCategoryIdSchema = z.enum([
+  'glenn-ensign-memorial',
+  'best-wrench',
+  'best-break',
+  'off-roader-of-the-year',
+  'gear-head',
+  'helping-hand',
+  'most-improved',
+  'trail-of-the-year',
+]);
+
+
 const trailsCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/trails' }),
   schema: z.object({
     title: z.string(),
     date: z.date(),
@@ -29,9 +42,8 @@ const trailsCollection = defineCollection({
   }),
 });
 
-// Define schema for events
 const eventsCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/events' }),
   schema: z.object({
     title: z.string(),
     date: z.date(),
@@ -39,13 +51,12 @@ const eventsCollection = defineCollection({
     time: z.string().optional(),
     description: z.string(),
     registrationRequired: z.boolean().default(false),
-    registrationUrl: z.string().url().optional(),
+    registrationUrl: z.url().optional(),
   }),
 });
 
-// Define schema for general pages
 const pagesCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
   schema: z.discriminatedUnion('pageType', [
     z.object({
       pageType: z.literal('generic'),
@@ -153,11 +164,17 @@ const pagesCollection = defineCollection({
       description: z.string().optional(),
       intro: z.string(),
     }),
+    z.object({
+      pageType: z.literal('annual-awards'),
+      title: z.string(),
+      description: z.string().optional(),
+      intro: z.string(),
+    }),
   ]),
 });
 
 const siteCollection = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.yaml', base: './src/content/site' }),
   schema: z.discriminatedUnion('kind', [
     z.object({
       kind: z.literal('settings'),
@@ -180,17 +197,17 @@ const siteCollection = defineCollection({
           city: z.string(),
           state: z.string(),
           zip: z.string(),
-          mapUrl: z.string().url(),
-          embedMapUrl: z.string().url(),
+          mapUrl: z.url(),
+          embedMapUrl: z.url(),
         }),
       }),
       social: z.object({
-        facebook: z.string().url(),
-        instagram: z.string().url(),
+        facebook: z.url(),
+        instagram: z.url(),
       }),
       calendar: z.object({
-        embedUrl: z.string().url(),
-        publicUrl: z.string().url(),
+        embedUrl: z.url(),
+        publicUrl: z.url(),
       }),
       branding: z.object({
         titleSuffix: z.string(),
@@ -208,9 +225,22 @@ const siteCollection = defineCollection({
 });
 
 const boardCollection = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.yaml', base: './src/content/board' }),
   schema: z.object({
     members: z.array(boardMemberSchema).min(1),
+  }),
+});
+
+const awardsCollection = defineCollection({
+  loader: glob({ pattern: '**/*.yaml', base: './src/content/awards' }),
+  schema: ({ image }) => z.object({
+    year: z.number().int(),
+    categories: z.array(z.object({
+      id: awardCategoryIdSchema,
+      title: z.string(),
+      recipient: z.string().optional(),
+      photo: image().optional(),
+    })).length(8),
   }),
 });
 
@@ -220,5 +250,6 @@ export const collections = {
   'pages': pagesCollection,
   'site': siteCollection,
   'board': boardCollection,
+  'awards': awardsCollection,
 };
 

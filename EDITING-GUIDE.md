@@ -36,6 +36,8 @@ Do not edit:
 | Board page intro/body text | `src/content/pages/board.md` |
 | About page | `src/content/pages/about.md` |
 | Membership page | `src/content/pages/membership.md` |
+| Annual Awards intro/body text | `src/content/pages/annual-awards.md` |
+| Annual Awards per-year data | `src/content/awards/` |
 | Event entries | `src/content/events/` |
 | Trail reports | `src/content/trails/` |
 | Images | `public/images/` |
@@ -90,6 +92,22 @@ Notes:
 - `phone` is optional
 - `photo` is optional
 - Email addresses and phone numbers are public on the website
+
+## Update Annual Awards
+
+Each year's winners live in their own file under `src/content/awards/`.
+
+To add a new year:
+
+1. Open `templates/awards-year.yaml`.
+2. Copy the full file contents.
+3. Create a new file at `src/content/awards/YYYY.yaml` (e.g. `2026.yaml`).
+4. Replace `YYYY` with the year.
+5. For each category, uncomment `recipient` and fill in the winner's name.
+6. Optionally add winner photos under `src/assets/awards/YYYY/` and uncomment `photo` with a relative path (e.g. `../../assets/awards/2026/best-wrench.jpg`). Supported formats include JPEG, PNG, WebP, AVIF, TIFF, and GIF. Astro automatically optimizes images at build time. Note: HEIC files must be converted to JPEG first (macOS: `sips -s format jpeg photo.heic --out photo.jpg`).
+7. Commit the new file.
+
+The eight category `id` values must stay exactly as shown in the template. Do not rename or reorder them.
 
 ## Update Meeting, Map, Calendar, or Social Links
 

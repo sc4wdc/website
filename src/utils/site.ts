@@ -1,4 +1,4 @@
-import { getEntry } from 'astro:content';
+import { getEntry, getCollection } from 'astro:content';
 
 export async function getSiteSettings() {
   const entry = await getEntry('site', 'settings');
@@ -28,4 +28,9 @@ export async function getBoardMembers() {
   }
 
   return [...entry.data.members].sort((a, b) => a.order - b.order);
+}
+
+export async function getAwardsYears() {
+  const entries = await getCollection('awards');
+  return entries.sort((a, b) => b.data.year - a.data.year);
 }

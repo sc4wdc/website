@@ -1,0 +1,34 @@
+year: 2025
+categories:
+  - id: glenn-ensign-memorial
+    title: Glenn Ensign Memorial Award
+    recipient: Dariusz Smigiel
+    photo: ../../assets/awards/2025/glenn-ensign-memorial.jpg
+  - id: best-wrench
+    title: Best Wrench
+    recipient: Jason Stevens
+    photo: ../../assets/awards/2025/best-wrench.jpg
+  - id: best-break
+    title: Best Break
+    recipient: Mick Sweeney
+    # photo: ../../assets/awards/2025/best-break.jpg
+  - id: off-roader-of-the-year
+    title: Off-Roader of the Year
+    recipient: Mark Clark
+    # photo: ../../assets/awards/2025/off-roader-of-the-year.jpg
+  - id: gear-head
+    title: Gear Head
+    recipient: Jason Stevens
+    photo: ../../assets/awards/2025/gear-head.jpg
+  - id: helping-hand
+    title: Helping Hand
+    recipient: Mark Richardson
+    photo: ../../assets/awards/2025/helping-hand.jpg
+  - id: most-improved
+    title: Most Improved
+    recipient: Summer Burke-Irmiter
+    # photo: ../../assets/awards/2025/most-improved.jpg
+  - id: trail-of-the-year
+    title: Trail of the Year
+    recipient: Robert Silva
+    photo: ../../assets/awards/2025/trail-of-the-year.jpg

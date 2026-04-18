@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AwardsYearGrid from '../components/AwardsYearGrid.astro';
+import { getEntry, render } from 'astro:content';
+import { getAwardsYears } from '../utils/site';
+
+const [awardsPage, allYears] = await Promise.all([
+  getEntry('pages', 'annual-awards'),
+  getAwardsYears(),
+]);
+
+if (!awardsPage || awardsPage.data.pageType !== 'annual-awards') {
+  throw new Error('Annual Awards page not found');
+}
+
+const { Content } = await render(awardsPage);
+
+const latest = allYears[0];
+const priorYears = allYears.slice(1);
+---
+
+<BaseLayout title={awardsPage.data.title} description={awardsPage.data.description}>
+  <section class="section">
+    <div class="container">
+      <h1>{awardsPage.data.title}</h1>
+      <p class="intro">{awardsPage.data.intro}</p>
+
+      {latest && (
+        <div class="latest-year">
+          <h2>
+            <a href={`/annual-awards/${latest.data.year}`}>
+              {latest.data.year} Honorees
+            </a>
+          </h2>
+          <AwardsYearGrid categories={latest.data.categories} />
+        </div>
+      )}
+
+      {priorYears.length > 0 && (
+        <div class="prior-years card">
+          <h2>Prior Years</h2>
+          <ul class="year-list">
+            {priorYears.map(entry => (
+              <li>
+                <a href={`/annual-awards/${entry.data.year}`}>
+                  {entry.data.year} Awards
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <div class="awards-info card prose">
+        <Content />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .latest-year h2 {
+    text-align: center;
+  }
+
+  .latest-year h2 a {
+    text-decoration: none;
+  }
+
+  .latest-year h2 a:hover {
+    color: var(--color-accent);
+  }
+
+  .prior-years {
+    max-width: var(--content-medium);
+    margin: 0 auto var(--space-2xl);
+    text-align: center;
+  }
+
+  .year-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+
+  .year-list li {
+    margin: 0;
+  }
+
+  .year-list a {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: all var(--transition-fast);
+  }
+
+  .year-list a:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .awards-info {
+    max-width: var(--content-medium);
+    margin: 0 auto;
+  }
+
+  .awards-info h2 {
+    text-align: center;
+  }
+</style>

@@ -1,10 +1,10 @@
 ---
 import ContentPage from '../layouts/ContentPage.astro';
-import { getEntry } from 'astro:content';
+import { getEntry, render } from 'astro:content';
 
 const membershipPage = await getEntry('pages', 'membership');
 if (!membershipPage) throw new Error('Membership page not found');
-const { Content } = await membershipPage.render();
+const { Content } = await render(membershipPage);
 ---
 
 <ContentPage title={membershipPage.data.title} description={membershipPage.data.description}>
