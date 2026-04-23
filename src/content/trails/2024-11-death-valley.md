@@ -17,22 +17,22 @@ Basecamp located at Fiddler's Campground was a perfect location – close to toi
 
 ### Run Members
 
-- Aga & Dariusz Smigiel
-- Marianne & Fred Feldman
-- Jessica & Guy Giuffre
-- Mike Wiechmann
-- Jeff Holmes
-- Lee Basilotta
-- Mike Reale
+- Aga & Dariusz S
+- Marianne & Fred F
+- Jessica & Guy G
+- Mike W
+- Jeff H
+- Lee B
+- Mike R
 - Jim
 
-Everyone but Guy and Jessica stayed at Fiddler's Campground. The Giuffre family decided to avoid a steep climb over the Panamint Range and stayed at Panamint Springs RV.
+Everyone but Guy and Jessica stayed at Fiddler's Campground, who decided to avoid a steep climb over the Panamint Range and stayed at Panamint Springs RV.
 
 ---
 
 ## Wednesday, 11/13 – Pre-run Day: Racetrack Playa
 
-In a group of 3 rigs (Smigiel, Feldman, Giuffre) we decided to go to the Racetrack Playa. After about 60 miles on pavement, we shortly stopped at [Ubehebe Crater](https://en.wikipedia.org/wiki/Ubehebe_Crater), dated approximately 7,000 years old. Then we continued to [Racetrack Playa](https://en.wikipedia.org/wiki/Racetrack_Playa) – about 27 miles off pavement. The road is graded, very smooth, with signs saying 25 mph... Of course, you can go faster. What could go wrong? *(foreshadowing!)*
+In a group of 3 rigs we decided to go to the Racetrack Playa. After about 60 miles on pavement, we shortly stopped at [Ubehebe Crater](https://en.wikipedia.org/wiki/Ubehebe_Crater), dated approximately 7,000 years old. Then we continued to [Racetrack Playa](https://en.wikipedia.org/wiki/Racetrack_Playa) – about 27 miles off pavement. The road is graded, very smooth, with signs saying 25 mph... Of course, you can go faster. What could go wrong? *(foreshadowing!)*
 
 Racetrack Playa is well known for its "[sailing stones](https://en.wikipedia.org/wiki/Sailing_stones)". On the flat surface of the lakebed, there are visible tracks of stones which move their position. About 10 years ago it was finally revealed what causes this phenomenon.
 
@@ -92,4 +92,4 @@ We left 7:30am and around 5pm got back to Santa Cruz. Everyone was safe! No othe
 
 ---
 
-*A big thank you to Jeff Holmes for the rescue and trailer assist, and to the whole group for an unforgettable adventure – even with the mechanical drama!*
+*A big thank you to Jeff for the rescue and trailer assist, and to the whole group for an unforgettable adventure – even with the mechanical drama!*

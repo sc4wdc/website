@@ -15,10 +15,10 @@ This year we had a strong group of 4 rigs! Jessica and Guy Giuffre, Marianne and
 
 ### Run Members
 
-- Jessica & Guy Giuffre
-- Marianne & Fred Feldman
+- Jessica & Guy G
+- Marianne & Fred F
 - Tom
-- Aga & Dariusz Smigiel
+- Aga & Dariusz S
 
 ---
 
@@ -30,7 +30,7 @@ Plan for the first day was to get from Airport Flat Campground to Buck Island La
 
 Around the same place we also met a group from San Diego Jeep Club, probably 6-8 rigs. They let us through, so we were slowly moving forward.
 
-A few hundred yards later, when we were about to leave the slabs, Tom had problems going up over one "stairs". His 37" AT tires started sliding. Guy Giuffre and a few other bystanders helped him safely get over this place.
+A few hundred yards later, when we were about to leave the slabs, Tom had problems going up over one "stairs". His 37" AT tires started sliding. Guy and a few other bystanders helped him safely get over this place.
 
 Without any more problems we finally made it to the **Little Sluice**. Guy and Fred thought about going over it... but after a while "abandoned all hope ye who entered here." Much bigger buggies got stuck there and moved a few rocks into very inconvenient places, making it impossible to cross.
 
@@ -100,6 +100,6 @@ The rest of the trail was a rather smooth ride. Unfortunately, the usual spot to
 
 ## Final Thoughts
 
-It was a really great trip! Thanks to Guy Giuffre, who against all the obstacles, helped with organizing the trip!
+It was a really great trip! Thanks to Guy, who against all the obstacles, helped with organizing the trip!
 
 *– Dariusz*

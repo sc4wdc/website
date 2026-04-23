@@ -13,7 +13,7 @@ Even though this wasn’t an official SC4WDC run, here’s a quick report.
 
 ### Attendance
 
-Jason Stevens, Doug Rothstein, Kelvin Ramer, and Fred and Marianne Feldman.
+Jason S, Doug R, Kelvin R, and Fred and Marianne F.
 
 ### The Run
 
