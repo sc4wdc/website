@@ -11,7 +11,7 @@ categories:
   - id: best-break
     title: Best Break
     recipient: Mick Sweeney
-    # photo: ../../assets/awards/2025/best-break.jpg
+    photo: ../../assets/awards/2025/best-break.jpg
   - id: off-roader-of-the-year
     title: Off-Roader of the Year
     recipient: Mark Clark
@@ -27,7 +27,7 @@ categories:
   - id: most-improved
     title: Most Improved
     recipient: Summer Burke-Irmiter
-    # photo: ../../assets/awards/2025/most-improved.jpg
+    photo: ../../assets/awards/2025/most-improved.jpg
   - id: trail-of-the-year
     title: Trail of the Year
     recipient: Robert Silva
