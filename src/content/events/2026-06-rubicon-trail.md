@@ -1,6 +1,6 @@
 ---
 title: Rubicon Trail
-date: 2026-06-04
+date: 2026-06-17
 location: Airport Flat Campground
 time: TBD
 description: Iconic Sierra Nevada rock crawling adventure with 2 nights of trail camping
@@ -9,7 +9,7 @@ registrationRequired: false
 
 ## Dates
 
-June 4-6, 2026 (2 nights on the trail)
+June 17-21, 2026 (1 night on the trail)
 
 ## About
 
@@ -25,15 +25,15 @@ This is an **extreme difficulty** trip. Expect steep granite slabs, tight squeez
 - **Walker Hill** – Another classic Rubicon challenge
 - **The Soup Bowl** – A fun water crossing (conditions vary)
 
-## Trip Details
 
-| | |
-|---|---|
-| **Trip Type** | Trail camping (tent only) |
-| **Duration** | 2 nights / 3 days |
-| **Terrain** | Granite slabs, boulders, rock gardens |
-| **Difficulty** | Extreme |
-| **Start Point** | Airport Flat Campground, Loon Lake area |
+## Itinerary:
+- Tuesday 6/16 -  arrive at Airport Flats Campground
+- Wednesday 6/17 -  hit the trail from Tahoma side and camp at Buck Island Wednesday night
+- Thursday 6/18 - leave Buck Island and wheel out to Loon lake and back to Airport Flats campground
+- Friday 6/19  - others arrive at campground for the weekend
+- Saturday 6/20 - half-day run Loon Lake to Wentworth Springs loop followed by potluck dinner at Airport Flats
+- Sunday 6/21 - travel home
+
 
 ## Vehicle Requirements
 
