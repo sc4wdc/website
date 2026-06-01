@@ -1,6 +1,6 @@
 ---
 title: Hi-Landers Poker Run - Rubicon
-date: 2026-06-19
+date: 2026-06-13
 location: South Fork Group Campground
 time: TBD
 description: Poker run on the Rubicon Trail from Loon Lake to Wentworth Springs
@@ -9,11 +9,7 @@ registrationRequired: false
 
 ## Dates
 
-June 19-21, 2026
-
-## Trail Leader
-
-Guy Giuffre
+June 12-13, 2026
 
 ## About
 
@@ -39,4 +35,4 @@ The route runs from Loon Lake to Wentworth Springs, covering some of the Rubicon
 
 Contact Trail Leader Guy Giuffre or reach out to the club at monthly meetings.
 
-For more info, check the [Hi-Landers Facebook event page](https://www.facebook.com/events/321580600752278/).
+For more info, check the [Hi-Landers event page](https://www.hi-landers.com/Poker/Poker.html).
