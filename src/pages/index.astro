@@ -84,6 +84,7 @@ function isExternalLink(href: string): boolean {
               date={event.data.date}
               location={event.data.location}
               href={`/events/${event.id}`}
+              cancelled={event.data.cancelled}
             />
           ))}
         </div>

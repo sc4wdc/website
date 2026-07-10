@@ -74,6 +74,7 @@ const { calendar, meeting } = siteSettings;
               date={event.data.date}
               location={event.data.location}
               href={`/events/${event.id}`}
+              cancelled={event.data.cancelled}
             />
           ))}
           </div>
@@ -96,6 +97,7 @@ const { calendar, meeting } = siteSettings;
               date={event.data.date}
               location={event.data.location}
               href={`/events/${event.id}`}
+              cancelled={event.data.cancelled}
             />
           ))}
           </div>

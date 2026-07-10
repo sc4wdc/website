@@ -6,22 +6,23 @@ interface Props {
   date: Date;
   location?: string;
   href?: string;
+  cancelled?: boolean;
 }
 
-const { title, date, location, href } = Astro.props;
+const { title, date, location, href, cancelled } = Astro.props;
 const localDate = parseLocalDate(date);
 ---
 
-<div class="event-card">
+<div class:list={["event-card", { cancelled }]}>
   <div class="event-date">
     <span class="date-day">{localDate.toLocaleDateString('en-US', { day: 'numeric', timeZone: 'UTC' })}</span>
     <span class="date-month">{localDate.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' })}</span>
   </div>
   <div class="event-details">
     {href ? (
-      <h3><a href={href}>{title}</a></h3>
+      <h3><a href={href}>{title}{cancelled && <span class="cancelled-label"> — Cancelled</span>}</a></h3>
     ) : (
-      <h3>{title}</h3>
+      <h3>{title}{cancelled && <span class="cancelled-label"> — Cancelled</span>}</h3>
     )}
     {location && <p class="event-location"><span aria-hidden="true">📍 </span>{location}</p>}
   </div>
@@ -88,6 +89,19 @@ const localDate = parseLocalDate(date);
   .event-location {
     color: var(--color-gray);
     font-size: var(--text-base);
+  }
+
+  .event-card.cancelled {
+    opacity: 0.6;
+  }
+
+  .event-card.cancelled .event-date {
+    background-color: var(--color-gray);
+  }
+
+  .cancelled-label {
+    color: var(--color-accent);
+    font-weight: 600;
   }
 </style>
 

@@ -51,6 +51,7 @@ const eventsCollection = defineCollection({
     time: z.string().optional(),
     description: z.string(),
     trailLeader: z.string().optional(),
+    cancelled: z.boolean().default(false),
     registrationRequired: z.boolean().default(false),
     registrationUrl: z.url().optional(),
   }),

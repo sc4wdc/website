@@ -22,7 +22,10 @@ const isPastEvent = parseLocalDate(event.data.date) < getTodayLocal();
     <div class="container">
       <article class="event-detail">
         <div class="event-header">
-          {isPastEvent && (
+          {event.data.cancelled && (
+            <div class="cancelled-badge">Cancelled</div>
+          )}
+          {!event.data.cancelled && isPastEvent && (
             <div class="past-event-badge">Past Event</div>
           )}
           <h1>{event.data.title}</h1>
@@ -86,6 +89,17 @@ const isPastEvent = parseLocalDate(event.data.date) < getTodayLocal();
   .event-header {
     margin-bottom: var(--space-xl);
     position: relative;
+  }
+
+  .cancelled-badge {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border-radius: var(--border-radius);
+    font-size: var(--text-base);
+    font-weight: 600;
+    margin-bottom: var(--space-md);
   }
 
   .past-event-badge {
