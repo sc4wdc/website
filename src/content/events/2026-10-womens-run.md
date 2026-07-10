@@ -4,12 +4,9 @@ date: 2026-10-18
 location: Hollister Hills SVRA - Area 5
 time: 9:30 AM
 description: A welcoming run to encourage more women to join the off-road community
+trailLeader: "Jessica Giuffre"
 registrationRequired: false
 ---
-
-## Trail Leader
-
-Jessica Giuffre
 
 ## Date
 

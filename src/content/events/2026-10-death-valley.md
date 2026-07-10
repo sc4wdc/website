@@ -4,12 +4,9 @@ date: 2026-10-28
 location: Furnace Creek, Death Valley NP
 time: TBD
 description: Overland adventure exploring Death Valley's mining history, geology, and remote landscapes
+trailLeader: "Dariusz Smigiel"
 registrationRequired: false
 ---
-
-## Trail Leader
-
-Dariusz Smigiel
 
 ## Dates
 

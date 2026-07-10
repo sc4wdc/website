@@ -4,12 +4,9 @@ date: 2026-07-20
 location: Meadow Lake area
 time: TBD
 description: Easy overland trip through Sierra forest roads from Meadow Lake to Truckee
+trailLeader: "Jason Stevens"
 registrationRequired: false
 ---
-
-## Trail Leader
-
-Jason Stevens
 
 ## Dates
 

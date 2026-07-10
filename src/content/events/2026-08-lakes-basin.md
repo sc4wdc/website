@@ -4,12 +4,9 @@ date: 2026-08-15
 location: Gold Lake area, Sierra Nevada
 time: TBD
 description: Forest roads to rock crawling in the beautiful Lakes Basin and Sierra Buttes
+trailLeader: "Guy Giuffre"
 registrationRequired: false
 ---
-
-## Trail Leader
-
-Guy Giuffre
 
 ## Dates
 

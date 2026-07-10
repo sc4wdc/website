@@ -4,12 +4,9 @@ date: 2026-03-07
 location: Hume Lake area, Highway 180
 time: TBD
 description: 47th annual Kingsburg four-wheel-drive club snow run—one-day event in the Hume Lake area
+trailLeader: "Jason Stevens"
 registrationRequired: false
 ---
-
-## Trail Leader
-
-Jason Stevens (attending with Doug Rothstein)
 
 ## Dates
 
@@ -26,7 +23,6 @@ Near Hume Lake area, off Highway 180
 **Sequoia RV Park** — Dunlap (outside Fresno)
 
 - Friday, March 6 and Saturday, March 7
-- **Phone:** 559-338-2350
 - When calling, mention **Jason Stevens** or **Doug Rothstein**
 - Note: Registered under their names, not Santa Cruz Four-Wheel-Drive Club
 

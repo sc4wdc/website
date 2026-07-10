@@ -4,12 +4,9 @@ date: 2026-06-22
 location: Sonora Pass
 time: TBD
 description: Relaxed overland trip with trails, forest roads, fishing, and camping
+trailLeader: "Jason Stevens, Bobby Silva"
 registrationRequired: false
 ---
-
-## Trail Leaders
-
-Jason Stevens, Bobby Silva
 
 ## Dates
 

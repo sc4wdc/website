@@ -4,12 +4,9 @@ date: 2026-09-10
 location: Wrights Lake Campground
 time: TBD
 description: Hard rock crawling adventure to Barrett Lake in the Crystal Basin
+trailLeader: "Jason Stevens"
 registrationRequired: false
 ---
-
-## Trail Leader
-
-Jason Stevens
 
 ## Dates
 

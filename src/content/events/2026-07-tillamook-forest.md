@@ -4,12 +4,9 @@ date: 2026-07-15
 location: Tillamook, OR
 time: TBD
 description: Multi-day adventure in Oregon's Tillamook State Forest
+trailLeader: "Dariusz Smigiel"
 registrationRequired: false
 ---
-
-## Trail Leader
-
-Dariusz Smigiel
 
 ## Dates
 

@@ -4,12 +4,9 @@ date: 2026-02-21
 location: Oakhurst, CA
 time: 9:30 AM
 description: Annual snow adventure in the Sierra Nevada foothills
+trailLeader: "Marc Jones"
 registrationRequired: false
 ---
-
-## Trail Leader
-
-Marc Jones (Mariposa)
 
 ## Dates
 

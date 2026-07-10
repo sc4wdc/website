@@ -40,6 +40,11 @@ const isPastEvent = parseLocalDate(event.data.date) < getTodayLocal();
                 <strong><span aria-hidden="true">📍 </span>Location:</strong> {event.data.location}
               </div>
             )}
+            {event.data.trailLeader && (
+              <div class="meta-item">
+                <strong><span aria-hidden="true">🧭 </span>Trail Leader:</strong> {event.data.trailLeader}
+              </div>
+            )}
             {(event.data.registrationRequired || event.data.registrationUrl) && (
               <div class="meta-item registration-required">
                 <strong><span aria-hidden="true">⚠️ </span>Registration Required</strong>
