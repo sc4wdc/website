@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MeetingContent from '../../components/MeetingContent.astro';
 import { render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import { formatDate, parseLocalDate, getTodayLocal } from '../../utils/date';
 import { getAllEvents, isGeneratedMeeting } from '../../utils/events';
 
@@ -15,7 +16,7 @@ export async function getStaticPaths() {
 
 const { event } = Astro.props;
 const generated = isGeneratedMeeting(event);
-const Content = generated ? null : (await render(event as any)).Content;
+const Content = generated ? null : (await render(event as CollectionEntry<'events'>)).Content;
 
 const isPastEvent = parseLocalDate(event.data.date) < getTodayLocal();
 ---
