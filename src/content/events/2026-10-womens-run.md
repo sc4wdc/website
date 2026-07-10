@@ -12,10 +12,6 @@ registrationRequired: false
 
 October 18, 2026
 
-## Meeting Time & Location
-
-9:30 AM at Hollister Hills SVRA - Area 5
-
 ## About
 
 Join us for the Women's Run – a fun, welcoming event designed to encourage more women to get behind the wheel and experience off-roading! Whether you're new to 4x4 trails or have some experience, this is a great opportunity to learn, build confidence, and connect with other women in the off-road community.

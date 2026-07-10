@@ -12,10 +12,6 @@ registrationRequired: false
 
 July 15-19, 2026
 
-## Meeting Location
-
-Tillamook, OR
-
 ## About
 
 Join us for a multi-day adventure in Oregon's Tillamook State Forest! This Pacific Northwest gem offers rugged mountain trails, rocky climbs, and lush forested paths – plus the Oregon coast and sand dunes are just a short drive away.
