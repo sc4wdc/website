@@ -5,9 +5,10 @@ import TrailCard from '../components/TrailCard.astro';
 import { getCollection, getEntry } from 'astro:content';
 import { parseLocalDate, getTodayLocal } from '../utils/date';
 import { getSiteSettings } from '../utils/site';
+import { getAllEvents } from '../utils/events';
 
 const [allEvents, allTrails, homePage, siteSettings] = await Promise.all([
-  getCollection('events'),
+  getAllEvents(),
   getCollection('trails'),
   getEntry('pages', 'home'),
   getSiteSettings(),

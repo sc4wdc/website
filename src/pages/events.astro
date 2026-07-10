@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EventCard from '../components/EventCard.astro';
-import { getCollection, getEntry } from 'astro:content';
+import { getEntry } from 'astro:content';
 import { parseLocalDate, getTodayLocal } from '../utils/date';
 import { getSiteSettings } from '../utils/site';
+import { getAllEvents } from '../utils/events';
 
 const [allEvents, eventsPage, siteSettings] = await Promise.all([
-  getCollection('events'),
+  getAllEvents(),
   getEntry('pages', 'events'),
   getSiteSettings(),
 ]);

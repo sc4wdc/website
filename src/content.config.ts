@@ -192,6 +192,7 @@ const siteCollection = defineCollection({
       meeting: z.object({
         schedule: z.string(),
         time: z.string(),
+        startDate: z.date(),
         earlyArrival: z.string(),
         location: z.object({
           name: z.string(),

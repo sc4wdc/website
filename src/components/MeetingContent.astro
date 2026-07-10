@@ -1,0 +1,30 @@
+---
+import { getSiteSettings } from '../utils/site';
+
+const { meeting, social } = await getSiteSettings();
+---
+
+<h2><span aria-hidden="true">📋 </span>About Our Monthly Meetings</h2>
+
+<p>Join us for our monthly club meeting! These gatherings are the heart of our club, where members come together to share stories, plan adventures, and connect with fellow off-road enthusiasts.</p>
+
+<h3>What to Expect</h3>
+
+<ul>
+  <li><strong>Club Business</strong> – Updates on club activities, announcements, and important news</li>
+  <li><strong>Trip Planning</strong> – Discuss upcoming runs, trail conditions, and coordinate logistics</li>
+  <li><strong>Social Time</strong> – Meet other members, swap stories, and build lasting friendships</li>
+  <li><strong>Guest Speakers</strong> – Occasional presentations on topics of interest to our community</li>
+</ul>
+
+<h3><span aria-hidden="true">🍕 </span>Location Details</h3>
+
+<p>We meet at {meeting.location.name} in {meeting.location.city}. Feel free to arrive early to grab food and drinks before the meeting starts. Orders are placed individually.</p>
+
+<h3><span aria-hidden="true">👋 </span>Everyone is Welcome</h3>
+
+<p>Whether you're a long-time member, new to the club, or just curious about what we do, you're welcome to join us! It's a great opportunity to learn more about the club and meet the community.</p>
+
+<h2><span aria-hidden="true">❓ </span>Questions?</h2>
+
+<p>If you have any questions, please reach out on <a href={social.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>.</p>

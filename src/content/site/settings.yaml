@@ -9,6 +9,7 @@ organization:
 meeting:
   schedule: Third Thursday of every month
   time: 6:30 PM
+  startDate: 2025-10-01
   earlyArrival: Members and guests can come early
   location:
     name: Round Table Pizza
