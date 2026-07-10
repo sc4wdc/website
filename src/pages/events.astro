@@ -26,6 +26,9 @@ const pastEvents = allEvents
   .filter(event => parseLocalDate(event.data.date) < today)
   .sort((a, b) => parseLocalDate(b.data.date).getTime() - parseLocalDate(a.data.date).getTime());
 
+const recentPast = pastEvents.slice(0, 6);
+const olderPast = pastEvents.slice(6);
+
 const { calendar, meeting } = siteSettings;
 ---
 
@@ -91,7 +94,7 @@ const { calendar, meeting } = siteSettings;
         <div class="past-events-section">
           <h2>{eventsPage.data.pastEventsTitle}</h2>
           <div class="events-grid">
-          {pastEvents.slice(0, 6).map(event => (
+          {recentPast.map(event => (
             <EventCard
               title={event.data.title}
               date={event.data.date}
@@ -101,6 +104,22 @@ const { calendar, meeting } = siteSettings;
             />
           ))}
           </div>
+          {olderPast.length > 0 && (
+            <details class="older-events">
+              <summary>Show all past events ({pastEvents.length} total)</summary>
+              <div class="events-grid">
+              {olderPast.map(event => (
+                <EventCard
+                  title={event.data.title}
+                  date={event.data.date}
+                  location={event.data.location}
+                  href={`/events/${event.id}`}
+                  cancelled={event.data.cancelled}
+                />
+              ))}
+              </div>
+            </details>
+          )}
         </div>
       )}
     </div>
@@ -179,6 +198,26 @@ const { calendar, meeting } = siteSettings;
 
   .past-events-section :global(.event-card:hover) {
     background-color: var(--color-white);
+  }
+
+  .older-events {
+    margin-top: var(--space-xl);
+  }
+
+  .older-events summary {
+    cursor: pointer;
+    text-align: center;
+    color: var(--color-gray);
+    font-size: var(--text-md);
+    padding: var(--space-md) 0;
+  }
+
+  .older-events summary:hover {
+    color: var(--color-primary);
+  }
+
+  .older-events .events-grid {
+    margin-top: var(--space-lg);
   }
 
   .events-grid {
