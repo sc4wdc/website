@@ -1,6 +1,6 @@
 ---
 title: Lakes Basin / Sierra Buttes
-date: 2026-08-15
+date: 2026-08-12
 location: Packsaddle Campground, Gold Lake area
 time: TBD
 description: Multi-day trip through Gold Valley Rim, Snake Lake, Poker Flat to La Porte, and Sierra Buttes Lookout
@@ -10,7 +10,7 @@ registrationRequired: false
 
 ## Dates
 
-Mid-August 2026 (exact dates TBD)
+August 12–16, 2026
 
 ## Base Camp
 
