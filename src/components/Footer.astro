@@ -12,13 +12,13 @@ const { meeting, organization, site, social } = siteSettings;
   <div class="container">
     <div class="footer-content">
       <div class="footer-section">
-        <p class="footer-heading">{site.name}</p>
+        <h2 class="footer-heading">{site.name}</h2>
         <p>{organization.status}</p>
         <p class="mission">{organization.mission}</p>
       </div>
 
       <div class="footer-section">
-        <p class="footer-heading">Monthly Meetings</p>
+        <h2 class="footer-heading">Monthly Meetings</h2>
         <p><strong>{meeting.schedule}</strong></p>
         <p>{meeting.time}</p>
         <p>{meeting.location.name}</p>
@@ -29,7 +29,7 @@ const { meeting, organization, site, social } = siteSettings;
       </div>
 
       <div class="footer-section">
-        <p class="footer-heading">Connect With Us</p>
+        <h2 class="footer-heading">Connect With Us</h2>
         <div class="social-links">
           <a href={social.facebook} target="_blank" rel="noopener noreferrer" class="social-link">
             <FacebookIcon />

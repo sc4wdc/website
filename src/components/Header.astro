@@ -237,7 +237,12 @@ function isActive(itemHref: string): boolean {
     }
 
     toggle.addEventListener('click', () => {
-      isOpen() ? closeMenu() : openMenu();
+      if (isOpen()) {
+        closeMenu();
+      } else {
+        openMenu();
+        focusableEls[0]?.focus();
+      }
     });
 
     nav.querySelectorAll('a').forEach(link => {

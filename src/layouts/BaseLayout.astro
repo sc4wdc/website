@@ -117,7 +117,7 @@ const ogImageUrl = ogImage
     --color-primary: #2d5016; /* Forest Green */
     --color-primary-light: #4a7c2a;
     --color-secondary: #8b4513; /* Saddle Brown */
-    --color-accent: #d2691e; /* Chocolate/Rust */
+    --color-accent: #b5581a; /* Chocolate/Rust */
     --color-earth: #8b7355; /* Burlywood/Earth */
     --color-sand: #daa520; /* Goldenrod */
 
@@ -157,11 +157,6 @@ const ogImageUrl = ogImage
     --content-narrow: 600px;
     --content-medium: 800px;
     --content-wide: 900px;
-
-    /* Breakpoints */
-    --bp-sm: 640px;
-    --bp-md: 768px;
-    --bp-lg: 1024px;
 
     /* Difficulty Badge Colors */
     --color-difficulty-easy: #2e7d32;
@@ -289,12 +284,6 @@ const ogImageUrl = ogImage
     border-radius: var(--border-radius);
     padding: var(--space-lg);
     box-shadow: var(--shadow);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
-  }
-
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
   }
 
   /* Lists */
@@ -449,6 +438,35 @@ const ogImageUrl = ogImage
     background-color: var(--color-off-white);
     border-color: var(--color-off-white);
     color: var(--color-primary);
+  }
+
+  /* Year list (awards pages) */
+  .year-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+
+  .year-list li {
+    margin: 0;
+  }
+
+  .year-list a {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: all var(--transition-fast);
+  }
+
+  .year-list a:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
   }
 
   /* Page intro text */
