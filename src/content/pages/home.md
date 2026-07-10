@@ -3,6 +3,7 @@ pageType: home
 title: Home
 description: Santa Cruz 4 Wheel Drive Club - Keeping Public Lands Open
 hero:
+  image: ../../assets/hero.jpg
   description: We are a 501(c)(3) non-profit organization dedicated to keeping public lands open and supporting our local community through responsible off-road recreation.
   primaryCta:
     label: Join Us

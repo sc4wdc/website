@@ -109,6 +109,22 @@ To add a new year:
 
 The eight category `id` values must stay exactly as shown in the template. Do not rename or reorder them.
 
+## Change the Homepage Hero Image
+
+The homepage can display a full-width background photo behind the hero text.
+
+1. Place a high-resolution landscape photo (at least 1600px wide) at `src/assets/hero.jpg` (or `.png`, `.webp`).
+2. Open `src/content/pages/home.md`.
+3. Add an `image` line under `hero`:
+
+```yaml
+hero:
+  image: ../../assets/hero.jpg
+  description: We are a 501(c)(3)...
+```
+
+To remove the image and go back to the green gradient, delete the `image` line.
+
 ## Update Meeting, Map, Calendar, or Social Links
 
 Edit `src/content/site/settings.yaml`.

@@ -59,7 +59,7 @@ const eventsCollection = defineCollection({
 
 const pagesCollection = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
-  schema: z.discriminatedUnion('pageType', [
+  schema: ({ image }) => z.discriminatedUnion('pageType', [
     z.object({
       pageType: z.literal('generic'),
       title: z.string(),
@@ -71,6 +71,7 @@ const pagesCollection = defineCollection({
       description: z.string().optional(),
       hero: z.object({
         description: z.string(),
+        image: image().optional(),
         primaryCta: ctaLinkSchema,
         secondaryCta: ctaLinkSchema,
       }),

@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EventCard from '../components/EventCard.astro';
 import TrailCard from '../components/TrailCard.astro';
@@ -29,6 +30,7 @@ const recentTrails = allTrails
   .slice(0, 3);
 
 const { meeting, site } = siteSettings;
+const heroImage = homePage.data.hero.image;
 
 function isExternalLink(href: string): boolean {
   return /^https?:\/\//.test(href);
@@ -37,7 +39,17 @@ function isExternalLink(href: string): boolean {
 
 <BaseLayout title={homePage.data.title} description={homePage.data.description}>
   <!-- Hero Section -->
-  <section class="hero">
+  <section class:list={["hero", { "hero-with-image": !!heroImage }]}>
+    {heroImage && (
+      <Image
+        src={heroImage}
+        alt=""
+        class="hero-bg"
+        widths={[640, 1024, 1600]}
+        sizes="100vw"
+        loading="eager"
+      />
+    )}
     <div class="container">
       <div class="hero-content">
         <h1>{site.name}</h1>
@@ -150,17 +162,43 @@ function isExternalLink(href: string): boolean {
     color: var(--color-white);
     padding: var(--space-2xl) 0;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-with-image {
+    background: none;
+  }
+
+  .hero-with-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(45, 80, 22, 0.5) 0%, rgba(45, 80, 22, 0.3) 100%);
+    z-index: 1;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 70%;
   }
 
   .hero-content {
     max-width: var(--content-medium);
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
   }
 
   .hero h1 {
     color: var(--color-white);
     font-size: clamp(2rem, 6vw, 3.5rem);
     margin-bottom: var(--space-md);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   }
 
   .hero-tagline {
@@ -168,13 +206,14 @@ function isExternalLink(href: string): boolean {
     color: var(--color-white);
     font-style: italic;
     margin-bottom: var(--space-lg);
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
   }
 
   .hero-description {
     font-size: var(--text-lg);
     line-height: 1.7;
     margin-bottom: var(--space-xl);
-    opacity: 0.95;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
   }
 
   .hero-actions {
