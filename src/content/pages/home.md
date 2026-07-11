@@ -16,6 +16,7 @@ meetings:
   whenLabel: When
   whereLabel: Where
   directionsLabel: Get Directions
+  firstVisitNote: "First time? No commitment needed — just show up, grab a slice, and say hello!"
 upcomingEvents:
   title: Upcoming Events
   ctaLabel: View All Events

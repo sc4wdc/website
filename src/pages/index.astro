@@ -80,6 +80,9 @@ function isExternalLink(href: string): boolean {
             <em>{meeting.earlyArrival}</em>
           </div>
         </div>
+        {homePage.data.meetings.firstVisitNote && (
+          <p class="first-visit-note">{homePage.data.meetings.firstVisitNote}</p>
+        )}
         <a href="/contact" class="btn meeting-cta">{homePage.data.meetings.directionsLabel}</a>
       </div>
     </div>
@@ -235,6 +238,17 @@ function isExternalLink(href: string): boolean {
 
   .meeting-card h2 {
     text-align: center;
+  }
+
+  .first-visit-note {
+    margin-top: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    border-left: 3px solid var(--color-accent);
+    background-color: var(--color-off-white);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    font-style: italic;
+    color: var(--color-secondary);
+    text-align: left;
   }
 
   .meeting-cta {

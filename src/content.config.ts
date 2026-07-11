@@ -80,6 +80,7 @@ const pagesCollection = defineCollection({
         whenLabel: z.string(),
         whereLabel: z.string(),
         directionsLabel: z.string(),
+        firstVisitNote: z.string().optional(),
       }),
       upcomingEvents: z.object({
         title: z.string(),
@@ -106,6 +107,7 @@ const pagesCollection = defineCollection({
         whenLabel: z.string(),
         whereLabel: z.string(),
         directionsLabel: z.string(),
+        firstVisitNote: z.string().optional(),
       }),
       onlineSection: z.object({
         title: z.string(),
@@ -217,6 +219,10 @@ const siteCollection = defineCollection({
         titleSuffix: z.string(),
         faviconPath: z.string().min(1),
       }),
+      photographer: z.object({
+        name: z.string(),
+        url: z.url(),
+      }).optional(),
     }),
     z.object({
       kind: z.literal('navigation'),

@@ -5,7 +5,7 @@ import { getSiteSettings } from '../utils/site';
 
 const currentYear = new Date().getFullYear();
 const siteSettings = await getSiteSettings();
-const { meeting, organization, site, social } = siteSettings;
+const { meeting, organization, photographer, site, social } = siteSettings;
 ---
 
 <footer class="site-footer">
@@ -45,6 +45,13 @@ const { meeting, organization, site, social } = siteSettings;
 
     <div class="footer-bottom">
       <p>&copy; {currentYear} {site.name}. All rights reserved.</p>
+      {photographer && (
+        <p class="photographer-credit">
+          Photos by <a href={photographer.url} target="_blank" rel="noopener noreferrer">
+            {photographer.name} <span class="sr-only">(opens in new tab)</span>
+          </a>
+        </p>
+      )}
     </div>
   </div>
 </footer>
@@ -123,6 +130,19 @@ const { meeting, organization, site, social } = siteSettings;
   .footer-bottom p {
     font-size: var(--text-base);
     opacity: 0.8;
+  }
+
+  .photographer-credit {
+    margin-top: var(--space-xs);
+    font-size: var(--text-sm);
+  }
+
+  .photographer-credit a {
+    color: var(--color-sand);
+  }
+
+  .photographer-credit a:hover {
+    color: var(--color-white);
   }
 </style>
 

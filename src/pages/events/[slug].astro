@@ -5,6 +5,7 @@ import { render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { formatDate, parseLocalDate, getTodayLocal } from '../../utils/date';
 import { getAllEvents, isGeneratedMeeting } from '../../utils/events';
+import { getSiteSettings } from '../../utils/site';
 
 export async function getStaticPaths() {
   const events = await getAllEvents();
@@ -17,11 +18,36 @@ export async function getStaticPaths() {
 const { event } = Astro.props;
 const generated = isGeneratedMeeting(event);
 const Content = generated ? null : (await render(event as CollectionEntry<'events'>)).Content;
+const siteSettings = await getSiteSettings();
 
 const isPastEvent = parseLocalDate(event.data.date) < getTodayLocal();
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: event.data.title,
+  startDate: parseLocalDate(event.data.date).toISOString().split('T')[0],
+  description: event.data.description,
+  eventStatus: event.data.cancelled
+    ? 'https://schema.org/EventCancelled'
+    : 'https://schema.org/EventScheduled',
+  url: new URL(`/events/${event.id}`, Astro.site).href,
+  organizer: {
+    '@type': 'Organization',
+    name: siteSettings.site.name,
+    url: Astro.site?.href,
+  },
+  ...(event.data.location && {
+    location: {
+      '@type': 'Place',
+      name: event.data.location,
+    },
+  }),
+};
 ---
 
 <BaseLayout title={event.data.title} description={event.data.description}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <section class="section">
     <div class="container">
       <article class="event-detail">

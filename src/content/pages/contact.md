@@ -8,6 +8,7 @@ meetingSection:
   whenLabel: When
   whereLabel: Where
   directionsLabel: Get Directions
+  firstVisitNote: "First time? No commitment needed — just show up, grab a slice, and say hello!"
 onlineSection:
   title: Connect Online
   intro: Stay up to date with club activities, events, and trail reports through our social media channels.

@@ -41,12 +41,16 @@ const { embedMapUrl } = meeting.location;
               {meeting.location.city}, {meeting.location.state} {meeting.location.zip}
             </p>
 
+            {contactPage.data.meetingSection.firstVisitNote && (
+              <p class="first-visit-note">{contactPage.data.meetingSection.firstVisitNote}</p>
+            )}
+
             <a
               href={meeting.location.mapUrl}
               target="_blank"
               rel="noopener noreferrer"
               class="btn"
-              
+
             >
               {contactPage.data.meetingSection.directionsLabel} <span class="sr-only">(opens in new tab)</span>
             </a>
@@ -143,6 +147,16 @@ const { embedMapUrl } = meeting.location;
   .contact-details .note {
     font-style: italic;
     color: var(--color-gray);
+  }
+
+  .first-visit-note {
+    margin-top: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    border-left: 3px solid var(--color-accent);
+    background-color: var(--color-off-white);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    font-style: italic;
+    color: var(--color-secondary);
   }
 
   .where-label {
