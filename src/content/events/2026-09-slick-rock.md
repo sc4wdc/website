@@ -1,23 +1,20 @@
 ---
-title: Barrett Lake Trail
-date: 2026-09-10
-location: Wrights Lake Campground
+title: Slick Rock Trail
+date: 2026-09-17
+location: Silver Tip Campground
 time: TBD
-description: Hard rock crawling adventure to Barrett Lake in the Crystal Basin
+description: A trek through a beautiful section of the Stanislaus National Forest in the Sierras.
 trailLeader: "Jason Stevens"
 registrationRequired: false
-cancelled: true
 ---
 
 ## Dates
 
-September 10-13, 2026
+September 17-20, 2026
 
 ## Meeting Location
 
-Wrights Lake Campground
-
-**GPS:** 38.84461, -120.23664
+Silver Tip Campground: https://www.recreation.gov/camping/campgrounds/274410
 
 ## Planned Route
 
@@ -25,9 +22,8 @@ Trail to Barrett Lake and back
 
 ## About
 
-Join us for a challenging rock crawling adventure to Barrett Lake! This multi-day trip takes us through serious granite terrain in the Crystal Basin area. Barrett Lake Trail is known for its technical rock obstacles and beautiful high Sierra scenery.
+A semi-challenging trek through a beautiful section of the Stanislaus National Forest in the Sierras. This trail is considered to be moderate to difficult for some. It runs along the Utica Reservoir and several creek areas. Come prepared with a capable rig and the right gear.
 
-This is a **hard difficulty** trip – come prepared with a capable rig and the right gear.
 
 ## Trip Details
 
